@@ -67,7 +67,7 @@ You'll need Docker desktop for your platform installed to run the project in loc
 
 The CP login credentials are initially set as follows:
 
-Login: `support@percipio.london` \
+Login: `hi@hybridinteractive.io` \
 Password: `letmein`
 
 **Important:** To find the correct credentials for `LOCAL_DB_CONTAINER` run `docker-compose up` and once the docker container is running, use the command `docker container ls` to find the correct name of the container.
