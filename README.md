@@ -62,7 +62,7 @@ You'll need Docker desktop for your platform installed to run the project in loc
 * Set up a `.env` file in the `cms/` directory, based off of the provided `example.env`
 * Set up a `.env.sh.` file in the `scripts/` directory, based off of the provided `example.env.sh`
 * Start up the site with `docker-compose up` (the first build will be somewhat lengthy)
-* Import the `seed_db.sql` database dump the first time from the `scripts/` dir with `./docker_restore_db.sh seed_db.sql`
+* Import the `seed_db.sql` database dump the first time from the `scripts/` dir with `./docker_restore_db.sh seed_db.sql`. You can also export the database from within your local by running `docker exec docker_mariadb_1 /usr/bin/mysqldump -u project --password=project project > seed_db.sql`
 * Navigate to `http://localhost:8000` to use the site; the `webpack-dev-server` runs off of `http://localhost:8080`
 
 The CP login credentials are initially set as follows:
@@ -71,7 +71,7 @@ Login: `hi@hybridinteractive.io` \
 Password: `letmein`
 
 **Important:** To find the correct credentials for `LOCAL_DB_CONTAINER` run `docker-compose up` and once the docker container is running, use the command `docker container ls` to find the correct name of the container.
-If your project is called `test` the container will be somewhere along the lines of `test_mariadb` or `test_mysql`. That's the value you do have to enter.
+If your project is called `test` the container will be somewhere along the lines of `test_mariadb_1` or `test_mysql_1`. That's the value you do have to enter.
 
 **N.B.:** Without authorization & credentials (which are private), the `./docker_pull_db.sh` will not work. It's provided here for instructional purposes
 
