@@ -5,21 +5,6 @@ import styles from '../css/app.pcss';
 import { createStore } from './stores/store.js';
 import { createLoadingState } from './utils/wait.js';
 
-// importing and setting up Font Awesome
-import { dom, library } from '@fortawesome/fontawesome-svg-core';
-import { 
-    faCloudDownloadAlt as farCloudDownloadAlt,
-    faExternalLinkAlt as farExternalLinkAlt,
-    faFilePdf as farFilePdf,
-    faFileSpreadsheet as farFileSpreadsheet,
-    faFileWord as farFileWord,
-    faFilePowerpoint as farFilePowerPoint,
-    faFileArchive as farFileArchive, 
-} from '@fortawesome/pro-regular-svg-icons';
-
-// load font-awesome libraries
-library.add(farCloudDownloadAlt, farExternalLinkAlt, farFilePdf, farFileSpreadsheet, farFileWord, farFilePowerPoint, farFileArchive);
-
 // convert i tags to SVG
 dom.watch({
     autoReplaceSvgRoot: document,
