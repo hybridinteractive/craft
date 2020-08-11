@@ -1,4 +1,4 @@
-## About percipioglobal/craft
+## About hybridinteractive/fido
 
 This is an alternate scaffolding package for Craft 3 CMS projects to Pixel & Tonic's canonical [craftcms/craft](https://github.com/craftcms/craft) package.
  
@@ -42,18 +42,18 @@ The following Craft CMS plugins are used on this site:
 * [Password Policy](https://github.com/percipioglobal/craft-password-policy) - for adding password policies
 * [Notifications](https://github.com/percipioglobal/craft-notifictions) - for handling system notifications
 * [Super Table](https://github.com/verbb/super-table) - Field Type to create powerful tables
-* [Spoon](https://github.com/angell-co/Spoon) - Organising our matrix fields
+* [Spoon](https://github.com/angell-co/Spoon) - Organizing our matrix fields
 * [Navigation](https://github.com/verbb/navigation) - Managing Navigation Menus
 
-## Using percipioglobal/craft
+## Using hybridinteractive/fido
 
 This project package works exactly the way Pixel & Tonic's [craftcms/craft](https://github.com/craftcms/craft) package works; you create a new project by first creating & installing the project:
 
-    composer create-project percipioglobal/craft PATH
+    composer create-project hybridinteractive/fido PATH
 
 Make sure that `PATH` is the path to your project, including the name you want for the project, e.g.:
 
-    composer create-project percipioglobal/craft craft3
+    composer create-project hybridinteractive/fido craft3
 
 ## Setting Up Local Dev
 
