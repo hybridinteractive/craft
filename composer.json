@@ -19,7 +19,6 @@
         "docs": "https://craftcms.com/docs",
         "rss": "https://craftcms.com/changelog.rss"
     },
-    "minimum-stability": "beta",
     "require": {
         "craftcms/cms": "^3.5.0",
         "vlucas/phpdotenv": "^3.4.0"
