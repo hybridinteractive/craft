@@ -1,6 +1,6 @@
 {
-    "name": "percipioglobal/craft",
-    "description": "Percipio's Craft CMS scaffolding for projects",
+    "name": "hybridinteractive/fido",
+    "description": "Fido is Hybrid Interactive's Craft CMS scaffolding for projects",
     "version": "0.1.0",
     "keywords": [
         "craft",
@@ -9,13 +9,13 @@
         "project"
     ],
     "license": "MIT",
-    "homepage": "https://percipio.london/",
+    "homepage": "https://hybridinteractive.io/",
     "type": "project",
     "support": {
-        "email": "support@percipio.london",
-        "issues": "https://github.com/percipioglobal/craft/issues",
-        "source": "https://github.com/percipioglobal/craft",
-        "docs": "https://github.com/percipioglobal/craft"
+        "email": "hi@hybridinteractive.io",
+        "issues": "https://github.com/hybridinteractive/fido/issues",
+        "source": "https://github.com/hybridinteractive/fido",
+        "docs": "https://github.com/hybridinteractive/fido"
     },
     "minimum-stability": "stable",
     "require": {
