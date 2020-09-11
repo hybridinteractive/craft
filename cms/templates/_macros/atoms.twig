@@ -1,0 +1,18 @@
+{#
+    # Atom
+    # @package   percipioglobal\craft
+    # @since     1.0.0
+    # @author    Percipio Global Ltd.
+    # @link      https://percipio.london
+    # @copyright Copyright (c) 2020 Percipio Global Ltd.
+    # @license   MIT
+    # @license   https://opensource.org/licenses/MIT MIT Licensed
+    #}
+
+{% macro atom(type, atom, options, prefix = '') %}
+    {% spaceless %}
+        {% include '_atoms/' ~ type ~ 's/' ~ prefix ~ type ~ '--' ~ atom with {
+            options: options,
+        } %}
+    {% endspaceless %}
+{% endmacro %}

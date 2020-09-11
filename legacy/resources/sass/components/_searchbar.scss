@@ -1,0 +1,80 @@
+.searchbar {
+    & {
+        position: absolute;
+        left: 0;
+        max-height: 0rem;
+        width: 100%;
+        background: rgba(7,0,0,.8);
+        margin: 0;
+        border: none;
+        z-index: 1001;
+        overflow: hidden;
+        @include transition(max-height, 0.5s);
+
+        &.-expanded {
+            height: rem-calc(130);
+            max-height: rem-calc(200);
+        }
+    }
+    #keyword {
+        position: absolute;
+        font-weight: 200;
+        font-size: rem-calc(40);
+        line-height: rem-calc(42);
+        width: 90%;
+        margin: rem-calc(39) 8% 0 2%;
+        border: none;
+        height: rem-calc(42);
+        box-shadow: none;
+        padding: 0;
+        background: transparent;
+        color: #fff;
+        text-transform: uppercase;
+    }
+    > .close {
+        position: absolute;
+        right: rem-calc(30);
+        display: block;
+        top: rem-calc(35);
+        cursor: pointer;
+        background: none;
+        text-indent: -9999px;
+        padding: 0;
+        width: rem-calc(60);
+        height: rem-calc(60);
+        // @extend .transition;
+        @include transform(rotate(45deg));
+        &:hover {
+            opacity: 0.7;
+        }
+        &:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            border-bottom: 1px solid $lt-gray;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            border-left: 1px solid $lt-gray;
+        }
+    }
+    &.-mobile {
+        max-height: rem-calc(48);
+        height: rem-calc(48);
+        display: block;
+        position: relative;
+        #keyword {
+            margin: 0;
+            padding: rem-calc(24 58);
+            width: 100%;
+            height: rem-calc(48);
+            font-size: rem-calc(18);
+        }
+    }
+}

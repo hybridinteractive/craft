@@ -1,0 +1,24 @@
+{# Expects "entry" #}
+
+{% if cssModifier is not defined %}
+    {% set cssModifier = '' %}
+{% elseif cssModifier|slice(0, 1) != ' ' %}
+    {% set cssModifier = ' ' ~ cssModifier %}
+{% endif %}
+
+{# If gridImage has an image, use it. Otherwise use a placeholder. #}
+{% set bg = entry.gridImage|length ? entry.gridImage.one.url : 'https://placehold.it/310x310' %}
+
+{# Use entry.summary if it's filled out. Fall back to the first 50 words in the main body #}
+{% set summary = '' %}
+{% if entry.summary is not empty %}
+    {% set summary = entry.summary %}
+{% elseif entry.body is not empty %}
+    {% set summary = entry.body|hacksaw(words='50') %}
+{% endif %}
+
+<a href="{{ entry.url }}" class="circle-feature lazy" data-type="img-bg" data-src="{{ bg }}">
+</a>
+<a href="{{ entry.url }}" class="circle-feature-link">
+    <h3 class="circle-feature-title">{{ entry.title }}</h3>
+</a>

@@ -1,0 +1,26 @@
+{% set default = {
+    'heading': 'Stay Informed',
+    'subtext': 'Check out the latest in national climbing advocacy news',
+    'linkUrl': siteUrl,
+    'buttonText': 'Go'
+} %}
+
+{% if heading is not defined %}
+    {% set heading = default.heading %}
+{% endif %}
+
+{% if subtext is not defined %}
+    {% set subtext = default.subtext %}
+{% endif %}
+
+{% if leadSource is not defined %}
+    {% set leadSource = default.linkUrl %}
+{% endif %}
+
+{% if buttonText is not defined %}
+    {% set buttonText = default.buttonText %}
+{% endif %}
+
+<h2 class="title">{{ heading }}</h2>
+<p>{{ subtext }}</p>
+<p><a href="{{ linkUrl }}" target="_blank" class="button callout-button">{{ buttonText }}</a></p>

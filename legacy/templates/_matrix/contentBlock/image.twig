@@ -1,0 +1,20 @@
+{% set imageTransform = '' %}
+
+{% if image.imagePosition == 'full' %}
+    {% set imageTransform = {
+        mode: 'crop',
+        width: 960,
+        height: 300,
+        quality: 75
+    } %}
+{% else %}
+    {% set imageTransform = {
+        mode: 'fit',
+        width: 350,
+        quality: 75
+    } %}
+{% endif %}
+{% if image is defined and image.image|length > 0  %}
+    {% set blockImage = image.image.one %}
+    <img src="{{ image.image.one.getUrl(imageTransform) }}" class="img-{{ image.imagePosition }}" alt="{{ altText }}">
+{% endif %}

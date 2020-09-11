@@ -1,0 +1,128 @@
+.slanted-image {
+    overflow: hidden;
+    display: block;
+    position: relative;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    -webkit-background-clip: content-box;
+    @include transform-origin(top left);
+    > .background {
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        max-height: rem-calc(250);
+        background-color: darken($primary-color, 5%);
+    }
+    .photo-credit {
+        position: relative;
+        transform: scale(.9, .9);
+        .credit-icon {
+            float: left;
+            margin: rem-calc(20 10 0 20)
+        }
+        .credit {
+            opacity: 0;
+            display: inline-block;
+            margin-top: rem-calc(20);
+            position: relative;
+            font-size: rem-calc(10);
+            color: #ebeae4;
+            background-color: rgba(55, 51, 50, 0.75);
+            padding: rem-calc(10 15);
+            z-index: 99;
+            @include transition(opacity, 0.3s);
+            &.visible {
+                opacity: 1;
+            }
+        }
+    }
+    @media #{$small-only} {
+        height: rem-calc(250) !important;
+        margin-bottom: 0;
+    }
+    @media #{$medium-up} {
+        position: absolute;
+        left: 0px;
+        right: 60%;
+        @include transform(skew(-12deg, 0deg));
+        > .background {
+            position: absolute;
+            left: 0;
+            right: 0;
+            max-height: none;
+            @include transform-origin(18% 50%);
+            @include transform(skew(12deg, 0deg) scale(1.4, 1.4));
+        }
+        .photo-credit {
+            position: absolute;
+            top: 17%;
+            left: 30%;
+            transform: scale(.75, .75);
+            .credit-icon {
+                cursor: pointer;
+                margin: 0;
+                float: none;
+            }
+            .credit {
+                opacity: 1;
+                margin-top: 0;
+                position: absolute;
+                top: rem-calc(40);
+                left: 0;
+                max-width: none;
+                white-space: nowrap;
+                display: none;
+            }
+            &:hover {
+                .credit {
+                    display: block;
+                }
+            }
+        }
+    }
+    @media #{$large-up} {
+        right: 50%;
+        @include black-gradient(
+            $fromColor: "rgba(0,0,0,0)",
+            $toColor: "rgba(0,0,0,0.6)",
+            $height: "100%",
+            $width: "250px",
+            $position: "absolute",
+            $startFrom: "to right"
+        );
+        &:before {
+            z-index: 9;
+            right: 0px;
+            left: auto;
+            -webkit-backface-visibility: hidden;
+            -webkit-background-clip: content-box;
+        }
+        > .background {
+            @include transform-origin(25% 50%);
+            @include transform(skew(12deg, 0deg) scale(1.4, 1.4));
+        }
+        .photo-credit {
+            top: 17%;
+            left: 20%;
+            transform: scale(.75, .75);
+            .credit {
+                font-size: rem-calc(14);
+                padding: rem-calc(20 25);
+            }
+        }
+    }
+    @media #{$xlarge-up} {
+        > .background {
+            @include transform(skew(12deg, 0deg) scale(1.12, 1.12));
+        }
+        .photo-credit {
+            top: 9%;
+            left: 13%;
+            transform: scale(.9, .9);
+        }
+    }
+    @media print {
+        height: rem-calc(140);
+    }
+}

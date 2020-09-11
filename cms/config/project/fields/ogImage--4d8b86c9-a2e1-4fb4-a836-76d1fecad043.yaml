@@ -1,0 +1,30 @@
+contentColumnType: string
+fieldGroup: 0314e405-e731-462f-9381-2cfb6ac91134
+handle: ogImage
+instructions: ''
+name: 'OG Image'
+searchable: true
+settings:
+  allowSelfRelations: false
+  allowedKinds:
+    - image
+  defaultUploadLocationSource: 'volume:5c642d7e-b16b-4836-9575-668d75d242e5'
+  defaultUploadLocationSubpath: ''
+  limit: '1'
+  localizeRelations: false
+  restrictFiles: '1'
+  selectionLabel: 'Add an OG Image'
+  showSiteMenu: true
+  showUnpermittedFiles: true
+  showUnpermittedVolumes: false
+  singleUploadLocationSource: 'volume:08b0f963-e95d-4cba-b5be-97e68130ae41'
+  singleUploadLocationSubpath: ''
+  source: null
+  sources: '*'
+  targetSiteId: null
+  useSingleFolder: true
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

@@ -1,0 +1,14 @@
+.typeform-widget {
+    height: 100%;
+    min-height: 500px;
+
+    div[class^='widget_'] {
+        height: 100%;
+        min-height: 500px;
+
+        iframe {
+            height: 100%;
+            min-height: 500px;
+        }
+    }
+}

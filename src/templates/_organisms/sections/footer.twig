@@ -1,0 +1,50 @@
+{% import '_macros/atoms' as atom %}
+
+{%- set nodes = craft.navigation.nodes()
+				.handle('legalNavigation')
+				.all()
+-%}
+
+{% set baseNavClass = "block text-sm px-6 py-4 font-normal uppercase text-white-100 tracking-wider border-b border-tertiary-400 w-full block md:w-auto lg:border-none lg:p-8 md:inline-flex border-b-4 border-transparent focus:outline-none transition duration-150 ease-in-out " %}
+{% set inactiveClass = "bg-transparent hover:bg-tertiary-400" %}
+{% set activeClass = "bg-tertiary-400 hover:bg-tertiary-500" %}
+
+<footer class="print:hidden">
+
+	<div class="w-full">
+
+		<div class="bg-gray-100 py-16 px-8">
+			<div class="container max-w-screen-xl mx-auto">
+				<div class="flex flex-wrap lg:flex-no-wrap justify-between w-full">
+				{%- for partner in organization.partners.with(['logo']).all() %}
+						{{- atom.partner_logo(partner.logo[0], partner.target.getUrl(), partner.description) -}}
+				{%- endfor -%}
+				</div>
+			</div>
+
+		</div>
+		<div class="bg-tertiary-500">
+			<div class="container mx-auto">
+				<div class="flex flex-wrap lg:flex-no-wrap md:justify-between w-full">
+					<div class="w-full md:w-auto">
+						<a href="{{ siteUrl }}" title="{{ organization.organizationName }}" class="{{ baseNavClass ~ inactiveClass }}">{{ organization.organizationName }}</a>
+					</div>
+					<nav role="navigation" aria-label="Footer" class="w-full md:w-auto">
+						{%- for node in nodes -%}
+							<a 	href="{{- node.url -}}" 
+								title="{{- node.title -}}" 
+								class="{{ baseNavClass }}{{- node.active ? activeClass : inactiveClass -}}" 
+								{% if node.newWindow -%}target="_blank" rel="noopener noreferrer"{%- endif %}
+								role="menuitem"
+							>
+								{{- node.title -}}
+							</a>
+						{%- endfor -%}
+					</nav>
+				</div>
+			</div>
+		
+		</div>
+
+	</div>
+</footer>

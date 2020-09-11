@@ -1,0 +1,36 @@
+{% extends '_layouts/site' %}
+
+{# Construct an object with needed information for the breadcrumb component #}
+{% set breadcrumbEntry = {
+    'title': event.title,
+    'section': {
+        'name': 'Events'
+    }
+} %}
+
+{% block content %}
+    {% include '_components/breadcrumb' with { 'entry': breadcrumbEntry, 'cssModifier': '-breadcrumbs-no-header'} %}
+    <section class="page-section news-entry -headerless">
+        <div class="row">
+            <div class="medium-9 medium-centered columns">
+                <h2 class="title">{{ event.title }}</h2>
+            </div>
+        </div>
+        <div class="row hide-for-print">
+            <div class="medium-9 medium-centered columns">
+                {% include '_components/sharethis' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="medium-9 medium-centered columns">
+                <p>
+                    <b>When: </b> {{ event.startDate|date('D M d, Y') }} {% if event.endDate %} - {{ event.endDate|date('D M d, Y') }} {% endif %}<br>
+                    <b>Where: </b> {{ event.location }}<br>
+                    {% if event.description is not empty %}
+                        <b>Event Description:</b> {{ event.description }}
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

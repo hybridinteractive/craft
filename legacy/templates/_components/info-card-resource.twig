@@ -1,0 +1,56 @@
+{##
+ # @param "entry"
+ # @param "cssModifier"(optional)
+ ##}
+
+{% if cssModifier is not defined %}
+    {% set cssModifier = '' %}
+{% elseif cssModifier|slice(0, 1) != ' ' %}
+    {% set cssModifier = ' ' ~ cssModifier %}
+{% endif %}
+
+
+{# Use slideSummary if it's filled out. Fall back to the first 50 words in the main body #}
+{% set summary = '' %}
+{% if entry.summary is not empty %}
+    {% set summary = entry.summary %}
+{% elseif entry.body is not empty %}
+    {% set summary = entry.body|hacksaw(words='50') %}
+{% endif %}
+
+{% set classes = entry.tags|join(' ') %}
+{% if classes is not empty %}
+    {% set classes = ' item ' ~ classes %}
+{% endif %}
+
+{# URL #}
+{% set resourceUrl = entry.url %}
+{% set linkTarget = '' %}
+{% if entry.urlOverride is not empty %}
+    {% set resourceUrl = entry.urlOverride %}
+    {% set linkTarget = ' target="_blank"' %}
+{% elseif entry.assetDownload is not empty %}
+    {% set resourceUrl = url(entry.assetDownload.one.url) %}
+    {% set linkTarget = ' target="_blank"' %}
+{% endif %}
+
+{# Image #}
+{% set imageTransform = {
+    mode: 'crop',
+    width: 490,
+    height: 247,
+    quality: 95,
+    position: 'center-center'
+} %}
+{% set resourceImage = (entry.gridImage.one is not empty) ? entry.gridImage.one.getUrl(imageTransform) : 'https://placehold.it/490x247/166938/FFF' %}
+
+
+<div class="info-card medium-6 large-4 columns resource-card item{{ cssModifier|raw }}{{ classes }}" data-equalizer-watch>
+    <div class="resource-head">
+        <div class="title"><a href="{{ resourceUrl }}"{{ linkTarget }}>{{ entry.title }}</a></div>
+    </div>
+    <a href="{{ resourceUrl }}"{{ linkTarget }}><img class="image" src="{{ resourceImage }}" alt="{{ entry.title }}"></a>
+    <div class="resource-body">
+        <p class="summary">{{ summary }}</p>
+    </div>
+</div>

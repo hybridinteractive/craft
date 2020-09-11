@@ -1,0 +1,4 @@
+{% if richTextCallout is defined and richTextCallout is not empty %}
+	{% set calloutClass = block.greyCalloutBox == true ? 'callout-box' : 'callout-text' %}
+	<div class="{{ calloutClass }}">{{ richTextCallout }}</div>
+{% endif %}

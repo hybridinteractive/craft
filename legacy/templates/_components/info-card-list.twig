@@ -1,0 +1,30 @@
+{##
+ # @param "entry"
+ # @param "cssModifier"(optional)
+ # @param "showDate"(optional)
+ ##}
+
+{% if cssModifier is not defined %}
+    {% set cssModifier = '' %}
+{% elseif cssModifier|slice(0, 1) != ' ' %}
+    {% set cssModifier = ' ' ~ cssModifier %}
+{% endif %}
+
+{# TODO remove this after we implement News and Events #}
+{% set placeHolder = true %}
+
+
+{% set entries = entries|slice(0, 3) %}
+<div class="info-card list-card{{ cssModifier|raw }}" data-equalizer-watch>
+    <ul class="entries-list">
+        {# For each entry, insert "entries-item" to a maximum of 3 #}
+        {% for entry in entries %}
+            <li class="entries-item">
+                <div class="date">{{ entry.postDate|date("M d, Y") }}</div>
+                <div class="title"><a href="{{ entry.url }}">{{ entry.title }}</a></div>
+                <div class="location">{{ entry.location }}</div>
+            </li>
+        {% endfor %}
+    </ul>
+    <a class="button read-more" href="{{ url('news-and-events/news/') }}">See All News</a>
+</div>

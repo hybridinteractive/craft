@@ -1,0 +1,33 @@
+
+{% if cssModifier is not defined %}
+    {% set cssModifier = '' %}
+{% elseif cssModifier|slice(0, 1) != ' ' %}
+    {% set cssModifier = ' ' ~ cssModifier %}
+{% endif %}
+
+{% if emptyCrumbs is defined and emptyCrumbs is not empty %}
+{% else %}
+    {% set sectionName = entry.section.name|replace({'Entries': '', 'entries': ''}) %}
+    {% if sectionName != entry.title %}
+        <ul class="breadcrumbs {{ cssModifier }}">
+            {# Section Link #}
+            <li>{{ sectionName }}</li>
+
+            {# Ancestors #}
+            {% if entry.ancestors is defined %}
+                {% for crumb in entry.ancestors.all() %}
+                    <li>{{ crumb.link }}</li>
+                {% endfor %}
+            {% endif %}
+
+            {# Entry title #}
+            {% if entry.title is defined %}
+                <li class="current">{{ entry.title }}</li>
+            {% endif %}
+        </ul>
+    {% else %}
+        <ul class="breadcrumbs">
+            <li>&nbsp;</li>
+        </ul>
+    {% endif %}
+{% endif %}

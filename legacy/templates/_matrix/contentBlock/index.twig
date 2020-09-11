@@ -1,0 +1,29 @@
+{% if altText is not defined %}
+    {% set altText = '' %}
+{% endif %}
+{% for block in matrix.all() %}
+    {% switch block.type %}
+        {% case 'heading' %}
+            {% include '_matrix/contentBlock/heading' with {'heading': block.heading} %}
+        {% case 'subHeading' %}
+            {% include '_matrix/contentBlock/subHeading' with {'subHeading': block.subHeading} %}
+        {% case 'callout' %}
+            {% include '_matrix/contentBlock/callout' with {'calloutText': block.calloutText} %}
+        {% case 'richTextCallout' %}
+            {% include '_matrix/contentBlock/richTextCallout' with {'richTextCallout': block.richTextCallout} %}
+        {% case 'button' %}
+            {% include '_matrix/contentBlock/button' with {'button': block} %}
+        {% case 'image' %}
+            {% include '_matrix/contentBlock/image' with {'image': block} %}
+        {% case 'body' %}
+            {% include '_matrix/contentBlock/body' with {'body': block.body} %}
+        {% case 'twoColumns' %}
+            {% include '_matrix/contentBlock/twoColumns' with {'twoColumns': block} %}
+        {% case 'singleSlider' %}
+            {% include '_matrix/contentBlock/singleSlider' with {'slide': block} %}
+        {% case 'modalForm' %}
+            {% include '_matrix/contentBlock/modalForm' with {'slide': block} %}
+        {% case 'modalLink' %}
+            {% include '_matrix/contentBlock/modalLink' with {'slide': block} %}
+    {% endswitch %}
+{% endfor %}

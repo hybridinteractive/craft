@@ -1,0 +1,26 @@
+{% import '_macros/atoms' as atom %}
+
+{%- minify -%}
+
+{% set layoutClass = null %}
+{% if content.position == 'center' %}
+    {% set layoutClass = ' lg:w-10/12 ' %}
+{% endif %}
+<section class="w-full {{ layoutClass }} mx-auto p-8 lg:p-16 bg-{{ colour }}-500">
+    <div class="lg:px-16">
+        <h5 class="mb-6 font-bold text-3xl text-black capitalize font-secondary text-{{ textColour}}-90">
+            {{- atom.text(content.header) -}}
+        </h5>
+        <h6 class="mb-12 max-w-md font-medium font-primary text-{{ textColour}}-90">
+            {{- atom.text(content.description) -}}
+        </h6>
+        {%- for btn in content.buttons.all() -%}
+        <div class="mr-6 mb-6 inline-block">
+            <a href="{{- btn.target.getUrl() -}}" title="{{ btn.target.getText() }}" class="px-4 py-2 rounded-full font-secondary text-xs whitespace-no-wrap tracking-wide font-medium uppercase bg-{{- buttonColour -}}-500 text-{{- textColour -}}-90 {% if loop.index == 2 %} bg-opacity-0 border-solid border-2 border-{{- buttonColour -}}-500{% endif %} hover:bg-opacity-100 hover:bg-{{- buttonColour -}}-500 transition duration-150 ease-in-out">
+                {{- atom.text(btn.target.getText()) -}}
+            </a>
+        </div>   
+        {%- endfor -%}
+    </div>
+</section>
+{%- endminify -%}

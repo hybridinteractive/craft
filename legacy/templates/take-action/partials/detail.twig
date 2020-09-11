@@ -1,0 +1,36 @@
+    {% include '_components/header-image' with {'entry':entry, 'title':entry.title} %}
+
+    {% include '_components/breadcrumb' %}
+
+    <section class="page-section">
+        <div class="row">
+            <div class="column medium-9 medium-centered">
+
+                {{ entry.body }}
+
+            </div>
+        </div>
+
+        {% include '_components/builder--cta' with { entry: entry } %}
+
+        <div class="row">
+            <div class="column medium-9 medium-centered"> 
+
+                {% if entry.contentBlock is defined and entry.contentBlock is not empty %}
+                    {% include '_matrix/contentBlock/index'
+                        with {'matrix': entry.contentBlock,
+                                'openingStructure': '<div class="row"><div class="column medium-9 medium-centered">',
+                                'closingStructure': '</div></div>',
+                                'altText': entry.heading is defined and entry.heading is not empty ? entry.heading : entry.title
+                        }
+                    %}
+                {% endif %}
+
+                {% if entry.linkedContent is defined and entry.linkedContent is not empty %}
+                    {% set linkedEntry = entry.linkedContent.one %}
+                    {{ linkedEntry.body }}
+                {% endif %}
+
+            </div>
+        </div>
+    </section>

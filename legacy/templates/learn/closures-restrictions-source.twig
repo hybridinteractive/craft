@@ -1,0 +1,84 @@
+{% extends '_layouts/site' %}
+
+{% set entry = craft.entries.section('educateYourselfEntries').slug('closures-restrictions').one %}
+{% set single = craft.entries.section('educateYourself').one %}
+{% set headerImage = (entry.headerImage.one is defined and entry.headerImage.one is not empty) ? entry.headerImage.one : single.headerImage.one %}
+
+{% block content %}
+    {% include '_components/header-image' with {'entry':entry, 'title':single.title, 'headerImage':headerImage} %}
+    {% include '_components/breadcrumb' %}
+
+    {% set title = entry.title %}
+    {% if entry.parent.title == 'For Climbers' %}
+        {% set title = title ~ ' Climbing' %}
+    {% endif %}
+
+    {# Sidebar Navigation #}
+    <section class="page-section">
+        <div class="row">
+            <div class="column medium-9 medium-centered">
+                <h2 class="title">{{ title }}</h2>
+                {% include '_components/sidebar-dots' with {'entries': entry.tips, 'title': entry.tipsHeadline} %}
+                {{ entry.body }}
+                {% if entry.contentBlock is defined and entry.contentBlock is not empty %}
+                    {% include '_matrix/contentBlock/index'
+                        with {'matrix': entry.contentBlock,
+                                'openingStructure': '<div class="row"><div class="column medium-9 medium-centered">',
+                                'closingStructure': '</div></div>',
+                                'altText': entry.heading is defined and entry.heading is not empty ? entry.heading : entry.title
+                        }
+                    %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    {% if entry.resources|length > 0 %}
+        <section class="page-section">
+            <div class="row">
+                <div class="column large-8 large-centered text-center">
+                    <h2 class="title" style="margin-bottom: 30px;">Resource Center</h2>
+                </div>
+            </div>
+
+            {% set tags = [] %}
+            {% for resource in entry.resources %}
+                {% for tag in resource.tags %}
+                    {% if tag.title not in tags %}
+                        {% set tags = tags|merge([tag.title]) %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+
+            <div class="vertical-padding bg-smoke">
+                {% if tags|length > 0 %}
+                    <div class="row" id="filters">
+                        <div class="small-12 columns">
+                            <h4>Filter By</h4>
+                            <button class="button" data-filter="*">All</button>
+                            {% for tag in tags %}
+                                <button class="button" data-filter=".{{ tag }}">{{ tag }}</button>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {# Info Cards #}
+                <div class="row">
+                    <div class="column">
+                        <div class="row">
+                            <div id="resource-list">
+                            {% for resourceTriple in entry.resources|batch(3) %}
+                                {% for resource in resourceTriple %}
+                                    {% include '_components/info-card-resource' with {'entry': resource} %}
+                                {% endfor %}
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+{% endblock %}

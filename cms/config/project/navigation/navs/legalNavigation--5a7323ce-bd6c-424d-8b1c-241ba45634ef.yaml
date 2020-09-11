@@ -1,0 +1,9 @@
+handle: legalNavigation
+instructions: 'Add pages that will display in the footer''s legal navigation'
+maxNodes: ''
+name: 'Legal Navigation'
+propagateNodes: true
+sortOrder: 2
+structure:
+  maxLevels: '1'
+  uid: 1accaeaf-43a2-4cb2-97d2-a964d3fe763b

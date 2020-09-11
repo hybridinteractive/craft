@@ -1,0 +1,38 @@
+{##
+ # @param "entry"
+ # @param "cssModifier"(optional)
+ # @param "showDate"(optional)
+ ##}
+
+{% if cssModifier is not defined %}
+    {% set cssModifier = '' %}
+{% elseif cssModifier|slice(0, 1) != ' ' %}
+    {% set cssModifier = ' ' ~ cssModifier %}
+{% endif %}
+
+{# Default showDate to true #}
+{% if showDate is not defined %}
+    {% set showDate = true %}
+{% endif %}
+
+{# Default showTitleTop to false #}
+{% if showTitleTop is not defined %}
+    {% set showTitleTop = false %}
+{% endif %}
+
+
+{% set imageThumb = {
+    mode: 'crop',
+    width: 476,
+    height: 276,
+    quality: 75,
+    position: 'center-center'
+} %}
+{% set image = (entry.image is not empty) ? entry.image.one.getUrl(imageThumb) : 'https://placehold.it/476x276' %}
+<div class="info-card{{ cssModifier|raw }}" data-equalizer-watch>
+    <img class="image" src="{{ image }}" alt="{{ entry.title }}">
+    <div class="excerpt">{{ entry.summary }}</div>
+    {% set entryUrl = (entry.urlOverride is not empty) ? entry.urlOverride : entry.url %}
+    {% set linkTarget = (entry.urlOverride is not empty) ? 'target="_blank" ' : '' %}
+    <a href="{{ entryUrl }}" {{ linkTarget }}class="read-more button">{{ entry.linkText }}</a>
+</div>

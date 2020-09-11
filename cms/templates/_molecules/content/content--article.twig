@@ -1,0 +1,7 @@
+{% import '_macros/atoms' as atom %}
+
+{%- minify -%}
+    <section class="article prose">
+        {{- atom.text(content.article) -}}
+    </section>
+{%- endminify -%}

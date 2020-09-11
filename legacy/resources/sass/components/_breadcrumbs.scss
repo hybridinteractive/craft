@@ -1,0 +1,20 @@
+.breadcrumbs {
+    background-color: transparent;
+    border-color: transparent;
+    padding: rem-calc(18);
+    margin: 0;
+    * {
+        font-size: rem-calc(16);
+        line-height: 1.3em;
+        text-transform: initial;
+    }
+    @media #{$medium-up} {
+        position: absolute;
+    }
+}
+
+.-breadcrumbs-no-header {
+    @media #{$medium-up} {
+        margin-top: rem-calc(-48) !important;
+    }
+}

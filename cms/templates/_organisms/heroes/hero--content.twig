@@ -1,0 +1,10 @@
+{%- import '_macros/atoms' as atom -%}
+
+{%- set news = content.type == 'news' ? true : false -%}
+{%- set image = entry.pageImage.one() ?? null -%}
+
+{%- minify -%}
+
+
+    
+{%- endminify -%}

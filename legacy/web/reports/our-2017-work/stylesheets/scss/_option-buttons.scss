@@ -1,0 +1,49 @@
+$arrow-size: rem-calc(20);
+
+.option-buttons {
+    text-align: center;
+    a {
+        display: inline-block;
+        margin: 0 rem-calc(2) rem-calc(6) 0;
+        background: lighten($orange, 1%);
+        color: #FFF;
+        padding: rem-calc(10 25);
+        width: 100%;
+        text-transform: uppercase;
+        font-weight: 400;
+        position:relative;
+        @media #{$medium-up} {
+            width: auto;
+            padding: rem-calc(20 45);
+        }
+        &:after {
+            display:block;
+            @media #{$small-only} {display:none;}
+            content: "";
+            position: absolute;
+            height: $arrow-size;
+            width: $arrow-size;
+            margin-left: $arrow-size/-2; // Center the anchor point
+            margin-bottom: $arrow-size/-2; // Center the anchor point
+            left:50%;
+            bottom: 30%;
+            z-index:-1;
+
+            -ms-transform:      rotate(45deg);
+            -webkit-transform:  rotate(45deg);
+            transform:          rotate(45deg);
+            background: lighten($orange, 5%);
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all    0.3s ease-in-out;
+            -o-transition: all      0.3s ease-in-out;
+            transition: all         0.3s ease-in-out;
+        }
+        &:hover, &.active {
+            background: lighten($orange, 15%);
+            &:after {
+                bottom: 0;
+                background: lighten($orange, 15%);
+            }
+        }
+    }
+}

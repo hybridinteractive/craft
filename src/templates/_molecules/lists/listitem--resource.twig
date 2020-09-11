@@ -1,0 +1,22 @@
+{% import '_macros/atoms' as atom %}
+{% import '_macros/utilities' as utility %}
+{%- minify -%}
+<a class="group {{ colour != 'default' ? 'bg-' ~ colour ~ '-500' : 'bg-black-100' }} border-t flex justify-between p-8 mb-4 w-full" href="{{- content.resource.one().url -}}"
+                data-tag-category="download"
+                data-tag-action="{{ resource.resource.one().kind | lower -}}"
+                data-tag-label="{{ resource.resource.one().filename | lower -}}">
+    <div class="relative">
+        <h4 class="text-white-100 text-base sm:text-4xl group-hover:text-primary-300 trans-button">
+            {{- atom.title(content.label) -}}
+        </h4>
+        <span class="font-normal text-sm text-gray-400">
+            {{- atom.text(content.description) }} [ {{- content.resource.one().size | filesize(1) }} {{ resource.resource.one().kind | lower -}} ]
+        </span>
+    </div>
+
+    <div class="relative flex flex-no-wrap items-center">
+        {% set hover = colour != 'default' ? 'text-' ~ colour ~ '-500' : '' %}
+        {{- utility.file_icon(content.resource.one().kind, content.utilityIcon, '--xl text-white-100 group-hover:' ~ hover ~ ' trans-button') -}}
+    </div>
+</a>
+{%- endminify -%}

@@ -1,0 +1,78 @@
+{%- import '_macros/atoms' as atom -%}
+
+{%- set news = content.type == 'news' ? true : false -%}
+{% set image = entry.pageImage.one() ?? null %}
+
+{%- minify -%}
+
+    <section class="w-full">
+        {%- if news -%}
+
+            <div class="print:block md:grid grid-cols-6 grid-rows-2 xl:min-h-128">
+                <div class="print:hidden print:h-auto col-span-6 h-128">
+                    {% if image %}
+                        {{- atom.hero_image(image, entry.title) -}}
+                    {% endif %}
+                </div>
+
+                <div class="print:hidden col-span-2 flex items-center justify-start p-8 {{ news ? 'sm:pl-8 lg:pl-12 xl:pl-24' : '' }}">
+                    
+                        <div>
+                            <div class="text-xs leading-tight text-black-100 tracking-wider mb-8">
+                                <address rel="author" class="text-2xl font-semibold not-italic mb-1">{{- content.author -}} {{ colour }}</address>
+                                <time datetime="{{ entry.postDate|date('c') }}" class="text-xs font-semibold uppercase tracking-wide leading-normal">{{- atom.formatDate(content.postDate) -}}</time>
+                            </div>
+                            <div>
+                                <span class="uppercase bg-white-90 px-4 py-2 rounded-full text-black-100 text-xs tracking-wide font-semibold">
+                                    {{- content.newsCategory[0].title ?? 'No Category' -}}
+                                </span>
+                            </div>
+                            <!-- social share icons -->
+                            <div class="flex flex-no-wrap mt-8">
+                                <a href="https://twitter.com/share?text={{- content.title -}}&url={{- content.url -}}&hashtags=#ntp" title="Share this page on Twitter" data-tag-category="social" data-tag-action="print" data-tag-label="{{- content.url -}}">
+                                    <span class="icon --lg --circle p-4 text-white-100 bg-secondary-500 hover:bg-secondary-400 transition-colors ease-in-out duration-150 mr-4">
+                                        <i class="fab fa-twitter"></i>
+                                    </span>
+                                </a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{- content.url -}}" title="Share this page on Facebook" data-tag-category="social" data-tag-action="print" data-tag-label="{{- content.url -}}">
+                                    <span class="icon --lg --circle p-4 text-white-100 bg-secondary-500 hover:bg-secondary-400 transition-colors ease-in-out duration-150 mr-4">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </span>
+                                </a>
+                                <a href="mailto:?subject={{ organization.organizationName }}: {{- content.title -}}&body={{- content.url -}}" title="Email this page" data-tag-category="social" data-tag-action="print" data-tag-label="{{- content.url -}}">
+                                    <span class="icon --lg --circle p-4 text-white-100 bg-secondary-500 hover:bg-secondary-400 transition-colors ease-in-out duration-150 mr-4">
+                                        <i class="fal fa-envelope"></i>
+                                    </span>
+                                </a>
+                                <div @click="printPage()" title="Print this page" data-tag-category="social" data-tag-action="print" data-tag-label="{{- content.url -}}">
+                                    <span class="icon --lg --circle p-4 cursor-pointer text-white-100 bg-secondary-500 hover:bg-secondary-400 transition-colors ease-in-out duration-150">
+                                        <i class="fal fa-print"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+
+                <div class="col-span-4 px-16 py-8 {{ colour != null ? 'bg-' ~ colour ~ '-500' : 'bg-primary-500' -}}">
+                    <h1 class="sr-only">{{- atom.text(content.title) -}}</h1>
+                    <h2 class="text-2xl md:text-3xl xl:text-5xl font-primary font-semibold text-white-100 leading-snug tracking-wide print:text-black-100">{{- atom.text(content.title) -}}</h2>
+                    {% if entry.standfirst|length %}
+                        <h3 class="break-words text-lg mt-12 lg:text-xl xl:text-2xl font-secondary text-white-100 font-normal print:text-black-100">{{- atom.text(entry.standfirst) -}}</h3>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        {%- else -%}
+            <div class="print:py-8 px-8 py-16 {{ colour != null ? 'bg-' ~ colour ~ '-500' : 'bg-primary-500' -}}">
+            <h1 class="sr-only">{{- atom.text(content.title) -}}</h1>
+            <h2 class="text-3xl xl:text-5xl font-secondary font-semibold text-white-100 leading-snug tracking-wide print:text-black-100">{{- atom.text(content.title) -}}</h2>    
+                {% if entry.standfirst|length %}
+                    <h3 class="break-words text-lg mt-12 lg:text-xl xl:text-2xl font-primary text-white-100 font-normal print:text-black-100">{{- atom.text(entry.standfirst) -}}</h3>
+                {% endif %}
+            </div>
+        {%- endif -%}
+    </section>
+    
+{%- endminify -%}

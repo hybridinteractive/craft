@@ -1,0 +1,59 @@
+{% extends '_layouts/site' %}
+{% set headerImageUrl = (entry.headerImage.one is defined and entry.headerImage.one is not empty) ? entry.headerImage.one.url : '' %}
+
+{% set partial = craft.app.request.segment(1) ~ '/partials/' ~ entry.type.handle %}
+
+{% block content %}
+
+    {% include partial %}
+
+    {% if entry.includeYonderWidget is defined and entry.includeYonderWidget == 1 %}
+        <section class="page-section">
+            <div class="row">
+                <div class="column">
+                    <div id="yonder" style="height:500px; width:100%;"></div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+{% endblock %}
+
+{% block footerJavascript %}
+    {{ parent() }}
+    {% if entry.includeYonderWidget is defined and entry.includeYonderWidget == 1 %}
+        {% if entry.yonderLocationIds is not empty %}
+            <script type="application/javascript">
+                YonderWidgetCreator.createWidget({
+                    accountId: 56221,
+                    widgetType: "experiences-map",
+                    openMostRecent: true,
+                    params: {
+                        apiKey: "0aa764a305b54762929df65c892d56b7",
+                        limit: 500,
+                        accountId: [56221],
+                        placeIds: [{{ entry.yonderLocationIds }}]
+                }});
+            </script>
+        {% else %}
+            <script type="application/javascript">
+                YonderWidgetCreator.createWidget({
+                    accountId: 56221,
+                    widgetType: "experiences-map",
+                    openMostRecent: true,
+                    params: {
+                        apiKey: "0aa764a305b54762929df65c892d56b7",
+                        limit: 500,
+                        accountId: [56221]
+                }});
+            </script>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+
+{% block headerJavascript %}
+    {% if entry.includeYonderWidget is defined and entry.includeYonderWidget == 1 %}
+        <script type="text/javascript" src="https://widgetcdn.yonder.it/0.6.0/yonder-widget.js"></script>
+    {% endif %}
+{% endblock %}

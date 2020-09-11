@@ -1,0 +1,35 @@
+{# Expects "entries", "upper"(optional) #}
+
+{% if cssModifier is not defined %}
+    {% set cssModifier = '' %}
+{% elseif cssModifier|slice(0, 1) != ' ' %}
+    {% set cssModifier = ' ' ~ cssModifier %}
+{% endif %}
+
+{% if textTop is not defined %}
+    {% set textTop = false %}
+{% endif %}
+
+{% set sliderImageTransform = {
+    mode: 'fit',
+    height: 760,
+    quality: 75,
+    position: 'center-center'
+} %}
+
+{% if slide is defined %}
+
+    <div class="slick-single slanted-section{{ cssModifier|raw }}" data-equalizer>
+        {% include '_components/slide' with { entry: slide } %}
+    </div>
+
+{% else %}
+
+    <div class="slick-single slanted-section{{ cssModifier|raw }}" data-equalizer>
+        {% for entry in slides.all() %}
+            {% include '_components/slide' with { entry: entry } %}
+        {% endfor %}
+    </div>
+
+{% endif %}
+

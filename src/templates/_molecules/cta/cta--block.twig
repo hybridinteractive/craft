@@ -1,0 +1,70 @@
+{% do craft.eagerBeaver.eagerLoadElements(entry, [
+    'heroBuilder',
+    'heroContent:image',
+    ]) 
+%}
+
+{% import '_macros/atoms' as atom %}
+
+{% set hero = content.heroBuilder[0] %}
+
+<div class="relative w-full lg:w-1/2 flex flex-wrap">
+    {% set image = hero.image[0] ?? placeholder.heroPlaceholder[0] %}
+    {% set ctaColour = hero.colorPalette.color[0].class ?? null %}
+    
+    <div class="w-full">
+        {{- atom.hero_image(image, image.title ?? hero.heading) -}}
+    </div>
+
+    <div class="flex flex-wrap lg:flex-no-wrap items-stretch">
+
+        <div class="w-full lg:w-2/5 p-8 bg-white-90">
+
+            {%- set hasIcon = false -%}
+
+            {%- switch content.slug -%}
+
+                {%- case "ntp-tuition-partners" -%}
+
+                    {%- set icon = include('_svg/icons/icon-equals.svg') -%}
+                    {%- set hasIcon = true %}
+                                
+
+                {%- case "ntp-academic-mentors" -%}
+
+                    {%- set icon = include('_svg/icons/icon-plus.svg') -%}
+                    {%- set hasIcon = true -%}
+
+            {%- endswitch -%}
+
+            {% if hasIcon %}
+
+                <div class="mb-8 min-h-20 min-w-20 flex items-center">
+                
+                    {{- svg(icon, class='w-20 h-full') -}}
+
+                </div>
+
+            {% endif %}
+
+            <h3 class="font-secondary font-semibold text-3xl text-black-100">
+                {{- hero.heading -}}
+            </h3>
+        </div>
+
+        <div class="w-full lg:w-3/5 flex items-center p-8 {{ ctaColour ? 'bg-' ~ ctaColour ~ '-500' : 'bg-black-100' -}}">
+            <p class="font-primary font-medium text-white-90 text-2xl leading-normal">
+                {{- hero.description -}}
+            </p>
+        </div>
+
+    </div>
+
+    {# URL covering entire card #}
+            
+    <a href="{{- url(alias('@web/' ~ content.uri)) -}}" class="absolute block top-0 left-0 h-full w-full z-1">
+        <span class="sr-only">
+            {{- "Discover" | t }} {{ atom.text(content.title) }} {{ content.newsCategory[0].title ?? '' -}}
+        </span>
+    </a>
+</div>

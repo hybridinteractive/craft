@@ -1,0 +1,311 @@
+dateModified: 1599074748
+email:
+  fromEmail: $SYSTEM_EMAIL_ADDRESS
+  fromName: $SYSTEM_NAME
+  replyToEmail: $SYSTEM_REPLY_EMAIL_ADDRESS
+  template: ''
+  transportSettings:
+    apiKey: $MAILGUN_API
+    domain: $MAILGUN_DOMAIN
+    endpoint: ''
+  transportType: craft\mailgun\MailgunAdapter
+plugins:
+  aws-s3:
+    eager-beaver:
+      enabled: true
+      schemaVersion: 1.0.0
+    enabled: true
+    schemaVersion: '1.2'
+  blitz:
+    edition: standard
+    enabled: false
+    licenseKey: I326W6QA3G0AYI21R39RKPE8
+    schemaVersion: 3.6.6
+  blitz-recommendations:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  calendar:
+    edition: lite
+    enabled: true
+    schemaVersion: 3.1.0
+  cloudflare:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.1
+    settings:
+      apiKey: $CLOUDFLARE_API_KEY
+      apiToken: null
+      authType: key
+      email: $CLOUDFLARE_EMAIL
+      fetchZonesActionUri: cloudflare/default/fetch-zones
+      purgeAllActionUri: cloudflare/default/purge-all
+      purgeElements:
+        - craft\elements\Asset
+        - craft\elements\Category
+        - craft\elements\Entry
+        - craft\elements\Tag
+      purgeUrlsActionUri: cloudflare/default/purge-urls
+      saveRulesActionUri: cloudflare/default/save-rules
+      userServiceKey: ''
+      verifyCredentialsUri: cloudflare/default/verify-connection
+      zone: $CLOUDFLARE_ZONE
+      zoneName: accessfund.org
+  colour-swatches:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  cookie-consent:
+    edition: standard
+    enabled: false
+    licenseKey: 4PPN015PMNZ4M18YSN25YV6L
+    schemaVersion: 1.4.2
+  eager-beaver:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  element-api:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  fastcgi-cache-bust:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+    settings:
+      cachePath: $FAST_CGI_CACHE_PATH
+  feed-me:
+    enabled: true
+    schemaVersion: 2.1.2
+  freeform:
+    edition: pro
+    enabled: true
+    schemaVersion: 3.0.8
+    settings:
+      ajaxByDefault: '1'
+      autoScrollToErrors: '1'
+      blockedEmails: ''
+      blockedEmailsError: 'Invalid Email Address'
+      blockedIpAddresses: ''
+      blockedKeywords: ''
+      blockedKeywordsError: 'Invalid Entry Data'
+      customErrorMessage: ''
+      customHoneypotName: ntp_cap
+      defaultTemplates: '1'
+      defaultView: submissions
+      emailTemplateDirectory: _emails/
+      emailTemplateStorage: template
+      fieldDisplayOrder: type
+      fillWithGet: ''
+      footerScripts: false
+      formSubmitDisable: ''
+      formSubmitExpiration: ''
+      formTemplateDirectory: ''
+      formattingTemplate: tailwind.html
+      freeformHoneypot: '1'
+      freeformHoneypotEnhancement: ''
+      hideBannerDemo: '1'
+      hideBannerOldFreeform: false
+      minimumSubmitTime: ''
+      pluginName: 'Form Manager'
+      purgableSpamAgeInDays: '0'
+      purgableSubmissionAgeInDays: '0'
+      recaptchaBehaviour: display_error
+      recaptchaEnabled: false
+      recaptchaKey: null
+      recaptchaMinScore: 0.5
+      recaptchaSecret: null
+      recaptchaType: v2_checkbox
+      removeNewlines: '1'
+      renderFormHtmlInCpViews: '1'
+      salesforce_client_id: null
+      salesforce_client_secret: null
+      salesforce_password: null
+      salesforce_username: null
+      scriptInsertLocation: footer
+      sessionEntryMaxCount: 50
+      sessionEntryTTL: 10800
+      showErrorsForBlockedEmails: ''
+      showErrorsForBlockedKeywords: ''
+      showTutorial: ''
+      spamFolderEnabled: ''
+      spamProtectionBehaviour: simulate_success
+      submissionThrottlingCount: ''
+      submissionThrottlingTimeFrame: m
+  image-optimize:
+    edition: standard
+    enabled: true
+    licenseKey: YEFWRKOJXDX5C68NIA6L4FTH
+    schemaVersion: 1.0.0
+    settings:
+      allowUpScaledImageVariants: false
+      assetVolumeSubFolders: true
+      autoSharpenScaledImages: true
+      createColorPalette: true
+      createPlaceholderSilhouettes: false
+      imageTransformTypeSettings:
+        __assoc__:
+          -
+            - nystudio107\imageoptimizeimgix\imagetransforms\ImgixImageTransform
+            -
+              __assoc__:
+                -
+                  - domain
+                  - ''
+                -
+                  - apiKey
+                  - ''
+                -
+                  - securityToken
+                  - ''
+          -
+            - nystudio107\imageoptimizesharp\imagetransforms\SharpImageTransform
+            -
+              __assoc__:
+                -
+                  - baseUrl
+                  - $SERVERLESS_SHARP_CLOUDFRONT_URL
+          -
+            - nystudio107\imageoptimizethumbor\imagetransforms\ThumborImageTransform
+            -
+              __assoc__:
+                -
+                  - baseUrl
+                  - ''
+                -
+                  - securityKey
+                  - ''
+                -
+                  - includeBucketPrefix
+                  - ''
+      lowerQualityRetinaImageVariants: false
+      transformClass: nystudio107\imageoptimizesharp\imagetransforms\SharpImageTransform
+  mailgun:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  minify:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  navigation:
+    edition: standard
+    enabled: true
+    licenseKey: PVHI0NTMAW8M32YQ0I5FCBXW
+    schemaVersion: 1.0.19
+    settings:
+      bypassProjectConfig: false
+      disabledElements:
+        - assets
+        - categories
+      pluginName: Navigation
+  notifications:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  password-policy:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  position-fieldtype:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  redactor:
+    enabled: true
+    schemaVersion: 2.3.0
+  retour:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.9
+    settings:
+      additionalHeaders: ''
+      alwaysStripQueryString: false
+      automaticallyTrimStatistics: '1'
+      createUriChangeRedirects: true
+      dynamicRedirectDisplayLimit: 100
+      enableApiEndpoint: ''
+      excludePatterns: ''
+      pluginName: Redirects
+      preserveQueryString: false
+      recordRemoteIp: true
+      refreshIntervalSecs: 5
+      staticRedirectDisplayLimit: 100
+      statisticsRateLimitMs: '3600000'
+      statsDisplayLimit: 1000
+      statsStoredLimit: 1000
+      stripQueryStringFromStats: true
+      uriChangeRedirectSrcMatch: pathonly
+  seomatic:
+    edition: standard
+    enabled: true
+    licenseKey: FC0GXV5GNUE8PFZ1X6744DJV
+    schemaVersion: 3.0.9
+    settings:
+      addHrefLang: true
+      addPaginatedHreflang: true
+      addXDefaultHrefLang: true
+      cpTitlePrefix: '⚙ '
+      devModeCpTitlePrefix: '&#x1f6a7;⚙ '
+      devModeTitlePrefix: '&#x1f6a7; '
+      displayAnalysisSidebar: true
+      displayPreviewSidebar: true
+      enableJsonLdEndpoint: ''
+      enableMetaContainerEndpoint: ''
+      environment: live
+      generatorEnabled: true
+      headersEnabled: true
+      lowercaseCanonicalUrl: '1'
+      maxDescriptionLength: 155
+      maxTitleLength: 70
+      metaCacheDuration: 'null'
+      pluginName: SEO
+      regenerateSitemapsAutomatically: true
+      renderEnabled: true
+      separatorChar: '|'
+      sidebarDisplayPreviewTypes:
+        - google
+        - twitter
+        - facebook
+      siteGroupsSeparate: '1'
+      siteUrlOverride: ''
+      sitemapsEnabled: true
+      socialMediaPreviewTarget: true
+      submitSitemaps: true
+  spoon:
+    edition: standard
+    enabled: false
+    licenseKey: A55QRV9100SJJU5DZS2LNBRQ
+    schemaVersion: 3.5.0
+  super-table:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.2.1
+  twigpack:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  typedlinkfield:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+  typogrify:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  webperf:
+    edition: standard
+    enabled: false
+    licenseKey: OC3OAJNLBT6VPUJF4YSSFFPQ
+    schemaVersion: 1.0.1
+  width-fieldtype:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: pro
+  live: true
+  name: 'Access Fund'
+  retryDuration: 60
+  schemaVersion: 3.5.13
+  timeZone: America/Denver

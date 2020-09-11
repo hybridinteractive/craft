@@ -1,0 +1,143 @@
+.form {
+    // In case you'd like to hide all of the labels in a given form.
+    // Otherwise just use `visuallyhidden` on the Label in Freeform by adding a class to it in the form builder.
+    &.hide-labels {
+
+        label {
+            @extend .visuallyhidden;
+            margin-bottom: 0.5rem;
+        }
+    }
+    // Freeform overrides
+    .freeform-row {
+        padding-left: 0.9375rem;
+        padding-right: 0.9375rem;
+        flex-direction: column;
+
+        @media #{$medium-up} {
+            padding: 0;
+            flex-direction: row;
+        }
+
+        .freeform-column {
+            margin: 0 0.375rem;
+            padding: 0;
+
+            label {
+                @extend h5;
+                font-weight: 400;
+                font-style: normal;
+                text-align: left;
+            }
+
+            h3 {
+                @extend .contact-header;
+                text-align: center;
+            }
+        }
+    }
+
+    // Other Global Settings
+    .text-input {
+        padding: 5px;
+        box-shadow: none;
+        color: $base-font-color;
+
+    }
+    .select {
+        background-color: #fff;
+    }
+    .submit {
+        @extend .button;
+    }
+    option:disabled {
+        color: #CCC;
+    }
+}
+option {
+    &[default] {
+        color: $base-font-color;
+    }
+}
+
+.form-section {
+    margin-bottom: rem-calc(51);
+    @include clearfix;
+}
+
+.form-large-padding {
+    @media #{$large-up} {
+        padding-left: rem-calc(6);
+        padding-right: rem-calc(6);
+    }
+}
+
+.form-header {
+    font-size: rem-calc(23);
+    line-height: 1em;
+    font-weight: 700;
+    color: $charcoal;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 0;
+    &:after {
+        display: block;
+        content: "";
+        clear: both;
+        height: rem-calc(1);
+        width: rem-calc(80);
+        background-color: $jumbo;
+        margin: rem-calc(24) auto rem-calc(38);
+    }
+}
+
+.form-errors {
+    color: $dark-orange;
+}
+
+label {
+    font-size: 1.125rem;
+
+    &.required {
+        position: relative;
+
+        select,
+        input {
+            margin: 0.5rem 0 0;
+        }
+
+        select:focus:valid,
+        input:focus:valid {
+            background-color: $lt-green;
+            border-color: $green;
+        }
+
+        select:focus:invalid,
+        input:focus:invalid {
+            background-color: $lt-danger;
+            border-color: $danger;
+        }
+
+        &:before {
+            bottom: 0;
+            color: $danger;
+            content: "\2731";
+            display: table-cell;
+            font-weight: bold;
+            height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+            line-height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+            left: -($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+            position: absolute;
+            text-align:center;
+            width: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+        }
+    }
+}
+
+@media print {
+    .form-header {
+        &:after {
+            margin: rem-calc(16) auto;
+        }
+    }
+}

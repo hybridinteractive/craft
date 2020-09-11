@@ -1,0 +1,29 @@
+.columns .blog-card {
+    background: rgba(255,255,255,0.9);
+    padding: rem-calc(0);
+    position: relative;
+    .image {
+        width: 100%;
+        padding-bottom: rem-calc(10);
+    }
+    .post-info {
+        padding: rem-calc(0 15);
+    }
+    .date {
+        font-size: rem-calc(16);
+        color: $light-font-color;
+        font-weight: 700;
+    }
+    .title {
+        font-size: rem-calc(26);
+        font-weight: 500;
+        line-height: rem-calc(35);
+        color: $primary-color;
+        text-transform: initial;
+    }
+    .summary {
+        font-size: rem-calc(20);
+        line-height: rem-calc(40);
+        margin-bottom: 0;
+    }
+}

@@ -1,0 +1,122 @@
+{# -- Base HTML layout template that all HTML requests inherit from -- #}
+{#
+    ┌─────────────────────────────────────────────────────────────────────────────┐
+    │ ┌─────────────────────────────────────────────────────────────────────────┐ │
+    │ │                                headMeta                                 │ │
+    │ └─────────────────────────────────────────────────────────────────────────┘ │
+    │ ┌─────────────────────────────────────────────────────────────────────────┐ │
+    │ │                                headLinks                                │ │
+    │ └─────────────────────────────────────────────────────────────────────────┘ │
+    │ ┌─────────────────────────────────────────────────────────────────────────┐ │
+    │ │                                 headJs                                  │ │
+    │ └─────────────────────────────────────────────────────────────────────────┘ │
+    │ ┌─────────────────────────────────────────────────────────────────────────┐ │
+    │ │                                 headCss                                 │ │
+    │ └─────────────────────────────────────────────────────────────────────────┘ │
+    │                                                                             │
+    │                                 headContent                                 │
+    └─────────────────────────────────────────────────────────────────────────────┘
+    ┌─────────────────────────────────────────────────────────────────────────────┐
+    │ ┌─────────────────────────────────────────────────────────────────────────┐ │
+    │ │                                bodyHtml                                 │ │
+    │ └─────────────────────────────────────────────────────────────────────────┘ │
+    │ ┌─────────────────────────────────────────────────────────────────────────┐ │
+    │ │                                 bodyJs                                  │ │
+    │ └─────────────────────────────────────────────────────────────────────────┘ │
+    │                                                                             │
+    │                                 bodyContent                                 │
+    └─────────────────────────────────────────────────────────────────────────────┘
+#}
+
+{% extends craft.app.request.isAjax() and not craft.app.request.getIsPreview()
+    ? "_boilerplate/_layouts/base-ajax-layout.twig"
+    : "_boilerplate/_layouts/base-web-layout.twig"
+%}
+
+{% block htmlTag %}
+    <html class="fonts-loaded" lang="{{ craft.app.language |slice(0,2) }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+{% endblock htmlTag %}
+
+{# -- Page content that should be included in the <head> -- #}
+{% block headContent %}
+    {# -- Any <meta> tags that should be included in the <head> #}
+    {% block headMeta %}
+    {% endblock headMeta %}
+
+    {# -- Any <link> tags that should be included in the <head> #}
+    {% block headLinks %}
+    {% endblock headLinks %}
+
+    {# -- Inline and polyfill JS #}
+    {% include "_boilerplate/_partials/head-js.twig" %}
+
+    {# -- Any JavaScript that should be included before </head> -- #}
+    {% block headJs %}
+    {% endblock headJs %}
+
+    {# -- Inline and critical CSS #}
+    <style>
+        [v-cloak] {display: none !important;}
+        {# -- Any CSS that should be included before </head> -- #}
+        {% block headCss %}
+        {% endblock headCss %}
+    </style>
+    {% include "_boilerplate/_partials/critical-css.twig" %}
+
+{% endblock headContent %}
+
+{# -- Page content that should be included in the <body> -- #}
+{% block bodyContent %}
+    {# -- Page content that should be included in the <body> -- #}
+    {% block bodyHtml %}
+    {% endblock bodyHtml %}
+
+    {#-- Site-wide JavaScript --#}
+    {{ craft.twigpack.includeSafariNomoduleFix() }}
+    {{ craft.twigpack.includeJsModule("app.js", true) }}
+    {{ craft.twigpack.includeJsModule("styles.js", true) }}
+
+    {# -- Any JavaScript that should be included before </body> -- #}
+    {% block bodyJs %}
+
+        {% if entry.contentBuilder is iterable %}
+            {%- for block in entry.contentBuilder -%}
+                {%- switch block.type -%}
+                    {%- case "contentForm" -%}
+
+                        {%- if block.form is iterable -%}
+                            <div class="hidden" id="form-src">
+                            {%- include '_organisms/forms/form--content.twig' ignore missing with {
+                                        content: block,
+                                    } -%}
+                            </div>
+                            {%- js -%}
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    setTimeout(
+                                        function() {
+                                            function setTarget(el, formTarget)
+                                            {
+                                                formTarget.appendChild(el);
+                                            }
+                                                var l = document.getElementById('form-src').childNodes.length,
+                                                    src = document.getElementById('form-src'),
+                                                    target = document.getElementById('form-target');
+                                            for (var i = l; i >= 0; i--)
+                                            {
+                                                setTarget(src.childNodes[0], target);
+                                            }
+                                        }, 
+                                    655);
+                                }, false);
+                            {%- endjs -%}
+                        {%- endif -%}
+
+                {%- endswitch -%}
+                
+            {%- endfor -%}
+        {% endif %}
+
+        {% hook 'before-body-end' %}
+    
+    {% endblock bodyJs %}
+{% endblock bodyContent %}

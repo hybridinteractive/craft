@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>{{ siteName }}</title>
+        <link>{{ siteUrl }}</link>
+        <atom:link href="{{ craft.app.request.absoluteUrl }}" rel="self" type="application/rss+xml" />
+        <description>The Access Fund is the national advocacy organization that keeps U.S. climbing areas open and conserves the climbing environment.</description>
+        <language>en-us</language>
+        <pubDate>{{ now|rss }}</pubDate>
+        <lastBuildDate>{{ now|rss }}</lastBuildDate>
+        {% set entries = craft.entries.section(['blogEntries', 'newsEntries']).limit(20) %}
+
+        {% for entry in entries.all() %}
+            <item>
+                <title>{{ entry.title }}</title>
+                <link>{{ entry.url }}</link>
+                <pubDate>{{ entry.postDate|rss }}</pubDate>
+                <author>{{ entry.author }}</author>
+                <guid>{{ entry.url }}</guid>
+                <description><![CDATA[
+                    {{ entry.body }}
+                ]]></description>
+                {% set image = entry.image.one() ?? entry.headerImage.one() ?? null %}
+                {% if image | length %}
+                <image>
+                    <url>{{ image.url }}</url>
+                    <title>{{ image.title }}</title>
+                    <link>{{ entry.url }}</link>
+                </image>
+                {% endif %}
+            </item>
+        {% endfor %}
+    </channel>
+</rss>

@@ -1,0 +1,17 @@
+{% if entry.ctaBuilder %}
+
+    <div class="row join-give-member-benefits">
+        <div class="member-benefit-container take-action column">
+
+            {% for block in entry.ctaBuilder.all() %}
+
+                {% include '_components/block--cta' ignore missing with {
+                    content: block,
+                } %}
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endif %}
