@@ -74,7 +74,7 @@ npm-update
 
 ## Login information
 
-To be able to login into the admin panel you'll need to have access to the right credentials which can be found here: https://3.basecamp.com/3167296/buckets/10514642/documents/2618531508
+To be able to login into the admin panel you'll need to have access to the right credentials which can be found here: UPDATE-BASECAMP-LINK-HERE
 
 ## Running Craft CLI commands
 
