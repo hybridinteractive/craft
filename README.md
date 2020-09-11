@@ -14,6 +14,7 @@ You'll need Docker desktop for your platform installed to run the project in loc
 * Start up the site with `docker-compose up` or use the alias `up` if you use the aliases in your bash as mentioned below (the first build will be somewhat lengthy)
 * Import the `seed_db.sql` database dump the first time from the `scripts/` dir with `./docker_restore_db.sh seed_db.sql`
 * Navigate to `http://localhost:8000` to use the site; the `webpack-dev-server` runs off of `http://localhost:8080`
+* It's also important to run `docker-compose exec php ./craft cli-craft setup/security-key` or `new-security-key` (from the `aliases` below) from within the `cms` directory to regenerate a new Craft CMS security key.
 
 **Important:** To find the correct credentials for `LOCAL_DB_CONTAINER` run `docker-compose up` and once the docker container is running, use the command `docker container ls` to find the correct name of the container.
 The project is called `REPLACEME` the container will be somewhere along the lines of `REPLACEME_mariadb_1` That's the value you do have to enter, you'll find it under the NAME column from the list.
