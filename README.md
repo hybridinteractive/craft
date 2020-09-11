@@ -23,11 +23,6 @@ The project is called `REPLACEME` the container will be somewhere along the line
 
 The CP login credentials are initially set as follows:
 
-```
-Login: hi@hybridinteractive.io
-Password: letmein
-```
-
 ## Useful Docker Aliases
 
 ```
@@ -85,6 +80,11 @@ npm-update
 ## Login information
 
 To be able to login into the admin panel you'll need to have access to the right credentials which can be found here: UPDATE-BASECAMP-LINK-HERE
+
+```
+Login: hi@hybridinteractive.io
+Password: letmein
+```
 
 ## Running Craft CLI commands
 
