@@ -21,6 +21,13 @@ The project is called `REPLACEME` the container will be somewhere along the line
 
 **N.B.:** Without authorization & credentials (which are private), the `./docker_pull_db.sh` will not work. It's provided here for instructional purposes, keep in mind that this pull will only work on your local dev machine!
 
+The CP login credentials are initially set as follows:
+
+```
+Login: hi@hybridinteractive.io
+Password: letmein
+```
+
 ## Useful Docker Aliases
 
 ```
