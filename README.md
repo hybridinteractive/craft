@@ -1,5 +1,3 @@
-If you need to export your db from the container you can simply run `docker exec REPLACEME_mariadb_1 /usr/bin/mysqldump -u project --password=project project > backup.sql` while your containers are running.
-
 ## About Aspen Recreation
 
 AspenRecreation.com is a website resource for visitors and residents built on Craft CMS.
@@ -15,6 +13,8 @@ You'll need Docker desktop for your platform installed to run the project in loc
 * Import the `seed_db.sql` database dump the first time from the `scripts/` dir with `./docker_restore_db.sh seed_db.sql`
 * Navigate to `http://localhost:8000` to use the site; the `webpack-dev-server` runs off of `http://localhost:8080`
 * It's also important to run `docker-compose exec php ./craft cli-craft setup/security-key` or `new-security-key` (from the `aliases` below) from within the `cms` directory to regenerate a new Craft CMS security key.
+
+If you need to export your db from the container you can simply run docker exec craft-instrumental_mariadb_1 /usr/bin/If you need to export your db from the container you can simply run `docker exec REPLACEME_mariadb_1 /usr/bin/mysqldump -u project --password=project project > backup.sql` while your containers are running.
 
 **Important:** To find the correct credentials for `LOCAL_DB_CONTAINER` run `docker-compose up` and once the docker container is running, use the command `docker container ls` to find the correct name of the container.
 The project is called `REPLACEME` the container will be somewhere along the lines of `REPLACEME_mariadb_1` That's the value you do have to enter, you'll find it under the NAME column from the list.
