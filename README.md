@@ -14,10 +14,10 @@ You'll need Docker desktop for your platform installed to run the project in loc
 * Navigate to `http://localhost:8000` to use the site; the `webpack-dev-server` runs off of `http://localhost:8080`
 * It's also important to run `docker-compose exec php ./craft cli-craft setup/security-key` or `new-security-key` (from the `aliases` below) from within the `cms` directory to regenerate a new Craft CMS security key.
 
-If you need to export your db from the container you can simply run docker exec craft-instrumental_mariadb_1 /usr/bin/If you need to export your db from the container you can simply run `docker exec REPLACEME_mariadb_1 /usr/bin/mysqldump -u project --password=project project > backup.sql` while your containers are running.
+If you need to export your db from the container you can simply run docker exec craft-instrumental_mariadb_1 /usr/bin/If you need to export your db from the container you can simply run `docker exec aspen-recreation_mariadb_1 /usr/bin/mysqldump -u project --password=project project > backup.sql` while your containers are running.
 
 **Important:** To find the correct credentials for `LOCAL_DB_CONTAINER` run `docker-compose up` and once the docker container is running, use the command `docker container ls` to find the correct name of the container.
-The project is called `REPLACEME` the container will be somewhere along the lines of `REPLACEME_mariadb_1` That's the value you do have to enter, you'll find it under the NAME column from the list.
+The project is called `aspen-recreation` the container will be somewhere along the lines of `aspen-recreation_mariadb_1` That's the value you do have to enter, you'll find it under the NAME column from the list.
 
 **N.B.:** Without authorization & credentials (which are private), the `./docker_pull_db.sh` will not work. It's provided here for instructional purposes, keep in mind that this pull will only work on your local dev machine!
 
@@ -101,7 +101,7 @@ Keep in mind that these deploys are atomic, they'll build inside of a releases f
 ## Deleting docker images for a fresh start for this project
 
 ```
-docker images -a | grep "REPLACEME" | awk '{print $3}' | xargs docker rmi -f
+docker images -a | grep "aspen-recreation" | awk '{print $3}' | xargs docker rmi -f
 ```
 
 ## XDebug
