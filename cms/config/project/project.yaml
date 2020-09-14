@@ -1,4 +1,4 @@
-dateModified: 1597177656
+dateModified: 1600124139
 email:
   fromEmail: $SYSTEM_EMAIL
   fromName: $SENDER_NAME
@@ -204,6 +204,6 @@ plugins:
 system:
   edition: pro
   live: true
-  name: Craft
+  name: $SITE_NAME
   schemaVersion: 3.5.12
   timeZone: America/Denver
