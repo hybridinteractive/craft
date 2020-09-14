@@ -1,8 +1,8 @@
 contentColumnType: string
 fieldGroup: 1572f461-2a67-47a4-a36c-80839168bcb7
-handle: organisationEmail
-instructions: 'enter your organisation email address'
-name: 'Organisation Email'
+handle: organizationEmail
+instructions: 'enter your organization email address'
+name: 'Organization Email'
 searchable: false
 settings:
   placeholder: ''

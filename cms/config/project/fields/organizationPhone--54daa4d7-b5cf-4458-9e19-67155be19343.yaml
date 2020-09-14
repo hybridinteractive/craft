@@ -1,8 +1,8 @@
 contentColumnType: text
 fieldGroup: 1572f461-2a67-47a4-a36c-80839168bcb7
-handle: organisationName
-instructions: 'Enter your organisation name'
-name: 'Organisation Name'
+handle: organizationPhone
+instructions: 'Enter your organization''s phone number'
+name: 'Organization Phone'
 searchable: true
 settings:
   byteLimit: null
@@ -12,6 +12,7 @@ settings:
   initialRows: '4'
   multiline: ''
   placeholder: ''
+  uiMode: normal
 translationKeyFormat: null
 translationMethod: none
 type: craft\fields\PlainText
