@@ -1,4 +1,4 @@
-dateModified: 1599074748
+dateModified: 1600115212
 email:
   fromEmail: $SYSTEM_EMAIL_ADDRESS
   fromName: $SYSTEM_NAME
@@ -305,7 +305,7 @@ plugins:
 system:
   edition: pro
   live: true
-  name: 'Access Fund'
+  name: $SITE_NAME
   retryDuration: 60
   schemaVersion: 3.5.13
   timeZone: America/Denver
