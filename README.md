@@ -21,7 +21,16 @@ The project is called `aspen-recreation` the container will be somewhere along t
 
 **N.B.:** Without authorization & credentials (which are private), the `./docker_pull_db.sh` will not work. It's provided here for instructional purposes, keep in mind that this pull will only work on your local dev machine!
 
-The CP login credentials are initially set as follows:
+## Login information
+
+To be able to login into the admin panel you'll need to have access to the right credentials which can be found here: UPDATE-BASECAMP-LINK-HERE
+
+```
+Login: hi@hybridinteractive.io
+Password: letmein
+```
+
+Be sure to update this password and add that information to Basecamp too!
 
 ## Useful Docker Aliases
 
@@ -75,15 +84,6 @@ docker-compose exec webpack npm install
 or 
 
 npm-update
-```
-
-## Login information
-
-To be able to login into the admin panel you'll need to have access to the right credentials which can be found here: UPDATE-BASECAMP-LINK-HERE
-
-```
-Login: hi@hybridinteractive.io
-Password: letmein
 ```
 
 ## Running Craft CLI commands
