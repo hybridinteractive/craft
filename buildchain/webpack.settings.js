@@ -23,9 +23,15 @@ module.exports = {
         templates: "../cms/templates/"
     },
     urls: {
+<<<<<<< HEAD
         live: "http://fido.hybridinteractive.io",
         local: "http://localhost:8000/",
         critical: "http://fido.hybridinteractive.io/",
+=======
+        live: "https://sandbox.accessfund.org",
+        local: "http://localhost:8000/",
+        critical: "https://sandbox.accessfund.org/",
+>>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72
         publicPath: () => process.env.PUBLIC_PATH || "/dist/",
     },
     vars: {

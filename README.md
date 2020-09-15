@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## About hybridinteractive/fido
 
 This is an alternate scaffolding package for Craft 3 CMS projects to Pixel & Tonic's canonical [craftcms/craft](https://github.com/craftcms/craft) package.
@@ -11,6 +12,11 @@ This project package works exactly the way Pixel & Tonic's [craftcms/craft](http
 Make sure that `PATH` is the path to your project, including the name you want for the project, e.g.:
 
     composer create-project hybridinteractive/fido fido
+=======
+## About Aspen Recreation
+
+AspenRecreation.com is a website resource for visitors and residents built on Craft CMS.
+>>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72
 
 ## Setting Up Local Dev
 
@@ -24,10 +30,17 @@ You'll need Docker desktop for your platform installed to run the project in loc
 * Navigate to `http://localhost:8000` to use the site; the `webpack-dev-server` runs off of `http://localhost:8080`
 * It's also important to run `docker-compose exec php ./craft cli-craft setup/security-key` or `new-security-key` (from the `aliases` below) from within the `cms` directory to regenerate a new Craft CMS security key.
 
+<<<<<<< HEAD
 If you need to export your db from the container you can simply run docker exec craft-instrumental_mariadb_1 /usr/bin/If you need to export your db from the container you can simply run `docker exec REPLACEME_mariadb_1 /usr/bin/mysqldump -u project --password=project project > backup.sql` while your containers are running.
 
 **Important:** To find the correct credentials for `LOCAL_DB_CONTAINER` run `docker-compose up` and once the docker container is running, use the command `docker container ls` to find the correct name of the container.
 The project is called `REPLACEME` the container will be somewhere along the lines of `REPLACEME_mariadb_1` That's the value you do have to enter, you'll find it under the NAME column from the list.
+=======
+If you need to export your db from the container you can simply run docker exec craft-instrumental_mariadb_1 /usr/bin/If you need to export your db from the container you can simply run `docker exec aspen-recreation_mariadb_1 /usr/bin/mysqldump -u project --password=project project > backup.sql` while your containers are running.
+
+**Important:** To find the correct credentials for `LOCAL_DB_CONTAINER` run `docker-compose up` and once the docker container is running, use the command `docker container ls` to find the correct name of the container.
+The project is called `aspen-recreation` the container will be somewhere along the lines of `aspen-recreation_mariadb_1` That's the value you do have to enter, you'll find it under the NAME column from the list.
+>>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72
 
 **N.B.:** Without authorization & credentials (which are private), the `./docker_pull_db.sh` will not work. It's provided here for instructional purposes, keep in mind that this pull will only work on your local dev machine!
 
@@ -40,6 +53,11 @@ Login: hi@hybridinteractive.io
 Password: letmein
 ```
 
+<<<<<<< HEAD
+=======
+Be sure to update this password and add that information to Basecamp too!
+
+>>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72
 ## Useful Docker Aliases
 
 ```
@@ -100,7 +118,11 @@ Since we are using docker to run our project, we need to execute the craft CLI c
 
 ## Deploying
 
+<<<<<<< HEAD
 This project uses buddy.works to deploy to our sandbox and production environments, this is an automated process, once buddy detects changes in the `sandbox` branch it will automatically deploy to our sandbox environment, when there are changes detected in the `production` branch it will automatically deploy to the production server.
+=======
+This project uses buddy.works to deploy to our sandbox and staging environments, this is an automated process, once buddy detects changes in the `sandbox` branch it will automatically deploy to our sandbox environment, when there are changes detected in the `production` branch it will automatically deploy to the production server.
+>>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72
 
 Keep in mind that these deploys are atomic, they'll build inside of a releases folder and will be symlinked to current, which is being served to the end-user, this to ensure as little downtime as possible when releasing major changes.
 
@@ -109,7 +131,11 @@ Keep in mind that these deploys are atomic, they'll build inside of a releases f
 ## Deleting docker images for a fresh start for this project
 
 ```
+<<<<<<< HEAD
 docker images -a | grep "REPLACEME" | awk '{print $3}' | xargs docker rmi -f
+=======
+docker images -a | grep "aspen-recreation" | awk '{print $3}' | xargs docker rmi -f
+>>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72
 ```
 
 ## XDebug
@@ -133,4 +159,8 @@ To use Xdebug with VSCode install the [PHP Debug extension](https://marketplace.
         }
     ]
 }
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72

@@ -28,7 +28,10 @@ MYSQLDUMP_ADDITIONAL_ARGS+="--no-autocommit "
 MYSQLDUMP_ADDITIONAL_ARGS+="--routines "
 MYSQLDUMP_ADDITIONAL_ARGS+="--set-charset "
 MYSQLDUMP_ADDITIONAL_ARGS+="--triggers "
+<<<<<<< HEAD
 MYSQLDUMP_ADDITIONAL_ARGS+="--column-statistics=0 "
+=======
+>>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72
 
 # Arguments to dump just the schema
 MYSQLDUMP_SCHEMA_ARGS=""

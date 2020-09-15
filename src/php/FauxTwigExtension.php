@@ -19,8 +19,13 @@
  * Thanks to Robin Schambach; for context, see:
  * https://github.com/Haehnchen/idea-php-symfony2-plugin/issues/1103
  *
+<<<<<<< HEAD
  * @link      https://hybridinteractive.io
  * @copyright Copyright (c) 2020 Hybrid Interactive
+=======
+ * @link      https://percipio.london
+ * @copyright Copyright (c) 2020 Percipio Global Ltd.
+>>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72
  * @license   MIT
  * @license   https://opensource.org/licenses/MIT MIT Licensed
  */
@@ -54,7 +59,11 @@ namespace nystudio107\craft;
  * @property \modules\sitemodule\SiteModule $site
  * @mixin \craft\commerce\web\twig\CraftVariableBehavior
  *
+<<<<<<< HEAD
  * @author    Hybrid Interactive
+=======
+ * @author    Percipio Global Ltd.
+>>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72
  * @package   percipioglobal\craft
  * @since     1.0.0
  */
@@ -66,7 +75,11 @@ class FauxCraftVariable extends \craft\web\twig\variables\CraftVariable
  * Class FauxTwigExtension provides a faux Twig extension for PhpStorm to index
  * so that we get Intellisense auto-complete in our Twig templates.
  *
+<<<<<<< HEAD
  * @author    Hybrid Interactive
+=======
+ * @author    Percipio Global Ltd.
+>>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72
  * @package   percipioglobal\craft
  * @since     1.0.0
  */
