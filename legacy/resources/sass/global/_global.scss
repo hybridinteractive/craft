@@ -1,0 +1,182 @@
+body,html {
+  margin:0;
+  padding:0;
+  height: 100%;
+}
+
+input,
+select,
+textarea,
+button {
+    &:hover,
+    &:active,
+    &:focus {
+        outline: none;
+        background-color: #fff;
+        border-color: inherit;
+    }
+}
+
+code {
+    width: 100%;
+    display: block;
+    margin-top: rem-calc(40);
+    margin-bottom: 0;
+    padding: rem-calc(10 20);
+    line-height: 1.3em;
+    font-size: rem-calc(14);
+}
+
+iframe {
+    border-width: 0;
+}
+
+.bg-smoke {
+    background-color: $smoke;
+}
+
+.vertical-padding {
+    padding-top:    rem-calc(60);
+    padding-bottom: rem-calc(60);
+}
+
+.general-padding {
+    padding: $column-gutter;
+}
+
+@media #{$medium-up} {
+    .nav-wrapper {
+        position: absolute;
+        left: 0;
+        right: 0;
+
+        &.fixed {
+            position: fixed;
+        }
+    }
+}
+
+body.f-topbar-fixed {
+    padding-top: 0;
+}
+.container {
+    margin-top: $medium-navbar-height;
+    @media #{$medium-up} {
+        margin-top: 0;
+    }
+}
+
+.not-found {
+    margin-top: rem-calc(140);
+    margin-bottom: rem-calc(60);
+}
+
+.bg-right {
+    background-position: right center;
+}
+
+.bg-left {
+    background-position: left center;
+}
+
+#yonder {
+    height:500px;
+    width:100%;
+    margin-bottom: rem-calc(80);
+    .yonder_widget {
+        overflow: visible!important;
+    }
+    .meta_text_container {
+        padding-top: 0px!important;
+    }
+    .top_container {
+        overflow: inherit!important;
+        padding-top: 10px;
+        position: absolute!important;
+        top: 92%!important;
+    }
+    .map_popup_account_row {
+        height: auto!important;
+        overflow: inherit!important;
+        padding-bottom: 10px!important;
+    }
+    .yonder_map_popup .map_popup_meta .map_popup_description_div .map_popup_description {
+       font-size: 12px;
+       line-height: 140%;
+     }
+     .account_name_container {
+        display: block!important;
+        .account_name {
+            font-size: 10px!important;
+            line-height: 200%!important;
+        }
+     }
+     .download_yonder {
+        display: none!important;
+     }
+}
+
+.web-to-lead {
+    label[for="lead_source"],
+    #lead_source {
+        display: none;
+    }
+    input[name="submit"] {
+        @extend .button;
+    }
+}
+
+.salesforce-modal {
+    min-height: 0;
+}
+
+.salesforce-input {
+    margin: 0 auto;
+    width: 60%;
+}
+
+.sharethis-inline-share-buttons,
+.st-inline-share-buttons {
+    margin-bottom: rem-calc(20);
+}
+
+.down-arrow {
+    display: block;
+    width: 30px;
+    height: 20px;
+    background-image: url('/images/down-arrow.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+    position: relative;
+    top: rem-calc(15);
+    cursor: pointer;
+
+    @media #{$medium-up} {
+        width: 50px;
+        height: 30px;
+        top: rem-calc(20);
+    }
+}
+
+// Lazy
+.lazy {
+    opacity: 0;
+}
+
+.lazy-loaded {
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+// Helper to hide elements like form labels
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}

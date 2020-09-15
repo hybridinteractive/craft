@@ -1,0 +1,261 @@
+.hero {
+    &:after {
+        @include before-block();
+        @include skew(-30deg,0deg);
+        background-color: #FFF;
+        width: 49%;
+        height: rem-calc(45);
+        left: auto;
+        top: auto;
+        // uncomment these to add back the tabbed header image look
+        //bottom: 0;
+        //right: rem-calc(-15);
+        .bg-smoke & {
+            background-color: $smoke;
+        }
+    }
+    .bg {
+        background-size: cover;
+        background-position: center;
+        padding: rem-calc(20 16 60);
+        height: auto;
+        @include black-gradient($height:50%);
+    }
+    .title {
+        font-size: rem-calc(48);
+        color: #FFF;
+        font-weight: 400;
+    }
+    .subtitle {
+        font-size: rem-calc(18);
+        color: #FFF;
+    }
+
+    @media #{$medium-up} {
+        .credit {
+            bottom: rem-calc(-70);
+        }
+        .bg {
+            padding: rem-calc(60 30 40);
+        }
+    }
+    @media #{$large-up} {
+        .title {
+            font-size: rem-calc(71.25);
+        }
+        .subtitle {
+            font-size: rem-calc(25);
+        }
+    }
+}
+.slick-hero {
+    @extend .hero;
+    overflow: hidden;
+	.slick-dots {
+        width: 50%;
+        height: 0;
+        text-align: right;
+        li:last-of-type {
+            margin-right: 0;
+        }
+    }
+    .bg {
+        min-height: rem-calc(300);
+    }
+    .copy {
+        position: relative;
+        bottom: rem-calc(16);
+        top: auto;
+        left: 0;
+        right: 0;
+        padding: 0 $column-gutter/2;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        @media #{$medium-up} {
+            display: block;
+            height: auto;
+            top: rem-calc(0);
+            bottom: rem-calc(60);
+        }
+    }
+    .photo-credit {
+        .credit-icon {
+            float: right;
+            margin-top: rem-calc(20);
+            margin-left: rem-calc(10);
+            position: absolute;
+            bottom: 60px;
+            right: 15px;
+        }
+        .credit {
+            opacity: 0;
+            position: relative;
+            display: inline-block;
+            float: right;
+            margin-top: rem-calc(20);
+            margin-bottom: rem-calc(35);
+            font-size: rem-calc(12);
+            color: #ebeae4;
+            background-color: rgba(55, 51, 50, 0.75);
+            padding: rem-calc(10 15);
+            z-index: 99;
+            @include transition(opacity, 0.3s);
+            &.visible {
+                opacity: 1;
+            }
+        }
+    }
+    .button {
+        margin-bottom: 0;
+        padding-top: rem-calc(10);
+        padding-bottom: rem-calc(10);
+        font-size: rem-calc(14);
+    }
+    @media #{$medium-up} {
+        .photo-credit {
+            position: absolute;
+            bottom: rem-calc(62);
+            right: rem-calc(20);
+            .credit-icon {
+                cursor: pointer;
+                float: none;
+                margin-top: 0;
+                position: initial;
+                bottom: 0;
+                right: 0;
+            }
+            .credit {
+                opacity: 1;
+                font-size: rem-calc(14);
+                display: none;
+                margin-top: 0;
+                margin-bottom: 0;
+                position: absolute;
+                bottom: rem-calc(40);
+                right: 0;
+                float: none;
+                white-space: nowrap;
+                padding: rem-calc(20 25);
+            }
+            &:hover {
+                .credit {
+                    display: block;
+                }
+            }
+        }
+        .copy {
+            position: absolute;
+            bottom: rem-calc(80);
+            top: auto;
+        }
+        .button {
+            margin-bottom: rem-calc(20);
+            padding-top: rem-calc(16);
+            padding-bottom: rem-calc(17);
+            font-size: rem-calc(19);
+        }
+        .bg {
+            min-height: rem-calc(560);
+        }
+        .slick-dots {
+            width: 50%;
+            float: none;
+            li:last-of-type {
+                margin-right: 0;
+            }
+        }
+    }
+	@media #{$large-up} {
+	    .slick-dots {
+	    	width: 50%;
+            li:last-of-type {
+                margin-right: 0;
+            }
+	    }
+	}
+    @media #{$xlarge-up} {
+        .slick-dots {
+            width: 50%;
+            li:last-of-type {
+                margin-right: 0;
+            }
+        }
+    }
+
+    // Home Slider Overrides
+    &.home-slider {
+
+        .bg {
+            min-height: rem-calc(100);
+
+            @media #{$medium-up} {
+                min-height: rem-calc(800);
+            }
+        }
+    }
+}
+
+@media print {
+    .hero {
+        width: 100% !important;
+        &:after {
+            bottom: 0 !important;
+            height: rem-calc(30) !important;
+        }
+        .bg {
+            @include black-gradient($height:0%, $fromColor:"rgba(0,0,0,0)", $toColor:"rgba(0,0,0,0)");
+            &:before {
+                display: block;
+                content: " ";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                z-index: 0;
+                background-color: rgba(#000, 0.3) !important;
+            }
+        }
+        .title {
+            text-shadow: 1px 1px 5px rgba(#000, 0.7);
+        }
+
+        .hero,
+        .slick-hero,
+        .slick-list,
+        .slick-track,
+        .slick-slide {
+            height: auto !important;
+            min-height: 150px !important;
+        }
+
+        .slick-list {
+            width: 100% !important;
+        }
+        .slick-track {
+            width: 100% !important;
+            @include transform(translate(0, 0));
+        }
+        .slick-slide {
+            width: 100% !important;
+            padding-top: 0 !important;
+        }
+        .credit {
+            display: block;
+            color: #FFF;
+            text-shadow: 1px 1px 1px rgba(#000, 0.9);
+            font-weight: 500;
+        }
+    }
+    .bg-smoke .hero:after,
+    .bg-smoke .slick-hero:after {
+        background-color: #FFF;
+    }
+}
+
+.-no-tab {
+    bottom: rem-calc(14) !important;
+}

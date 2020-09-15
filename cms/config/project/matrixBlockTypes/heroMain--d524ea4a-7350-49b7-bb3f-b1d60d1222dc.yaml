@@ -1,0 +1,168 @@
+field: 373956bd-ab65-407b-a558-6a67fb1f74f4
+fieldLayouts:
+  6c4883fd-a4ab-402c-9245-499e62272d20:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: db51ce57-7cd5-47f5-b940-153537b153fd
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 83b8fefa-6d55-4b0f-80cb-422afad2ed3d
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 863b81cc-aa19-4013-97dd-3f41b9742fa0
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 6fe3d398-4cc1-4d26-b4f6-3f0c0339fa49
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
+          -
+            fieldUid: ffc8d493-7a9d-42e6-bc9c-d8b9df2c8804
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
+        name: Content
+        sortOrder: 1
+fields:
+  6fe3d398-4cc1-4d26-b4f6-3f0c0339fa49:
+    contentColumnType: string
+    fieldGroup: null
+    handle: image
+    instructions: 'Select or upload an image you want to display in the header'
+    name: Image
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:17ffd720-73f0-4e0c-9878-ea089fcc6863'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      restrictFiles: '1'
+      selectionLabel: 'Add an image'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      singleUploadLocationSource: 'volume:98a5c9ce-dbf3-469a-8dec-eac422e9040f'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources:
+        - 'volume:98a5c9ce-dbf3-469a-8dec-eac422e9040f'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  83b8fefa-6d55-4b0f-80cb-422afad2ed3d:
+    contentColumnType: string(640)
+    fieldGroup: null
+    handle: description
+    instructions: 'A short introductory paragraph in an article that summaries the page / article.'
+    name: Standfirst
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: 160
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  863b81cc-aa19-4013-97dd-3f41b9742fa0:
+    contentColumnType: string
+    fieldGroup: null
+    handle: buttons
+    instructions: 'Optionally add a button to the section that can refer to another page or entry.'
+    name: Buttons
+    searchable: false
+    settings:
+      columns:
+        __assoc__:
+          -
+            - 94f12fec-eb69-4dfb-b08f-a52ac418148b
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_11_buttons}}'
+      fieldLayout: row
+      maxRows: '2'
+      minRows: '1'
+      placeholderKey: null
+      propagationMethod: all
+      selectionLabel: 'Add button'
+      staticField: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
+  db51ce57-7cd5-47f5-b940-153537b153fd:
+    contentColumnType: text
+    fieldGroup: null
+    handle: heading
+    instructions: 'A short and succinct heading'
+    name: Heading
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  ffc8d493-7a9d-42e6-bc9c-d8b9df2c8804:
+    contentColumnType: text
+    fieldGroup: null
+    handle: colorPalette
+    instructions: 'Set a theme colour for the page'
+    name: 'Page Colour'
+    searchable: false
+    settings:
+      palette: Default
+      useConfigFile: '1'
+    translationKeyFormat: null
+    translationMethod: none
+    type: percipioglobal\colourswatches\fields\ColourSwatches
+handle: heroMain
+name: 'Grid Header'
+sortOrder: 1

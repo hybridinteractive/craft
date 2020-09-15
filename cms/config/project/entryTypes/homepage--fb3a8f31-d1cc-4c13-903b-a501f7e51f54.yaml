@@ -1,7 +1,103 @@
+fieldLayouts:
+  6de3efb8-9621-4125-bd88-2fba5296903a:
+    tabs:
+      -
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\EntryTitleField
+            warning: null
+            width: 100
+          -
+            heading: 'Page Header'
+            type: craft\fieldlayoutelements\Heading
+          -
+            fieldUid: 373956bd-ab65-407b-a558-6a67fb1f74f4
+            instructions: 'Complete the matrix below to populate the homepage header'
+            label: 'Homepage Hero'
+            required: ''
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            heading: 'Page Content'
+            type: craft\fieldlayoutelements\Heading
+          -
+            fieldUid: 8f760830-6b64-449f-98d0-c8139dda7403
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+      -
+        elements:
+          -
+            heading: 'SEO Metadata'
+            type: craft\fieldlayoutelements\Heading
+          -
+            fieldUid: 6a3feb81-50ce-467a-8aca-b5d4cc12aed0
+            instructions: ''
+            label: 'Meta Description'
+            required: ''
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            heading: 'OpenGraph Image for shares on Social Media and others'
+            type: craft\fieldlayoutelements\Heading
+          -
+            fieldUid: 4d8b86c9-a2e1-4fb4-a836-76d1fecad043
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Metadata
+        sortOrder: 2
+      -
+        elements:
+          -
+            fieldUid: e691301b-7484-40be-a3d4-c3bc590de959
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Test
+        sortOrder: 3
 handle: homepage
 hasTitleField: false
 name: Homepage
 section: 54e60257-f31a-44aa-960e-bbd364197e28
 sortOrder: 1
 titleFormat: '{section.name|raw}'
-titleLabel: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

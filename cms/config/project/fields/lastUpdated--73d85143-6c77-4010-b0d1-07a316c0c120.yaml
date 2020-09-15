@@ -1,0 +1,11 @@
+contentColumnType: boolean
+fieldGroup: 0dd08fc1-c043-49cb-bdcf-80521b7bd98a
+handle: lastUpdated
+instructions: 'Toggle this lightswitch if you would like to display the created date and last time the entry has been updated on top of the page.'
+name: 'Show Update Date'
+searchable: false
+settings:
+  default: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

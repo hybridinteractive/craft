@@ -1,0 +1,14 @@
+{% if cssModifier is not defined %}
+    {% set cssModifier = '' %}
+{% elseif cssModifier|slice(0, 1) != ' ' %}
+    {% set cssModifier = ' ' ~ cssModifier %}
+{% endif %}
+
+
+<ul class="link-list{{ cssModifier|raw }}">
+    {% for item in list %}
+    <li class="link-list__item">
+        <a href="{{ item.linkUrl }}" class="link-list__link">{{ item.linkText }}</a>
+    </li>
+    {% endfor %}
+</ul>

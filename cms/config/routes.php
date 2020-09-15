@@ -20,5 +20,8 @@
 
 return [
     'amp' => ['template' => 'amp-index'],
+    '<slug>/amp' => ['template' => '_organisms/_amp-page'],
+    '<slug>/<slug>/amp' => ['template' => '_organisms/_amp-page'],
+    '<slug>/<slug>/<slug>/amp' => ['template' => '_organisms/_amp-page'],
     'api' => 'graphql/api',
 ];

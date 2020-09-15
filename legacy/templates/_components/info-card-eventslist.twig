@@ -1,0 +1,34 @@
+{#
+ # @param "entry"
+ # @param "cssModifier"(optional)
+ # @param "showDate"(optional)
+ #}
+
+{% if cssModifier is not defined %}
+    {% set cssModifier = '' %}
+{% elseif cssModifier|slice(0, 1) != ' ' %}
+    {% set cssModifier = ' ' ~ cssModifier %}
+{% endif %}
+
+{% set eventOptions = {
+    calendarId: 1,
+    limit: 3
+} %}
+
+{% set recentEvents = craft.calendar.events(eventOptions) %}
+
+<div class="info-card events-list-card{{ cssModifier|raw }}" data-equalizer-watch>
+    <ul class="entries-list">
+        {% for event in recentEvents.all() %}
+            <li class="entries-item">
+                <div class="date">{{ event.startDate|date('M d, Y') }}</div>
+                <div class="title"><a href="{{ event.url }}">{{ event.title }}</a></div>
+            </li>
+        {% else %}
+            <li class="entries-item">
+                No upcoming events
+            </li>
+        {% endfor %}
+    </ul>
+    <a class="button read-more" href="{{ url('news-and-events/event-calendar') }}">See All Events</a>
+</div>

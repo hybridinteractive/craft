@@ -1,0 +1,44 @@
+field: 8f760830-6b64-449f-98d0-c8139dda7403
+fieldLayouts:
+  73a6570d-acb1-4dc5-b358-91c1f61fab8a:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 8e430cf0-f2b1-4d4d-8c8a-b9b99411e360
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  8e430cf0-f2b1-4d4d-8c8a-b9b99411e360:
+    contentColumnType: string
+    fieldGroup: null
+    handle: cta
+    instructions: 'Select one or two entries to create a call to action block to the specific page or entry'
+    name: CTA
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      limit: '2'
+      localizeRelations: false
+      selectionLabel: 'Add an entry'
+      showSiteMenu: true
+      source: null
+      sources:
+        - 'section:9de367ab-77b8-47bb-bbc3-63e79a202c3e'
+        - 'section:ef841ba4-7bcd-4ef5-9c12-96377bf7fba2'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+handle: ctaBlock
+name: 'CTA Block'
+sortOrder: 10

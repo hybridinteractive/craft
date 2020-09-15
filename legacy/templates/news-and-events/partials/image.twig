@@ -1,0 +1,15 @@
+{% set headerImageUrl = (entry.headerImage.one is defined and entry.headerImage.one is not empty) ? entry.headerImage.one.url : '' %}
+
+{% block content %}
+    {% include '_components/header-image' with {'entry':entry, 'title':entry.title} %}
+
+    {% include '_components/breadcrumb' with {'entry':entry} %}
+
+    <section class="page-section">
+        <div class="row">
+            <div class="medium-9 medium-centered columns">
+                {{ entry.body }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

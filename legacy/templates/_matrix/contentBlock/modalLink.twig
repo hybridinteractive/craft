@@ -1,0 +1,31 @@
+{% set showModal = true %}
+
+{% if showModal %}
+
+    <div id="modalLink" class="reveal-modal salesforce-modal" data-reveal aria-labelledby="modalLinkTitle" aria-hidden="true" role="dialog" data-animation-in="slide-in">
+        <div class="row">
+            <div class="medium-6 medium-centered column text-center">
+                {% include '_components/modal-link' with {
+                    'heading': block.headline,
+                    'subtext': block.subtext,
+                    'linkUrl': block.linkUrl,
+                    'buttonText': block.buttonText
+                } %}
+            </div>
+        </div>
+        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        setTimeout(function () {
+            $(document).ready(function(){
+                $('#modalLink').foundation('reveal', 'open');
+                $('#modalLink .button').click(function() {
+                    $('#modalLink').foundation('reveal', 'close');
+                });
+            });
+        }, {{ block.delay|e('js') }});
+    </script>
+{% endif %}

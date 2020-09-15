@@ -1,0 +1,13 @@
+{% set image = block.image.one().url ?? '/images/member-benefit-img.jpg' %}
+
+<div class="member-benefit">
+    <div class="image-container">
+        <img src="{{- image -}}">
+    </div>
+
+    {{ block.body }}
+
+    <div class="benefit-text">
+        <a href="{{ block.buttonUrl }}" class="button">{{ block.buttonText }}</a>
+    </div>
+</div>

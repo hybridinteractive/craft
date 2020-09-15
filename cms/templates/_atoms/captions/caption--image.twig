@@ -1,0 +1,21 @@
+{# Figcaption #}
+{% macro caption(content, author = null, source = null, id, colour = 'default') %}
+    {% spaceless %}
+        <figcaption id="{{- id -}}" class="{{ colour != 'default' ? 'bg-' ~ colour ~ '-500' : 'bg-black-100' }} font-primary text-center text-sm text-white-100 italic p-4">
+            {{- content }}
+            {% if author and source -%}
+                &mdash; 
+                <a href="{{ source.url }}">
+                    <span>
+                        {{ author -}}
+                    </span>
+                    <span class="inline-block ml-2">
+                        <i class="far fa-external-link-alt"></i>
+                    </span>
+                </a>
+            {%- elseif author -%}
+                &mdash; {{ author -}}
+            {% endif -%}
+        </figcaption>
+    {% endspaceless %}
+{% endmacro %}

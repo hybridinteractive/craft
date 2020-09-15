@@ -1,0 +1,29 @@
+.news-entry {
+    img {
+        height: auto !important;
+    }
+}
+
+.news-social {
+    background-color: $smoke !important;
+}
+
+.news-social__header {
+    padding-top: rem-calc(32) !important;
+    padding-bottom: rem-calc(32) !important;
+    text-align: center !important;
+}
+
+.social-heading {
+    font-size: rem-calc(42);
+    text-transform: uppercase;
+}
+
+.news-section {
+    background-color: white;
+}
+
+.news-social-section {
+    overflow-x: hidden;
+    background-color: $smoke;
+}

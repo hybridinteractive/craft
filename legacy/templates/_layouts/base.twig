@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+    {% block head %}
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ url('apple-touch-icon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ url('favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ url('favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ url('site.webmanifest') }}">
+        <link rel="preconnect" href="//fonts.gstatic.com/" crossorigin>
+        <link rel='preconnect' href="//fonts.googleapis.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Raleway:300,400,500,600,700&display=swap" rel="stylesheet" crossorigin>
+
+        {# CSS References #}
+        {% block styles %}
+            {# Style files with HMR check #}
+            {{ craft.twigpack.includeCssModule("/dist/css/vendor.css") }}
+            {{ craft.twigpack.includeCssModule("/dist/css/main.css") }}
+        {% endblock %}
+
+        {# Includes that should be removed once integrated into build process #}
+        {% include "_global/includes" with {
+            position: "head"
+        }%}
+
+        {# Header Javascript #}
+        {% block headerJavascript %}
+        {% endblock %}
+
+        {# Head Tracking Scripts #}
+        {% include "_global/tracking" with {
+            position: "head",
+        }%}
+    {% endblock %}
+</head>
+<body {% if pageClass is defined %}class="{{ pageClass }}"{% endif %} {% if bodyClass is defined %}class="{{ bodyClass }}"{% endif %}>
+    {% include "_global/tracking" with {
+        position: "body-top",
+    }%}
+
+    {% block body %}{% endblock %}
+
+    {% block foot %}
+        {% block footerJavascript %}
+
+            {# Includes that should be removed once integrated into build process #}
+            {% include "_global/includes" with {
+                position: "foot"
+            }%}
+
+            {# ShareThis #}
+            <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=591bb3ca77132c00117cb2a4&product=inline-share-buttons' async></script>
+
+            <!-- Application Scripts with HMR check -->
+            {{ craft.twigpack.includeJsModule("/dist/js/manifest.js") }}
+            {{ craft.twigpack.includeJsModule("/dist/js/vendor.js") }}
+            {{ craft.twigpack.includeJsModule("/dist/js/main.js") }}
+        {% endblock %}
+
+        {% include "_global/tracking" with {
+            position: "body-bottom",
+        }%}
+    {% endblock %}
+    <div class="overlay"></div>
+</body>
+</html>

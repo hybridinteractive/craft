@@ -1,0 +1,22 @@
+{% extends "_layouts/base" %}
+
+{% set pageClass = '' %}
+{% if craft.app.request.segments|first is not empty %}
+    {% set pageClass = craft.app.request.segments|first %}
+    {% if craft.app.request.segments|first != craft.app.request.segments|last %}
+        {% set pageClass = pageClass ~ ' ' ~ craft.app.request.segments|last %}
+    {% endif %}
+{% endif %}
+
+{% block body %}
+    {# Facebook SDK Integration #}
+    <div id="fb-root"></div>
+
+    {% include "_global/top-navigation" %}
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% include "_global/footer" %}
+{% endblock %}

@@ -3,16 +3,43 @@ fieldLayouts:
   7d15571b-c1d6-4a10-ae40-f21cdc67cf8d:
     tabs:
       -
-        fields:
-          4285cde2-58a1-4cde-aba3-ccdced328ee2:
+        elements:
+          -
+            fieldUid: 6fcc732b-3375-496d-92b8-64f3dcc00d00
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: e7b63d80-91cc-438a-b670-59cbb778ca14
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 4285cde2-58a1-4cde-aba3-ccdced328ee2
+            instructions: null
+            label: null
             required: false
-            sortOrder: 3
-          6fcc732b-3375-496d-92b8-64f3dcc00d00:
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: c9f01c03-9178-4937-a2bd-c746613426bf
+            instructions: null
+            label: null
             required: true
-            sortOrder: 1
-          e7b63d80-91cc-438a-b670-59cbb778ca14:
-            required: true
-            sortOrder: 2
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
         name: Content
         sortOrder: 1
 fields:
@@ -21,7 +48,7 @@ fields:
     fieldGroup: null
     handle: buttons
     instructions: 'Optionally add a button to the section that can refer to another page or entry.'
-    name: Button
+    name: Buttons
     searchable: false
     settings:
       columns:
@@ -33,56 +60,84 @@ fields:
                 -
                   - width
                   - ''
-          -
-            - 3f37c536-3682-4856-a6af-a9f582d4c782
-            -
-              __assoc__:
-                -
-                  - width
-                  - ''
       contentTable: '{{%stc_1_buttons}}'
-      fieldLayout: matrix
-      maxRows: '1'
-      minRows: '1'
+      fieldLayout: row
+      maxRows: '2'
+      minRows: ''
+      placeholderKey: null
       propagationMethod: all
-      selectionLabel: ''
-      staticField: '1'
+      selectionLabel: 'Add button'
+      staticField: ''
     translationKeyFormat: null
     translationMethod: site
     type: verbb\supertable\fields\SuperTableField
   6fcc732b-3375-496d-92b8-64f3dcc00d00:
-    contentColumnType: text
+    contentColumnType: string(192)
     fieldGroup: null
     handle: header
-    instructions: 'Enter a section heading from an article or a page, a page can contain multiple sections, this is preferably 1 -3 words.'
-    name: Header
+    instructions: 'Enter a section heading from an article or a page, a page can contain multiple sections, this is preferably 1-5 words.'
+    name: Heading
     searchable: true
     settings:
       byteLimit: null
-      charLimit: null
+      charLimit: 48
       code: ''
       columnType: null
       initialRows: '4'
       multiline: ''
       placeholder: ''
+      uiMode: normal
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
+  c9f01c03-9178-4937-a2bd-c746613426bf:
+    contentColumnType: string
+    fieldGroup: null
+    handle: position
+    instructions: ''
+    name: Position
+    searchable: false
+    settings:
+      default: full
+      options:
+        __assoc__:
+          -
+            - left
+            - ''
+          -
+            - center
+            - '1'
+          -
+            - right
+            - ''
+          -
+            - full
+            - '1'
+          -
+            - drop-left
+            - ''
+          -
+            - drop-right
+            - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: rias\positionfieldtype\fields\Position
   e7b63d80-91cc-438a-b670-59cbb778ca14:
-    contentColumnType: string(480)
+    contentColumnType: string(640)
     fieldGroup: null
     handle: description
-    instructions: 'Enter a short description what the section is about. Maximum 120 characters.'
-    name: Description
+    instructions: 'A short introductory paragraph in an article that summaries the page / article.'
+    name: Standfirst
     searchable: true
     settings:
       byteLimit: null
-      charLimit: 120
+      charLimit: 160
       code: ''
       columnType: null
       initialRows: '4'
       multiline: ''
       placeholder: ''
+      uiMode: normal
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText

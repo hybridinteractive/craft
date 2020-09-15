@@ -1,0 +1,123 @@
+$circle-size: 18vw;
+
+.circle-features {
+    padding-bottom: rem-calc(200);
+    .large-4 {
+        padding: 0 rem-calc(40);
+    }
+    .clip-circle {
+        position:relative;
+
+        @include transition(0.3s);
+        @include radius(50%);
+        @include box-shadow(0 0 8px 1px rgba(0,0,0,0));
+        
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        width:  $circle-size*2.5;
+        height: $circle-size*2.5;
+
+        text-align: center;
+        display: block;
+        margin:0 auto rem-calc(80);
+        
+        h3 {
+            opacity:1;
+            pointer-events: none;
+            position: absolute;
+            font-weight:200;
+            left: 50%;
+            top: 100%;
+            margin-top:rem-calc(20);
+            @include transition(0.3s);
+            @include translate3d(-50%, 0, 0);
+            &:after {
+                display:block;
+                content:" ";
+                margin:0 auto;
+                width:0%;
+                height:2px;
+                background-color:$smoke;
+                @include transition(0.3s);
+            }
+        }
+        &:before { // Circle outline
+            display: block;
+            content: "";
+            background: transparent;
+            opacity:0;
+            border: solid 2px $smoke;
+
+            position:absolute;
+            height:100%;
+            width: 100%;
+            left: 50%;
+            top: 50%;
+
+            @include translate3d(-50%, -50%, 0);
+            @include radius(50%);
+            @include transition(0.3s);
+        }
+
+        &:after { // Black BG
+            display:block; 
+            content: "";
+            background: rgba(0,0,0,0);
+            position:absolute;
+            height:100%;
+            width:100%;
+            top:0;
+            left:0;
+            z-index:-1;
+            @include transition(0.3s);
+            @include radius(50%);
+        }
+
+        &:hover {
+            @include box-shadow(0 0 8px 1px rgba(0,0,0,0.6));
+            @include scale3d(1.05, 1.05, 1);
+            &:before {
+                opacity:0.5;
+                height:90%;
+                width: 90%;
+            }
+            &:after {background: rgba(0,0,0,0.5);}
+            h3 {
+                opacity:1;
+                font-weight:300;
+                top:42%;
+                color: $smoke;
+                @include translate3d(-50%, -50%, 0);
+                &:after {
+                    width:100%;
+                    transition-delay: 0.32s;
+                }
+            }
+        }
+
+        @media #{$large-up} {
+            width:  $circle-size;
+            height: $circle-size;
+            max-width: rem-calc(300);
+            max-height: rem-calc(300);
+        }
+        @media #{$medium-only} {
+            width:  $circle-size*1.5;
+            height: $circle-size*1.5;
+        }
+
+        
+    }
+    h2 {
+        font-weight: 400;
+        color: $oil;
+        margin-bottom: rem-calc(50);
+    }
+    h3 {
+        text-transform: uppercase;
+        color: $oil;
+        font-weight: 600;
+    }
+}

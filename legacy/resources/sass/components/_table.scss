@@ -1,0 +1,44 @@
+.page-section:not(.calendar-section) table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin: rem-calc(30 0);
+
+    // All Cells
+    th,
+    td {
+        padding: rem-calc(6 26);
+    }
+
+    // Head
+    thead {
+        tr {
+            th,
+            td {
+                border-bottom: solid 2px $dark-orange;
+                text-align: center;
+                color: $oil;
+            }
+        }
+    }
+
+    // Body
+    tbody {
+        tr {
+            &:nth-of-type(odd) {
+                td {
+                    background-color: $smoke;
+                    border-right: solid 2px #FFF;
+                    &:last-of-type {
+                        border-right: 0;
+                    }
+                }
+            }
+            &:last-of-type {
+                // If last row is not an odd row, put a border below it.
+                &:not(:nth-of-type(odd)) {
+                    border-bottom: solid 1px #AAA;
+                }
+            }
+        }
+    }
+}

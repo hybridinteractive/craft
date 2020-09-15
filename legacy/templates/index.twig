@@ -1,0 +1,102 @@
+{# Homepage template #}
+{% extends '_layouts/site' %}
+
+{% block content %}
+    {% cache %}
+
+        {# Hero Slider #}
+        {% include '_components/hero-slider' with {'slider': entry.heroSlider, 'cssModifier': 'home-slider'} %}
+
+        {# Our Approach Slider #}
+        <section id="content-begin" class="page-section">
+            <div class="row">
+                <div class="column large-8 large-centered text-center">
+                    {% if entry.ourApproachHeadline is not empty %}
+                        <h2 class="title">{{ entry.ourApproachHeadline }}</h2>
+                    {% endif %}
+                    {% if entry.ourApproachSubtext is not empty %}
+                        {{ entry.ourApproachSubtext }}
+                    {% endif %}
+                </div>
+            </div>
+            {% include '_components/slider' with {slides: entry.meetTheAccessFundEntries} %}
+        </section>
+
+        {# Current Campaigns Slider #}
+        <section class="page-section">
+            <div class="row">
+                <div class="column large-8 large-centered text-center">
+                    {% if entry.currentCampaignsHeadline is not empty %}
+                        <h2 class="title">{{ entry.currentCampaignsHeadline }}</h2>
+                    {% endif %}
+                    {% if entry.currentCampaignsSubtext is not empty %}
+                        <p>{{ entry.currentCampaignsSubtext }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% include '_components/slider' with {slides: entry.campaigns, 'textTop': false} %}
+        </section>
+
+
+        {# Blog Entries - Triple Feature #}
+        <section class="page-section">
+            <div class="row">
+                <div class="column large-8 large-centered text-center">
+                    {% if entry.blogFeatureHeadline is not empty %}
+                        <h2 class="title">{{ entry.blogFeatureHeadline }}</h2>
+                    {% endif %}
+                    {% if entry.blogFeatureSubtext is not empty %}
+                        <p>{{ entry.blogFeatureSubtext }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% include '_components/triple-feature' with {entries: entry.blogEntries} %}
+        </section>
+    {% endcache %}
+
+        <section class="page-section">
+            <div class="row">
+                <div class="column large-8 large-centered text-center">
+                    {% include '_components/salesforce-signup' with {'redirect': url('pages/thank-you-for-subscribing')} %}
+                </div>
+            </div>
+        </section>
+
+        {# News & Events #}
+        {% if entry.newsAndEventsBackgroundImage|length > 0 %}
+            {% set bg = entry.newsAndEventsBackgroundImage.one() ?: 'https://placehold.it/1000x500' %}
+            {% set transformedImage = craft.imager.transformImage(bg, { width: 1600, jpegQuality: 80 }) %}
+        {% endif %}
+
+        <section class="page-section news-events lazy" data-type="img-bg" data-src="{{ transformedImage }}">
+            <div class="row show-for-large-up">
+                <div class="medium-8 medium-centered large-uncentered large-6 columns events">
+                    <h3 class="subtitle">Upcoming Events</h3>
+                </div>
+                <div class="medium-8 medium-centered large-uncentered large-6 columns news">
+                    <h3 class="subtitle">Access Fund News</h3>
+                </div>
+            </div>
+            <div class="row" data-equalizer>
+                <div class="medium-8 medium-centered large-push-6 large-uncentered large-6 columns news">
+                    <h3 class="subtitle hide-for-large-up">Access Fund News</h3>
+
+                    {# Access Fund News: 3 most recent news entries #}
+                    {% include '_components/info-card-newslist' %}
+                </div>
+                <div class="medium-8 medium-centered large-pull-6 large-uncentered large-6 columns events">
+                    <h3 class="subtitle hide-for-large-up">Upcoming Events</h3>
+
+                    {# Upcoming Events: 3 most upcoming events from google cal #}
+                    {% include '_components/info-card-eventslist' with {'entry': true} %}
+                </div>
+                {% if entry.newsAndEventsBackgroundImage|length > 0 and entry.newsAndEventsBackgroundImage.one.photoCredit is not empty %}
+                    <span class="photo-credit">
+                        <img src="/images/camera.png" class="credit-icon" alt="Credit">
+                        <small class="credit text-right"><strong>Photo Courtesy of:</strong><br/>{{ entry.newsAndEventsBackgroundImage.one.photoCredit }}</small>
+                    </span>
+                {% endif %}
+            </div>
+        </section>
+{% endblock %}

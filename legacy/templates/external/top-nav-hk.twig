@@ -1,0 +1,46 @@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+{% spaceless %}
+{% set topNavigation %}
+{# % cache globally for 1 year % #}
+<header id="header" class="show-on-scroll nav-button-corner-style-pill enable-nav-button" data-offset-el=".index-section" data-offset-behavior="bottom" role="banner">
+    <div class="header-inner" id="yui_3_17_2_1_1508298305165_148">
+        <div id="siteTitleWrapper" class="wrapper" data-content-field="site-title">
+            
+            <h1 id="siteTitle" class="site-title"><a href="https://www.haydenfund.org/">Hayden Fund</a></h1>
+            
+        </div><!--
+        --><div class="mobile-nav-toggle"><div class="top-bar"></div><div class="middle-bar"></div><div class="bottom-bar"></div></div><div class="mobile-nav-toggle fixed-nav-toggle"><div class="top-bar"></div><div class="middle-bar"></div><div class="bottom-bar"></div></div><!--
+          --><div id="headerNav">
+
+  <div id="mainNavWrapper" class="hk-nav-wrapper" data-content-field="navigation-mainNav">
+    <nav id="mainNavigation" data-content-field="navigation-mainNav">
+            
+          <div class="external">
+            <a href="https://www.haydenfund.org/">
+              Go Back
+            </a>
+          </div>
+          
+    </nav>
+  </div>
+  <!-- style below blocks out the mobile nav toggle only when nav is loaded -->
+  <style>.mobile-nav-toggle-label { display: inline-block !important; }</style>
+        </div>
+    </div>
+</header>
+{# % endcache % #}
+{% endset %}
+
+{% if (craft.request.getSegment(1) is not empty) %}
+    {{ topNavigation|replace(craft.request.getSegment(1) ~ '-link', craft.request.getSegment(1) ~ '-link active') | raw }}
+{% else %}
+    {{ topNavigation }}
+{% endif %}
+<div class="row">
+    <div class="twelve columns">
+        <div class="alert alert-danger alert-dismissible alert-box" role="alert" style="display: none; margin-top: 50px;">
+            <span class="error-message"><strong>Warning!</strong> Error messages will appear here.</span>
+        </div>
+    </div>
+</div>
+{% endspaceless %}

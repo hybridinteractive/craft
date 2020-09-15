@@ -1,0 +1,312 @@
+field: 8f760830-6b64-449f-98d0-c8139dda7403
+fieldLayouts:
+  4ad4fb92-def1-4784-9377-daf732b56c8f:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 72726d23-c6c7-4f22-a468-23bc6d54e74c
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 3ce3e886-ee1a-4bc0-8257-f8fc24fb126c
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 12791cb8-9e86-4aad-9ca3-316ed9e7952b
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 31d1b0a2-0e42-43f8-a43b-d67c5c5ef5de
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 5c80ab21-a6df-4a9a-b1ec-d327e26d4618
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  12791cb8-9e86-4aad-9ca3-316ed9e7952b:
+    contentColumnType: text
+    fieldGroup: null
+    handle: quote
+    instructions: 'Enter your quote.'
+    name: Quote
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: '1'
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  31d1b0a2-0e42-43f8-a43b-d67c5c5ef5de:
+    contentColumnType: text
+    fieldGroup: null
+    handle: source
+    instructions: 'Add the author / person who the quote belongs to'
+    name: Source
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  3ce3e886-ee1a-4bc0-8257-f8fc24fb126c:
+    contentColumnType: string
+    fieldGroup: null
+    handle: position
+    instructions: 'The position field only has an influence when the type Pull Quote has been selected.'
+    name: Position
+    searchable: false
+    settings:
+      default: full
+      options:
+        __assoc__:
+          -
+            - left
+            - '1'
+          -
+            - center
+            - ''
+          -
+            - right
+            - '1'
+          -
+            - full
+            - '1'
+          -
+            - drop-left
+            - ''
+          -
+            - drop-right
+            - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: rias\positionfieldtype\fields\Position
+  5c80ab21-a6df-4a9a-b1ec-d327e26d4618:
+    contentColumnType: string
+    fieldGroup: null
+    handle: quoteSource
+    instructions: 'Select an entry or enter an external url to point to the source of the quote.'
+    name: 'Source Link'
+    searchable: false
+    settings:
+      allowCustomText: true
+      allowTarget: true
+      autoNoReferrer: true
+      defaultLinkName: entry
+      defaultText: ''
+      enableAllLinkTypes: false
+      enableAriaLabel: false
+      enableElementCache: false
+      enableTitle: false
+      typeSettings:
+        __assoc__:
+          -
+            - asset
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - false
+                -
+                  - allowCustomQuery
+                  - false
+                -
+                  - allowCrossSiteLink
+                  - false
+                -
+                  - sources
+                  - '*'
+          -
+            - category
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - false
+                -
+                  - allowCustomQuery
+                  - false
+                -
+                  - allowCrossSiteLink
+                  - false
+                -
+                  - sources
+                  - '*'
+          -
+            - entry
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - true
+                -
+                  - allowCustomQuery
+                  - false
+                -
+                  - allowCrossSiteLink
+                  - false
+                -
+                  - sources
+                  -
+                    - 'section:9de367ab-77b8-47bb-bbc3-63e79a202c3e'
+                    - 'section:ef841ba4-7bcd-4ef5-9c12-96377bf7fba2'
+          -
+            - site
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - false
+                -
+                  - sites
+                  - '*'
+          -
+            - user
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - false
+                -
+                  - allowCustomQuery
+                  - false
+                -
+                  - allowCrossSiteLink
+                  - false
+                -
+                  - sources
+                  - '*'
+          -
+            - custom
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - false
+                -
+                  - allowAliases
+                  - false
+                -
+                  - disableValidation
+                  - false
+          -
+            - email
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - false
+                -
+                  - allowAliases
+                  - false
+                -
+                  - disableValidation
+                  - false
+          -
+            - tel
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - false
+                -
+                  - allowAliases
+                  - false
+                -
+                  - disableValidation
+                  - false
+          -
+            - url
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - true
+                -
+                  - allowAliases
+                  - false
+                -
+                  - disableValidation
+                  - false
+    translationKeyFormat: null
+    translationMethod: none
+    type: lenz\linkfield\fields\LinkField
+  72726d23-c6c7-4f22-a468-23bc6d54e74c:
+    contentColumnType: string
+    fieldGroup: null
+    handle: quoteType
+    instructions: 'Choose the type of quote.'
+    name: Type
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'Block Quote'
+            -
+              - value
+              - blockQuote
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - 'Pull Qoute'
+            -
+              - value
+              - pullQoute
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+handle: blockQuote
+name: Quotation
+sortOrder: 9

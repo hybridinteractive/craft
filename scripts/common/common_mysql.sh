@@ -21,7 +21,6 @@ done
 # Additional arguments for mysqldump
 MYSQLDUMP_ADDITIONAL_ARGS=""
 MYSQLDUMP_ADDITIONAL_ARGS+="--add-drop-table "
-MYSQLDUMP_ADDITIONAL_ARGS+="--no-tablespaces "
 MYSQLDUMP_ADDITIONAL_ARGS+="--comments "
 MYSQLDUMP_ADDITIONAL_ARGS+="--create-options "
 MYSQLDUMP_ADDITIONAL_ARGS+="--dump-date "
@@ -29,7 +28,6 @@ MYSQLDUMP_ADDITIONAL_ARGS+="--no-autocommit "
 MYSQLDUMP_ADDITIONAL_ARGS+="--routines "
 MYSQLDUMP_ADDITIONAL_ARGS+="--set-charset "
 MYSQLDUMP_ADDITIONAL_ARGS+="--triggers "
-MYSQLDUMP_ADDITIONAL_ARGS+="--column-statistics=0 "
 
 # Arguments to dump just the schema
 MYSQLDUMP_SCHEMA_ARGS=""

@@ -1,0 +1,41 @@
+.columns .form-card {
+    padding: rem-calc(35);
+    background: rgba(255,255,255,0.9);
+    .text-content {
+        font-size: rem-calc(20);
+        line-height: 1.5em;
+    }
+    .form {
+        @include clearfix;
+    }
+    .text-input,
+    .select {
+        padding: rem-calc(16);
+        height: auto;
+        float: left;
+        //text-transform: uppercase;
+        font-size: rem-calc(19);
+    }
+    .select {
+        margin-bottom: 0;
+    }
+    .button {
+        margin: 0;
+    }
+    .submit[type="submit"] {
+        margin-top: rem-calc(20);
+    }
+    @media #{$medium-up} {
+        .select {
+            float: left;
+            width: 48%;
+        }
+        .button {
+            float: right;
+            width: 48%;
+        }
+        .submit[type="submit"] {
+            margin-top: rem-calc(0);
+        }
+    }
+}

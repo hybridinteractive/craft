@@ -1,0 +1,6 @@
+{# Date #}
+{% macro formatDate(date) %}
+    {% spaceless %}
+        {{- date | date('j F, Y') -}}
+    {% endspaceless %}
+{% endmacro %}

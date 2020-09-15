@@ -1,0 +1,88 @@
+{% do craft.eagerBeaver.eagerLoadElements(entry, [
+    'pageBuilder',
+    'highlightCards:cards',
+    'sectionHeader:buttons',
+    'singleImage:image',
+    'slide:image',
+    'resourceList:resources:resource',
+    'faqList:questions',
+    'author:profilePhoto',
+    'galleryImages:images',
+    'ctaBlock:cta',
+    ]) 
+%}
+
+<div class="container max-w-screen-hd mx-auto">
+    
+    {%- minify -%}
+        {%- for block in content.pageBuilder -%}
+            {%- switch block.type -%}
+                
+                {%- case "article" -%}
+                    
+                    {%- include '_molecules/content/content--article' ignore missing with {
+                        content: block,
+                    } -%}
+
+                {%- case "ctaBlock" -%}
+                    
+                    {%- include '_organisms/cta/cta--blocks' ignore missing with {
+                        content: block,
+                    } -%}
+
+                {%- case "footnotes" -%}
+                    
+                    {%- include '_molecules/content/content--footnotes' ignore missing with {
+                        content: block,
+                    } -%}
+                
+                {%- case "blockQuote" -%}
+                    
+                    {%- include '_molecules/quotes/quotes--block' ignore missing with {
+                        content: block,
+                    } -%}
+                
+                {%- case "sectionHeader" -%}
+                    
+                    {%- include '_molecules/headers/header--section' ignore missing with {
+                        content: block,
+                        type: 'normal',
+                    } -%}
+                
+                {%- case "singleImage" -%}
+                
+                    {%- include '_molecules/images/image--single' ignore missing with {
+                        content: block,
+                    } -%}
+
+                {%- case "galleryImages" -%}
+                
+                    {%- include '_molecules/images/image--gallery' ignore missing with {
+                        content: block,
+                    } -%}
+
+                {%- case "highlightCards" -%}
+            
+                    {%- include '_organisms/cards/cards--highlight' ignore missing with {
+                        content: block,
+                        type: 'content',
+                    } -%}
+
+                {%- case "resourceList" -%}
+            
+                    {%- include '_organisms/lists/list--resources' ignore missing with {
+                        content: block,
+                    } -%}
+
+                {%- case "faqList" -%}
+        
+                    {%- include '_organisms/lists/list--faq.twig' ignore missing with {
+                        content: block,
+                    } -%}
+                
+            {%- endswitch -%}
+                
+        {%- endfor -%}
+    {%- endminify -%}
+
+</div>

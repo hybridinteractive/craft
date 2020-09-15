@@ -1,0 +1,103 @@
+{% import '_macros/atoms' as atom %}
+
+<section class="w-full">
+    <div class="
+        md:grid grid-cols-1 grid-rows-5 grid-flow-row 
+        md:grid-cols-4 md:grid-rows-2 md:grid-flow-col
+        xl:grid-cols-3 
+        gap-0
+    ">
+        {%- switch content.type -%}
+
+            {%- case 'newsPage' -%}
+
+                {%- set content = craft.entries.section('news')
+                    .with(['teaserImage', 'newsCategory'])
+                    .orderBy('postDate desc')
+                    .limit(1)
+                    .one() -%}
+
+                    <div class="
+                        relative
+                        row-start-1 row-span-2
+                        md:col-span-2 md:row-start-1
+                    ">
+                        {{- atom.featured_image(content.teaserImage[0] ?? placeholder.teaserPlaceholder[0], content.title, 'is4by3 lg:is21by9') -}}
+                        <div class="absolute bottom-0 right-0 p-8">
+                            <span class="uppercase bg-secondary-500 px-4 py-2 rounded-full font-secondary text-white-90 text-xs tracking-wide font-medium">
+                                {{- content.newsCategory[0].title ?? 'No Category' }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="
+                        row-auto row-start-1
+                        md:col-span-2
+                        xl:row-span-1 xl:col-span-1
+                        bg-white-100 p-8 md:p-16 flex flex-col justify-between
+                        md:min-h-96"
+                    >
+                        <h3 class="mb-16 md:mb-auto font-bold text-6xl text-black capitalize tracking-wider font-secondary leading-none">{{- content.type -}}</h3>
+                        <div class="text-xs leading-tight text-black-100 tracking-wider">
+                            <address rel="author" class="text-2xl font-primary font-semibold leading-none not-italic mb-1">{{- content.author -}}</address>
+                            <time datetime="{{- entry.postDate|date('c') -}}" class="text-sm font-primary font-medium uppercase tracking-wide leading-normal">{{- atom.formatDate(content.postDate) -}}</time>
+                        </div>
+                        <div class="my-8 md:my-auto">
+                            <a href="{{- content.url -}}" class="font-secondary font-medium tracking-wide uppercase text-white-100 px-8 py-4 text-lg rounded-full bg-secondary-500 hover:bg-secondary-400 transition-colors ease-in-out duration-150">
+                                Read Article
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="
+                        row-start-4 row-span-2
+                        md:col-span-2 md:row-start-2
+                        xl:row-span-1 xl:col-span-1
+                        bg-primary-500 text-left p-8 py-16 md:p-16"
+                    >
+                        <h4 class="break-words text-2xl md:text-4xl font-secondary text-white-100 font-semibold leading-tight print:text-black-100">
+                            <a href="{{- content.url -}}">
+                                {{- atom.text(content.title) -}}
+                            </a>
+                        </h4>
+                    </div>
+
+            {%- default -%}
+                <div class="
+                    row-auto row-start-1
+                    md:col-span-2
+                    xl:row-span-1 xl:col-span-1
+                    {{ colour != 'default' ? 'bg-' ~ colour ~ '-500' : 'bg-black-100' }} p-8 lg:p-16
+                ">
+                    {{- atom.a11y(content.heading) -}}
+                    <h2 class="font-medium text-white-90 text-4xl lg:text-6xl tracking-wider leading-tight font-secondary">
+                        {{- atom.text(content.heading) -}}
+                    </h2> 
+                </div>
+                <div class="
+                    row-start-4 row-span-2
+                    md:col-span-2 md:row-start-2
+                    xl:row-span-1 xl:col-span-1
+                    bg-white-90 p-8 lg:p-16 flex flex-col justify-center
+                ">
+                    <p class="font-medium tracking-wider text-xl leading-normal">
+                        {{- atom.text(content.description) -}}
+                    </p>
+                    {%- if content.buttons | length -%}
+                        <div class="flex mt-8 flex-no-wrap">
+                            {%- for row in content.buttons.all() -%}
+                                {% set buttonClass = colour != 'default' ? ( colour == 'primary' ? 'bg-secondary-500 hover:bg-secondary-400' : 'bg-primary-500 hover:bg-primary-400' ) : 'bg-black-100 hover:bg-gray-800' %}
+                                {{- atom.button(row.target.getUrl(), row.target.customText() ?? row.target.getText(), buttonClass ~ ' text-white-90 hover:text-white-100') -}}
+                            {%- endfor -%}
+                        </div>
+                    {%- endif -%}
+                </div>
+                <div class="
+                    row-start-2 row-span-2
+                    md:col-span-2 md:row-start-1
+                ">
+                    {{- atom.hero_image(content.image[0], content.image[0].caption ?? content.image[0].title) -}}
+                </div>
+        {%- endswitch -%}
+    </div>
+</section>

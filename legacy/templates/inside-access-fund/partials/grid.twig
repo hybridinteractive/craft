@@ -1,0 +1,9 @@
+{% include '_components/header-image' with {'entry': entry, 'title': entry.title} %}
+
+{% include '_components/breadcrumb' with {'emptyCrumbs':true} %}
+
+<section class="page-section">
+    <div class="bg-smoke vertical-padding">
+        {% include '_components/staff' with {'entries': entry.children} %}
+    </div>
+</section>

@@ -1,0 +1,34 @@
+{% extends '_layouts/site' %}
+
+{% set entry = craft.entries.slug('eventcalendar').one() %}
+
+{% set headerImageUrl = (entry.headerImage.one is defined and entry.headerImage.one is not empty) ? entry.headerImage.one.url : '' %}
+
+{% block content %}
+    {# Hero Slider #}
+    {% include '_components/header-image' with {'entry':entry, 'title':entry.title} %}
+
+    <ul class="breadcrumbs">
+        {# Section Link #}
+        <li>{{ 'News & Events'|e }}</li>
+
+        {# Entry title #}
+        {% if entry.title is defined %}
+            <li class="current">{{ entry.title }}</li>
+        {% endif %}
+    </ul>
+
+    <section class="page-section calendar-section">
+        <div class="row">
+            <div class="column large-11 large-centered">
+                <div class="text-center">{{ entry.body }}</div>
+                {# Event Calendar #}
+                {% include '_components/calendar' %}
+            </div>
+        </div>
+    </section>
+    <section class="page-section">
+        {# E-News Signup #}
+        {% include '_components/enews-signup' %}
+    </section>
+{% endblock %}

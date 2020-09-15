@@ -1,0 +1,94 @@
+ {# If slideImageLeftBackground has an image, use it. Otherwise use a placeholder. #}
+ {% set imageLeftBackground = 'https://placehold.it/795x455' %}
+ {% if entry.slideImageLeftBackground|length > 0 %}
+ {% set imageLeftBackground = entry.slideImageLeftBackground.one.getUrl(sliderImageTransform) %}
+ {% endif %}
+ 
+ {# If slideImageRightBackground has an image, use it. Otherwise use a placeholder. #}
+ {% set imageRightBackground = '' %}
+ {% if entry.slideImageRightBackground|length > 0 %}
+ {% set imageRightBackground = entry.slideImageRightBackground.one.getUrl(sliderImageTransform) %}
+ {% endif %}
+ 
+ {# If slideUrlOverride is filled out, use it. Otherwise use the entry URL. #}
+ {% set url = entry.url %}
+ {% if entry.slideUrlOverride is not empty %}
+ {% set url = entry.slideUrlOverride %}
+ {% endif %}
+ 
+ {# Use slideSummary if it's filled out. Fall back to the first 50 words in the main body #}
+ {% set summary = '' %}
+ {% if entry.slideSummary is not empty %}
+ {% set summary = entry.slideSummary %}
+ {% elseif entry.body is not empty %}
+ {% set summary = entry.body|hacksaw(limit=50, unit='w') %}
+ {% endif %}
+ 
+ {# Upper case all characters in summary if "upper" is passed in #}
+ {% if upper is defined and upper == true %}
+ {% set summary = summary|upper %}
+ {% endif %}
+ 
+ {# Video #}
+ {% set vimeoID = (entry.vimeoID is defined and entry.vimeoID is not empty) ? entry.vimeoID : '' %}
+ 
+ {# Slide #}
+ <div>
+    {% if textTop == true %}
+    <div class="row textTop" data-equalizer-watch="description">
+        <div class="column large-8 large-centered text-center">
+            {% if entry.slideHeadline is not empty %}
+            <h3 class="subtitle">{{ entry.slideHeadline }}</h3>
+            {% endif %}
+            <p>
+                {{ summary }}
+                <a href="{{ url }}" class="learn-more">Learn More</a>
+            </p>
+        </div>
+    </div>
+    {% endif %}
+    {% if vimeoID is not empty %}
+    <a class="slanted-image video-modal-link" href="#" data-reveal-id="video-{{ vimeoID }}">
+        <div class="background lazy" data-type="img-bg" data-src="{{ imageLeftBackground }}"></div>
+    </a>
+    {% else %}
+    <div class="slanted-image">
+        <div class="background lazy" data-type="img-bg" data-src="{{ imageLeftBackground }}">
+            {% if entry.slideImageLeftBackground.one.photoCredit is defined and entry.slideImageLeftBackground.one.photoCredit is not empty %}
+            <span class="photo-credit">
+                <img src="/images/camera.png" class="credit-icon" alt="Credit">
+                <small class="credit text-left"><strong>Photo Courtesy of:</strong><br/>{{ entry.slideImageLeftBackground.one.photoCredit }}</small>
+            </span>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    <div class="slide-content gradient{% if textTop == true %} has-image{% endif %}" style="background-image: linear-gradient(rgba(255,255,255,0.89), rgba(255,255,255,0.89)), url('{{ imageRightBackground }}'); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e3ffffff', endColorstr='#e3ffffff',GradientType=0 ) progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{{ imageRightBackground }}');" {% if textTop == false %}data-equalizer-watch="slide"{% endif %}>
+        {% if textTop == true %}
+        {% if entry.slideImageRight|length > 0 %}
+        <img class="content-image" src="{{ entry.slideImageRight.one.url }}">
+        {% endif %}
+        {% else %}
+        {% if entry.slideHeadline is not empty %}
+        <h3>{{ entry.slideHeadline }}</h3>
+        {% endif %}
+        {{ summary }} <br />
+        {% if entry.slideButtonText is not empty %}
+        <a href="{{ url }}" class="button">{{ entry.slideButtonText }}</a>
+        {% endif %}
+        {% endif %}
+    </div>
+    {% if vimeoID is not empty %}
+    <!-- THE MODAL -->
+    <!-- ID is the Vimeo video ID pulled from a CMS field -->
+    <div id="video-{{ vimeoID }}" class="reveal-modal video-modal medium" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+        <!-- VIMEO PLAYER -->
+        <div class="flex-video widescreen vimeo">
+            <!-- Replace last part of URL with ID -->
+            <iframe src="https://player.vimeo.com/video/{{ vimeoID }}" width="1920" height="1080" frameborder="0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+        <!-- CLOSE MODAL BUTTON -->
+        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
+    {% endif %}
+</div>

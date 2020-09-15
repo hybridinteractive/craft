@@ -1,0 +1,9 @@
+handle: primaryNavigation
+instructions: 'Add items to display in the main navigation at the top of the page.'
+maxNodes: ''
+name: 'Primary Navigation'
+propagateNodes: true
+sortOrder: 1
+structure:
+  maxLevels: '2'
+  uid: 21d7327f-58cf-4f06-a033-a6e615615963

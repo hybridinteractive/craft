@@ -1,0 +1,176 @@
+{% extends '_layouts/site' %}
+
+{% set headerImageUrl = (entry.headerImage.one is defined and entry.headerImage.one is not empty) ? entry.headerImage.one.url : '' %}
+
+{% if cssModifier is not defined %}
+    {% set cssModifier = '' %}
+{% elseif cssModifier|slice(0, 1) != ' ' %}
+    {% set cssModifier = ' ' ~ cssModifier %}
+{% endif %}
+
+{% set limit = 3 %}
+{% set newsEntries = craft.entries.section('newsEntries').relatedTo(entry).orderBy('postDate desc').limit(limit).all() %}
+{% set campaignEntries = craft.entries.section('campaignEntries').relatedTo(entry).orderBy('postDate desc').limit(limit).all() %}
+{% set blogEntries = craft.entries.section('blogEntries').relatedTo(entry).orderBy('postDate desc').limit(limit).all() %}
+{% set mergedEntries = newsEntries|merge(campaignEntries)|merge(blogEntries)|multisort('postDate', direction=SORT_DESC)|slice(0, limit) %}
+
+
+{# arc IDs can be accessed via mapSinglePage.epicSaveArcId and mapSinglePage.standardSaveArcId #}
+{% set mapSinglePage = craft.entries.section('impactMap').one %}
+
+{% set elementCriteria      = craft.entries.section('impactMapEntries').showOnMap(1) %}
+
+{% set solutionId = 'all' %}
+{% set solution = entry.impactMapSolutions.one() ?? null %}
+{% if solution %}
+  {% set solutionId = solution.id %}
+  {% set solutions            = craft.categories.group('impactMapSolutions').all(null) %}
+{% endif %}
+
+{% set epicSaves            = elementCriteria.all(null)  %}
+
+
+{% block styles %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1.0.0-rc.3/leaflet.css" />
+
+    <link href="//fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url('/external/css/leaflet.rrose.css') }}"/>
+    <link rel="stylesheet" href="{{ url('/external/css/impactMapEsri.css') }}"/>
+    <link rel="stylesheet" href="{{ url('/external/css/jquery.powertip-light.css') }}"/>
+{% endblock %}
+
+{% block content %}
+  <div class="our-causes-hero-slider" data-equalizer>
+    {% if bg is not defined %}
+        {% if entry.headerImage.one.url is defined and entry.headerImage.one.url is not empty %}
+            {% set bg = entry.headerImage.one.url %}
+        {% else %}
+            {% set bg = 'https://placehold.it/1440x928' %}
+        {% endif %}
+    {% endif %}
+
+    {% if ourImpactBg is not defined %}
+        {% if entry.ourImpactBackgroundImage.one.url is defined and entry.ourImpactBackgroundImage.one.url is not empty %}
+            {% set ourImpactBg = entry.ourImpactBackgroundImage.one.url %}
+        {% else %}
+            {% set ourImpactBg = 'https://placehold.it/1440x360' %}
+        {% endif %}
+    {% endif %}
+
+    {% if title is not defined %}
+        {% set title = entry.title %}
+    {% endif %}
+
+    {% if subtitle is not defined %}
+        {% set subtitle = entry.subtitle %}
+    {% endif %}
+
+    {% if photoCredit is not defined %}
+        {% set photoCredit = entry.headerImage.one.photoCredit %}
+    {% endif %}
+    <div class="bg" style="background-image: url('{{ bg }}');" data-equalizer-watch="slide">
+      <div class="row">
+        <div class="column large-8 large-centered text-center">
+          <h1 class="title">{{ title }}</h1>
+          <p class="left">{{ entry.body }}</p>
+        </div>
+        {% if entry.headerImage|length > 0 and entry.headerImage.one.photoCredit is not empty %}
+            <span class="photo-credit">
+              <div class="photo-credit-container">
+                <img src="/images/camera.png" class="credit-icon" />
+                <small class="credit text-right"><strong>Photo Courtesy of:</strong><br/>{{ entry.headerImage.one.photoCredit }}</small>
+              </div>
+            </span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <section class="page-section">
+    <div class="row">
+      <div class="column large-8 large-centered text-center">
+        {% if entry.ourApproachHeadline is not empty %}
+            <h2 class="title">{{ entry.ourApproachHeadline }}</h2>
+        {% endif %}
+        {% if entry.ourApproachSubtext is not empty %}
+            {{ entry.ourApproachSubtext }}
+        {% endif %}
+        {% if entry.ourApproachButtonText is not empty %}
+          <a href="{{ entry.ourApproachButtonLink }}" class="button">{{ entry.ourApproachButtonText }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+
+  {% if entry.ourCausesContentBlocks is defined and entry.ourCausesContentBlocks is not empty %}
+    <section class="page-section our-causes-impact-section" style="background-image: linear-gradient(rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0.8)), url('{{ ourImpactBg }}');">
+      <div class="row">
+        <div class="columns">
+          <div class="column large-8 large-centered text-center">
+            {% if entry.ourImpactHeadline is not empty %}
+                <h2 class="title">{{ entry.ourImpactHeadline }}</h2>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="our-causes-impact-icons">
+        <div class="icon-column">
+          {% for block in entry.ourCausesContentBlocks.all() %}
+            <div class="icon">
+              {% if block.image.one is defined and block.image.one is not empty %}
+                <img src="{{ block.image.one.url }}">
+              {% endif %}
+              {{ block.text }}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+  <div class="row">
+      <div class="column large-8 large-centered text-center">
+      {% if entry.contentBlock is defined and entry.contentBlock is not empty %}
+          {% include '_matrix/contentBlock/index'
+              with {'matrix': entry.contentBlock,
+                      'openingStructure': '<div class="row"><div class="column large-8 large-centered text-center">',
+                      'closingStructure': '</div></div>',
+                      'altText': entry.heading is defined and entry.heading is not empty ? entry.heading : entry.title
+              }
+          %}
+      {% endif %}
+      </div>
+  </div>
+
+  {% if entry.relatedEntries.count() or mergedEntries | length > 0 %}
+    <section class="page-section bg-smoke our-causes-latest-news">
+      <div class="row">
+        <div class="columns">
+          <div class="column large-8 large-centered text-center">
+            <h2 class="title">Latest News</h2>
+          </div>
+          <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 block-grid-news-events">
+            {% if entry.relatedEntries.count() %}
+              {% for entry in entry.relatedEntries.all() %}
+                <li>
+                  {% include '_components/info-card-news-with-image' with { 'entry': entry } %}
+                </li>
+              {% endfor %}
+            {% else %}
+              {% for entry in mergedEntries %}
+                <li>
+                  {% include '_components/info-card-news-with-image' with { 'entry': entry } %}
+                </li>
+              {% endfor %}
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+{% endblock %}

@@ -1,0 +1,29 @@
+
+{% if cssModifier is not defined %}
+    {% set cssModifier = '' %}
+{% elseif cssModifier|slice(0, 1) != ' ' %}
+    {% set cssModifier = ' ' ~ cssModifier %}
+{% endif %}
+
+{% set entries = (entries.count() > 3) ? entries|slice(0,2) : entries %}
+<div class="slick-triple triple-feature">
+    {% for entry in entries.all() %}
+        {% set calloutImage = (entry.image.one is not empty) ? entry.image.one : 'https://placehold.it/800x500' %}
+        {% set transformedImage = craft.imager.transformImage(calloutImage, { width: 800, jpegQuality: 80 }) %}
+        {% if entry.entryLink is defined and entry.heading is defined %}
+            {% set linkUrl = entry.entryLink %}
+            {% set title = entry.heading %}
+        {% else %}
+            {% set relatedEntry = entry.relatedEntry.one %}
+            {% set linkUrl = relatedEntry.url %}
+            {% set title = relatedEntry.title %}
+        {% endif %}
+        <a class="single-feature feature{{ loop.index }}" href="{{ linkUrl }}">
+            <div class="feature-background lazy" data-type="img-bg" data-src="{{ transformedImage }}">
+            </div>
+            <div class="feature-text">
+                <h3 class="feature-title">{{ title }}</h3>
+            </div>
+        </a>
+    {% endfor %}
+</div>

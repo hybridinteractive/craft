@@ -1,0 +1,35 @@
+{% extends '_layouts/site' %}
+
+{# Added for sprintly task 492 #}
+{# Redirect to asset or to url override #}
+{% if entry.assetDownload is defined and entry.assetDownload|length > 0 %}
+    {% set redirectUrl = entry.assetDownload.one.url %}
+{% elseif entry.urlOverride is defined and entry.urlOverride is not empty %}
+    {% set redirectUrl  = entry.urlOverride %}
+{% else %}
+    {% set redirectUrl = "/" %}
+{% endif %}
+{% redirect redirectUrl %}
+{# End redirect #}
+
+{% block content %}
+    {% include '_components/header-image' with {'entry': entry} %}
+    {% include '_components/breadcrumb' %}
+    <section class="page-section">
+        <div class="row">
+            <div class="column medium-9 medium-centered">
+                <h2 class="title">{{ entry.title }}</h2>
+                {{ entry.body }}
+                {% if entry.contentBlock is defined and entry.contentBlock is not empty %}
+                    {% include '_matrix/contentBlock/index'
+                        with {'matrix': entry.contentBlock,
+                                'openingStructure': '<div class="row"><div class="column medium-9 medium-centered">',
+                                'closingStructure': '</div></div>',
+                                'altText': entry.heading is defined and entry.heading is not empty ? entry.heading : entry.title
+                        }
+                    %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

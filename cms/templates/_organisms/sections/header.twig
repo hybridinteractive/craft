@@ -1,3 +1,84 @@
+{% set nodes = craft.navigation.nodes()
+    .handle('primaryNavigation')
+    .all() %}
+{# menu classes #}
+{% set baseNavClass = "ml-4 xl:ml-8 inline-flex items-center px-4 py-2 text-base xxl:text-base text-center font-medium subpixel-antialiased rounded-full bg-primary-500 transition duration-150 ease-in-out focus:bg-primary-400 focus:outline-none focus:text-white-90 " %}	
+{% set baseNavSubClass = "block px-6 py-2 text-base leading-5 font-medium subpixel-antialiased bg-primary-500 transition duration-150 ease-in-out focus:bg-primary-400 focus:outline-none focus:text-white-90 " %}
+{% set baseMobileClass = "block px-4 py-4 text-base font-medium bg-primary-500 subpixel-antialiased transition duration-150 ease-in-out " %}
+{% set inactiveClass = "text-quaternary-500 bg-opacity-0 hover:text-white-90 hover:bg-opacity-100 focus:bg-opacity-100" %}
+{% set activeClass = "text-white-90 bg-opacity-100 hover:bg-primary-400" %}
+{%- set arrowDown -%}
+<svg class="ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+	<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+</svg>		
+{%- endset -%}
+
 <header id="page-header">
-    <h2>header</h2>
+	<nav class="bg-white" aria-label="menu" aria-role="menubar">
+	<div class="mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="navigation--primary flex justify-between h-24 lg:h-32">
+			<div class="flex">
+				<div class="flex-shrink-0 flex items-center">
+					<a href="{{ siteUrl }}" title="{{ organization.organizationName }}" class="bg-primary-green">
+						Logo Here
+					</a>
+				</div>
+			</div>
+
+			<div class="hidden lg:ml-6 lg:flex lg:items-center">
+				{% nav node in nodes %}
+				{% set navClass = baseNavClass %}
+				{%- if node.level == 2 -%}
+					{% set navClass = baseNavSubClass %}
+				{%- endif -%}
+				<div class="{% if node.hasDescendants %}hasDescendants relative mt-2 pb-2{% endif %}" aria-role="menuitem" aria-level="{{ node.level }}" aria-haspopup="{% if node.hasDescendants %}true{% else %}false{% endif %}" aria-expanded="false">
+					<a {% if node.url %} href="{{ node.url }}" {% endif %} title="{{- node.title -}}" class="{% if node.active %}{{ navClass ~ activeClass }}{% else %}{{ navClass ~ inactiveClass }}{% endif %}{% if node.classes | length %} {{ node.classes }}{% endif %}" {% if node.newWindow %} target="_blank" rel="noopener" {% endif %} {% for attribute in node.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %} role="menuitem">
+						{{- node.title -}}
+						{%- if node.hasDescendants -%}
+							{{ arrowDown }}
+						{%- endif -%}
+					</a>
+					{%- ifchildren -%}
+					<div class="hidden areDescendants origin-top-left absolute left-0 ml-8 z-20 mt-2 w-auto rounded-md bg-white-90 shadow-lg">
+						<div class="py-4 rounded-md bg-white shadow-xs">
+							<div role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+								{% children %}
+							</div>
+						</div>
+					</div>
+					{%- endifchildren -%}
+				</div>
+				{% endnav %}
+			</div>
+
+			<div class="mr-2 flex items-center lg:hidden print:hidden">
+				<!-- Mobile menu button -->
+				<button @click="hamburgerOpen = !hamburgerOpen" class="inline-flex items-center justify-center hover:text-secondary-500 focus:outline-none" :class="hamburgerOpen ? 'text-secondary-500' : 'text-quaternary-500'" aria-label="Main menu" aria-expanded="false">
+				<svg class="h-12 w-12" :class="hamburgerOpen ? 'hidden' : 'block'" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+				</svg>
+				<svg class="h-12 w-12" :class="hamburgerOpen ? 'block' : 'hidden'" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+				</svg>
+				</button>
+			</div> 
+		</div>
+	</div>
+	{# Mobile Nav #}
+	<div class="navigation--primary z-10 w-full bg-white-90 shadow-md lg:hidden" :class="hamburgerOpen ? 'block' : 'hidden'">
+		{% nav node in nodes %}
+			<div class="{% if node.hasDescendants %}hasDescendants{% endif %}" aria-role="menuitem" aria-level="{{ node.level }}" aria-haspopup="{% if node.hasDescendants %}true{% else %}false{% endif %}" aria-expanded="false">
+				<a {% if node.url %} href="{{ node.url }}" {% endif %} title="{{- node.title -}}" class="{% if node.active %}{{ baseMobileClass ~ activeClass }}{% else %}{{ baseMobileClass ~ inactiveClass }}{% endif %}{% if node.classes | length %} {{ node.classes }}{% endif %}" {% if node.newWindow %} target="_blank" rel="noopener" {% endif %} {% for attribute in node.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %} role="menuitem">
+					{{- node.title -}}
+				</a>
+				{% ifchildren %}
+				<div class="border-l-4 border-primary-500">
+					{% children %}
+				</div>
+				{% endifchildren %}
+			</div>
+		{% endnav %}
+	</div>
+	</nav>
+
 </header>

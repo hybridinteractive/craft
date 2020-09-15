@@ -1,0 +1,30 @@
+{% extends '_layouts/site' %}
+
+{% set headerImageUrl = (entry.headerImage.one is defined and entry.headerImage.one is not empty) ? entry.headerImage.one.url : '' %}
+{% set children = craft.entries.section('campaignEntries').limit(10) %}
+
+{% block content %}
+    {% cache %}
+        {% set headerImage = (entry.headerImage.one is defined and entry.headerImage.one is not empty) ? entry.headerImage.one : entry.headerImage.one %}
+        {% include '_components/header-image' with {'entry':entry, 'title':entry.title} %}
+
+        <ul class="breadcrumbs">
+            {# Section Link #}
+            <li>{{ 'Take Action' }}</li>
+
+            {# Entry title #}
+            {% if entry.title is defined %}
+                <li class="current">{{ entry.title }}</li>
+            {% endif %}
+        </ul>
+
+        <section class="page-section">
+            <div class="row">
+                <div class="column medium-9 medium-centered">
+                    {{ entry.body }}
+                </div>
+            </div>
+            {% include '_components/thumbnail-grid' with {'entries': children.level(1)} %}
+        </section>
+    {% endcache %}
+{% endblock %}

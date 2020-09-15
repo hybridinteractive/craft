@@ -1,0 +1,43 @@
+$dirt: #2f2d25;
+$orange: #d43c13;
+$light-orange: lighten($orange, 6%);
+$dark-orange: darken($orange, 6%);
+$trans-gray: rgba(20,20,20,0.8);
+$snow        : #F9F9F9;
+$white-smoke : #F5F5F5;
+$smoke       : #EEEEEE;
+$iron        : #CCCCCC;
+$base        : #AAAAAA;
+$jumbo       : #888888;
+$monsoon     : #777777;
+$charcoal    : #585858;
+$oil         : #373332;
+$jet         : #222222;
+$gray        : #b6b6b6;
+$lt-gray     : #828282;
+$danger      : #b94a48;
+$lt-danger   : #f2dede;
+$green       : #567218;
+$lt-green    : #d9ead7;
+$light-gray  : #DBD8D8;
+$medium-gray : #CCCCCC;
+
+$primary-red: 86;
+$primary-green: 114;
+$primary-blue: 24;
+
+$primary-color: rgb($primary-red, $primary-green, $primary-blue);
+$primary-faded: rgba($primary-red, $primary-green, $primary-blue, 0.7);
+$secondary-color: #E55129;
+$light-green: #b2baa0;
+
+$base-font-color: #4b4034;
+$light-font-color: #76685a;
+$hr-color: #403c3b;
+$text-gray: #828282;
+$footer-text-color: #90908f; 
+
+$dk-gray : #252222;
+
+$medium-navbar-height: rem-calc(70);
+$small-navbar-height: rem-calc(50);

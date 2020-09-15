@@ -1,0 +1,119 @@
+.categories-list {
+  list-style-type: none;
+  text-align: center;
+  padding-bottom: rem-calc(32);
+}
+
+.categories-list__item {
+  display: inline-block;
+  padding-right: rem-calc(16);
+}
+
+.selected-category {
+  color: darkgray;
+}
+
+.blog-footer {
+  background-color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  @media #{$medium-up} {
+    min-height: 250px;
+  }
+  @media #{$large-up} {
+    min-height: 332px;
+  }
+}
+
+.blog-footer__heading {
+  font-size: rem-calc(25);
+  font-weight: bold;
+  line-height: 1.4;
+  text-align: center;
+  color: #4b4033;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding-top: rem-calc(80);
+  padding-bottom: rem-calc(16);
+  position: relative;
+
+  @media #{$small-up} {
+    padding-top: rem-calc(32);
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  @media #{$medium-up} {
+    padding-top: rem-calc(48);
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+  @media #{$large-up} {
+    padding-top: rem-calc(80);
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+}
+
+.blog-footer__background-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  opacity: 0.05;
+  height: 100%;
+}
+
+.blog-search-form {
+  padding-bottom: rem-calc(32);
+}
+
+.blog-signup {
+  position: relative;
+  width: 100%;
+  padding-left: 1px;
+  padding-right: 1px;
+  .blog-input {  // All HTML tags need to be classed. We do this to avoid our styles from bleeding through the cascade
+    padding: rem-calc(16);
+    height: auto;
+    float: left;
+    margin-right: 2%;
+    margin-bottom: 0;
+    //text-transform: uppercase;
+    font-size: rem-calc(19);
+    width: 100%;
+
+  }
+  .submit {
+    width: 100%;
+  }
+  @media #{$medium-up} {
+    .blog-input {
+      width: 100%;
+      float: left;
+    }
+    .submit {
+      width: 100%;
+    }
+  }
+  @media #{$large-up} {
+    padding-left: 30%;
+    .blog-input {
+      width: 30%;
+      float: left;
+      margin-right: 1%;
+    }
+    .submit {
+      width: 20%;
+    }
+  }
+}
+
+.blog-pagination {
+  padding-bottom: rem-calc(48);
+  @media #{$large-up} {
+    padding-top: rem-calc(32);
+  }
+}
+
+.-no-overflow {
+  overflow-x: hidden;
+}

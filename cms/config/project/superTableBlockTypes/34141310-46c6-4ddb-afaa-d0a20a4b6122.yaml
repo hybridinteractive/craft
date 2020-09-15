@@ -5,19 +5,19 @@ fieldLayouts:
       -
         fields:
           6d157457-cb17-4d30-b2cd-ade98a8fdcf0:
-            required: true
-            sortOrder: 4
+            required: '1'
+            sortOrder: '4'
           74c703ba-fb2c-421f-9b09-2bd3762770de:
-            required: true
-            sortOrder: 3
+            required: '1'
+            sortOrder: '3'
           98769057-9c93-4e96-89ff-cb7b6a3a1188:
-            required: true
-            sortOrder: 2
+            required: '1'
+            sortOrder: '2'
           f4cbe95b-c71a-42f8-a9d8-464dcf3916a9:
-            required: true
-            sortOrder: 1
+            required: '1'
+            sortOrder: '1'
         name: Content
-        sortOrder: 1
+        sortOrder: '1'
 fields:
   6d157457-cb17-4d30-b2cd-ade98a8fdcf0:
     contentColumnType: boolean
@@ -25,7 +25,7 @@ fields:
     handle: privacyLinks
     instructions: ''
     name: 'Privacy Links'
-    searchable: false
+    searchable: '0'
     settings:
       default: ''
     translationKeyFormat: null
@@ -37,7 +37,7 @@ fields:
     handle: footerNavigation
     instructions: ''
     name: 'Footer Navigation'
-    searchable: false
+    searchable: '0'
     settings:
       default: ''
     translationKeyFormat: null
@@ -49,7 +49,7 @@ fields:
     handle: secondaryNavigation
     instructions: ''
     name: 'Secondary Navigation'
-    searchable: false
+    searchable: '0'
     settings:
       default: false
     translationKeyFormat: null
@@ -61,7 +61,7 @@ fields:
     handle: primaryNavigation
     instructions: ''
     name: 'Primary Navigation'
-    searchable: false
+    searchable: '0'
     settings:
       default: false
     translationKeyFormat: null

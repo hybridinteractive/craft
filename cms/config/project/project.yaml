@@ -1,13 +1,14 @@
-dateModified: 1600163229
+dateModified: 1600128473
 email:
-  fromEmail: $SYSTEM_EMAIL
-  fromName: $SENDER_NAME
-  replyToEmail: $REPLY_TO
-  transportType: craft\mail\transportadapters\Sendmail
-graphql:
-  publicToken:
-    enabled: false
-    expiryDate: null
+  fromEmail: $SYSTEM_EMAIL_ADDRESS
+  fromName: $SYSTEM_NAME
+  replyToEmail: $SYSTEM_REPLY_EMAIL_ADDRESS
+  template: ''
+  transportSettings:
+    apiKey: $MAILGUN_API
+    domain: $MAILGUN_DOMAIN
+    endpoint: ''
+  transportType: craft\mailgun\MailgunAdapter
 plugins:
   aws-s3:
     eager-beaver:
@@ -15,11 +16,54 @@ plugins:
       schemaVersion: 1.0.0
     enabled: true
     schemaVersion: '1.2'
+  blitz:
+    edition: standard
+    enabled: false
+    licenseKey: I326W6QA3G0AYI21R39RKPE8
+    schemaVersion: 3.6.6
   blitz-recommendations:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
+  calendar:
+    edition: pro
+    enabled: true
+    schemaVersion: 3.1.0
+  cloudflare:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.1
+    settings:
+      apiKey: $CLOUDFLARE_API_KEY
+      apiToken: null
+      authType: key
+      email: $CLOUDFLARE_EMAIL
+      fetchZonesActionUri: cloudflare/default/fetch-zones
+      purgeAllActionUri: cloudflare/default/purge-all
+      purgeElements:
+        - craft\elements\Asset
+        - craft\elements\Category
+        - craft\elements\Entry
+        - craft\elements\Tag
+      purgeUrlsActionUri: cloudflare/default/purge-urls
+      saveRulesActionUri: cloudflare/default/save-rules
+      userServiceKey: ''
+      verifyCredentialsUri: cloudflare/default/verify-connection
+      zone: $CLOUDFLARE_ZONE
+      zoneName: accessfund.org
+  colour-swatches:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  cookie-consent:
+    edition: standard
+    enabled: false
+    schemaVersion: 1.4.2
   eager-beaver:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  element-api:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
@@ -27,13 +71,73 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
+    settings:
+      cachePath: $FAST_CGI_CACHE_PATH
   feed-me:
     enabled: true
     schemaVersion: 2.1.2
+  formie:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.9
+  freeform:
+    edition: pro
+    enabled: true
+    schemaVersion: 3.0.8
+    settings:
+      ajaxByDefault: '1'
+      autoScrollToErrors: '1'
+      blockedEmails: ''
+      blockedEmailsError: 'Invalid Email Address'
+      blockedIpAddresses: ''
+      blockedKeywords: ''
+      blockedKeywordsError: 'Invalid Entry Data'
+      customErrorMessage: ''
+      customHoneypotName: ntp_cap
+      defaultTemplates: '1'
+      defaultView: submissions
+      emailTemplateDirectory: _emails/
+      emailTemplateStorage: template
+      fieldDisplayOrder: type
+      fillWithGet: ''
+      footerScripts: false
+      formSubmitDisable: ''
+      formSubmitExpiration: ''
+      formTemplateDirectory: ''
+      formattingTemplate: tailwind.html
+      freeformHoneypot: '1'
+      freeformHoneypotEnhancement: ''
+      hideBannerDemo: '1'
+      hideBannerOldFreeform: false
+      minimumSubmitTime: ''
+      pluginName: 'Form Manager'
+      purgableSpamAgeInDays: '0'
+      purgableSubmissionAgeInDays: '0'
+      recaptchaBehaviour: display_error
+      recaptchaEnabled: false
+      recaptchaKey: null
+      recaptchaMinScore: 0.5
+      recaptchaSecret: null
+      recaptchaType: v2_checkbox
+      removeNewlines: '1'
+      renderFormHtmlInCpViews: '1'
+      salesforce_client_id: null
+      salesforce_client_secret: null
+      salesforce_password: null
+      salesforce_username: null
+      scriptInsertLocation: footer
+      sessionEntryMaxCount: 50
+      sessionEntryTTL: 10800
+      showErrorsForBlockedEmails: ''
+      showErrorsForBlockedKeywords: ''
+      showTutorial: ''
+      spamFolderEnabled: ''
+      spamProtectionBehaviour: simulate_success
+      submissionThrottlingCount: ''
+      submissionThrottlingTimeFrame: m
   image-optimize:
     edition: standard
     enabled: true
-    licenseKey: null
     schemaVersion: 1.0.0
     settings:
       allowUpScaledImageVariants: false
@@ -92,6 +196,9 @@ plugins:
     schemaVersion: 1.0.19
     settings:
       bypassProjectConfig: false
+      disabledElements:
+        - assets
+        - categories
       pluginName: Navigation
   notifications:
     edition: standard
@@ -111,11 +218,10 @@ plugins:
   retour:
     edition: standard
     enabled: true
-    licenseKey: null
     schemaVersion: 3.0.9
     settings:
       additionalHeaders: ''
-      alwaysStripQueryString: true
+      alwaysStripQueryString: false
       automaticallyTrimStatistics: '1'
       createUriChangeRedirects: true
       dynamicRedirectDisplayLimit: 100
@@ -134,27 +240,19 @@ plugins:
   seomatic:
     edition: standard
     enabled: true
-    licenseKey: null
     schemaVersion: 3.0.9
     settings:
       addHrefLang: true
       addPaginatedHreflang: true
       addXDefaultHrefLang: true
       cpTitlePrefix: '⚙ '
-      cspNonce: ''
-      cspScriptSrcPolicies:
-        -
-          __assoc__:
-            -
-              - policy
-              - '''self'''
       devModeCpTitlePrefix: '&#x1f6a7;⚙ '
       devModeTitlePrefix: '&#x1f6a7; '
       displayAnalysisSidebar: true
       displayPreviewSidebar: true
       enableJsonLdEndpoint: ''
       enableMetaContainerEndpoint: ''
-      environment: $ENVIRONMENT
+      environment: live
       generatorEnabled: true
       headersEnabled: true
       lowercaseCanonicalUrl: '1'
@@ -169,8 +267,6 @@ plugins:
         - google
         - twitter
         - facebook
-        - linkedin
-        - slack
       siteGroupsSeparate: '1'
       siteUrlOverride: ''
       sitemapsEnabled: true
@@ -178,7 +274,8 @@ plugins:
       submitSitemaps: true
   spoon:
     edition: standard
-    enabled: true
+    enabled: false
+    licenseKey: A55QRV9100SJJU5DZS2LNBRQ
     schemaVersion: 3.5.0
   super-table:
     edition: standard
@@ -198,8 +295,8 @@ plugins:
     schemaVersion: 1.0.0
   webperf:
     edition: standard
-    enabled: true
-    licenseKey: null
+    enabled: false
+    licenseKey: OC3OAJNLBT6VPUJF4YSSFFPQ
     schemaVersion: 1.0.1
   width-fieldtype:
     edition: standard
@@ -208,6 +305,7 @@ plugins:
 system:
   edition: pro
   live: true
-  name: Craft
+  name: $SITE_NAME
+  retryDuration: 60
   schemaVersion: 3.5.13
-  timeZone: Europe/London
+  timeZone: America/Denver

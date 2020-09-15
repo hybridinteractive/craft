@@ -1,0 +1,101 @@
+
+{% cache globally for 1 year %}
+{% set insideAccessFund = craft.entries.section('insideAccessFund').level(1).all() %}
+{% set getInvolved = craft.entries.section('getInvolved').level(1).all() %}
+{% set ourSupporters = craft.entries.section('ourSupporters').level(1).all() %}
+{% spaceless %}
+<div class="footer-wrapper">
+    <footer class="footer">
+        <div class="row">
+            <div class="medium-5 large-4 columns left-column small-text-center medium-text-left large-text-left">
+                <h3 class="title">Access Fund</h3>
+
+                <div class="address">
+                    P.O. Box 17010<br>
+                    Boulder, Colorado 80308<br>
+                    303.545.6772<br>
+                    303.545.6774 (Fax)<br>
+                </div>
+                <nav class="supplement-nav show-for-medium-up">
+                    <li class="item">
+                        <a href="{{ url(externalLinks.storeLink) }}" target="_blank">Store</a>
+                    </li>
+                    <li class="item">
+                        <a href="{{ url('contact-us') }}">Contact Us</a>
+                    </li>
+                    <li class="item">
+                        <a href="{{ url('e-news-signup') }}">E-News Signup</a>
+                    </li>
+                    <li class="item">
+                        <a href="{{ url('privacy-policy') }}">Privacy Policy</a>
+                    </li>
+                </nav>
+                <div class="copyright show-for-medium-up">
+                    Copyright &copy; {{ 'now'|date('Y') }} Access Fund.<br>
+                    All rights reserved.
+                </div>
+            </div>
+            <div class="medium-7 large-8 columns right-column">
+                <nav class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 footer-nav">
+                    <li class="item">
+                        <div class="link">Inside Access Fund</div>
+                        <ul class="subnav">
+                            {% for entry in insideAccessFund %}
+                                {% set url = entry.urlOverride is not empty ? entry.urlOverride : entry.url %}
+                                <li class="subitem">
+                                    <a href="{{ url(url) }}">{{ entry.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="item show-for-medium-up">
+                        <div class="link">Get Involved</div>
+                        <ul class="subnav">
+                            {% for entry in getInvolved %}
+                                {% set url = entry.urlOverride is not empty ? entry.urlOverride : entry.url %}
+                                <li class="subitem">
+                                    <a href="{{ url(url) }}">{{ entry.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="item show-for-medium-up">
+                        <div class="link">Our Supporters</div>
+                        <ul class="subnav">
+                            {% for entry in ourSupporters %}
+                                {% set url = entry.urlOverride is not empty ? entry.urlOverride : entry.url %}
+                                <li class="subitem">
+                                    <a href="{{ url(url) }}">{{ entry.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </nav>
+            </div>
+        </div>
+        <div class="row hide-for-medium-up">
+            <div class="medium-5 large-4 columns small-text-center medium-text-left large-text-left">
+                <nav class="supplement-nav">
+                    <li class="item">
+                        <a href="{{ url(externalLinks.storeLink) }}">Store</a>
+                    </li>
+                    <li class="item">
+                        <a href="{{ url('contact-us') }}">Contact Us</a>
+                    </li>
+                    <li class="item">
+                        <a href="{{ url('e-news-signup') }}">E-News Signup</a>
+                    </li>
+                    <li class="item">
+                        <a href="{{ url('privacy-policy') }}">Privacy Policy</a>
+                    </li>
+                </nav>
+                <div class="copyright">
+                    Copyright &copy; {{ 'now'|date('Y') }} Access Fund.<br>
+                    All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+{% endspaceless %}
+{% endcache %}

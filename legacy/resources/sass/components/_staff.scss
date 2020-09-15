@@ -1,0 +1,54 @@
+.staff-card {
+    background-color: #FFF;
+    margin-bottom: $column-gutter;
+    > .profile-head {
+        // Clearfix
+        *zoom: 1;
+        &:before, 
+        &:after {
+            content: " ";
+            display: table;
+        }
+        &:after {
+            clear: both;
+        }
+    }
+    .profile-photo {
+        float: left;
+        width: rem-calc(238);
+        height: rem-calc(264);
+        overflow: hidden;
+        position: relative;
+        background-position: center;
+        background-size: cover;
+        &:after {
+            display: block;
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: rem-calc(60);
+            right: 0;
+            top: 0;
+            background-color: #FFF;
+            @include transform-origin(bottom right);
+            @include transform(skew(-12deg, 0deg));
+        }
+    }
+    .name {
+        font-size: rem-calc(32);
+        line-height: rem-calc(36);
+        color: $primary-color;
+        margin: rem-calc(82 0 0 0);
+    }
+    .job-title {
+        font-size: rem-calc(20);
+        line-height: rem-calc(36);
+    }
+    > .profile-content {
+        padding: rem-calc(35);
+    }
+    .text-content {
+        font-size: rem-calc(21);
+        line-height: rem-calc(32);
+    }
+}

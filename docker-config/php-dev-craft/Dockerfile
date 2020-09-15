@@ -6,10 +6,6 @@ RUN apt-get update \
     # apt Debian packages
     apt-get install -y \
         nano \
-        jpegoptim \
-        optipng \
-        gifsicle \
-        webp \
     && \
     # Install PHP extensions
     docker-php-ext-install \
@@ -25,6 +21,9 @@ RUN apt-get update \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /var/www/project
+
+# Copy over the directories/files php needs access to
+# COPY --chown=www-data:www-data ./cms/composer.* /var/www/project/cms/
 
 # Create the storage directory and make it writeable by PHP
 RUN mkdir -p /var/www/project/cms/storage && \

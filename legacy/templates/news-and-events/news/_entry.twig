@@ -1,0 +1,84 @@
+{% extends '_layouts/site' %}
+
+{% set headerImageUrl = (entry.headerImage.one is defined and entry.headerImage.one is not empty) ? entry.headerImage.one.url : '' %}
+{% set parent = craft.entries.section('news').one() %}
+
+{% block content %}
+    <ul class="breadcrumbs -breadcrumbs-no-header">
+
+        <li>{{ 'News & Events'|e }}</li>
+
+        <li><a href="{{ parent.url }}">{{ parent.title }}</a></li>
+
+        {# Entry title #}
+        {% if entry.title is defined %}
+            <li class="current">{{ entry.title }}</li>
+        {% endif %}
+    </ul>
+    <section class="page-section news-entry news-social-section -headerless">
+        <div class="news-section">
+            <div class="row">
+                <div class="medium-9 medium-centered columns">
+                    <p class="date">
+                        {{ entry.postDate|date('m/d/Y') }}
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="medium-9 medium-centered columns">
+                    <h2 class="title">{{ entry.title }}</h2>
+                </div>
+            </div>
+            <div class="row hide-for-print">
+                <div class="medium-9 medium-centered columns">
+                    {% include '_components/sharethis' %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="medium-9 medium-centered columns">
+                    {{ entry.body }}
+                    {% if entry.contentBlock is defined and entry.contentBlock is not empty %}
+                        {% include '_matrix/contentBlock/index'
+                        with {'matrix': entry.contentBlock,
+                        'openingStructure': '<div class="row"><div class="column medium-9 medium-centered">',
+                        'closingStructure': '</div></div>',
+                        'altText': entry.heading is defined and entry.heading is not empty ? entry.heading : entry.title
+                        }
+                        %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="medium-9 medium-centered columns news-social__header">
+                <h2 class="social-heading">Let's Get Social</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns">
+                <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 block-grid-news-events">
+                    <li class="text-center hide-for-print">
+                        <h3 class="subtitle -news-events">Facebook</h3>
+                        <div class="info-card social-card" style="height: 500px !important" data-equalizer-watch>
+                            <div class="fb-page" data-href="https://www.facebook.com/accessfund" data-hide-cover="false" data-show-facepile="false" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/accessfund"><a href="https://www.facebook.com/accessfund">Access Fund</a></blockquote></div></div>
+                        </div>
+                    </li>
+                    <li class="hide-for-print">
+                        <h3 class="subtitle -news-events">Twitter</h3>
+                        <div class="info-card social-card" style="height: 500px !important" data-equalizer-watch>
+                            <a class="twitter-timeline" href="https://twitter.com/accessfund" data-widget-id="571412815693373440">Tweets by @accessfund</a>
+                        </div>
+                    </li>
+                    <li class="hide-for-print">
+                        <h3 class="subtitle -news-events">Instagram</h3>
+                        <div class="info-card social-card" style="height: 500px !important" data-equalizer-watch>
+                            <!-- SnapWidget -->
+                            <script src="https://snapwidget.com/js/snapwidget.js"></script>
+                            <iframe src="https://snapwidget.com/embed/278328" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden;  width:100%; "></iframe>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+{% endblock %}

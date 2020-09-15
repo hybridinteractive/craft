@@ -1,0 +1,54 @@
+{% extends '_layouts/site' %}
+
+{% set single = craft.entries.section('campaigns').one %}
+{% set headerImage = (entry.headerImage.one is defined and entry.headerImage.one is not empty) ? entry.headerImage.one : single.headerImage.one %}
+
+{% block content %}
+    <ul class="breadcrumbs -breadcrumbs-no-header">
+        {# Section Link #}
+        <li><a href="{{ url(craft.app.request.segment(1)) }}">Take Action</a></li>
+        <li><a href="{{ url(craft.app.request.segment(1) ~ '/' ~ craft.app.request.segment(2)) }}">Campaigns</a></li>
+
+        {# Ancestors #}
+        {% for crumb in entry.ancestors.all() %}
+            <li>{{ crumb.link }}</li>
+        {% endfor %}
+
+        {# Entry title #}
+        {% if entry.title is defined %}
+            <li class="current">{{ entry.title }}</li>
+        {% endif %}
+    </ul>
+
+    <section class="page-section -headerless">
+        <div class="row">
+            <div class="column medium-9 medium-centered">
+                <h2 class="title">{{ entry.title }}</h2>
+                <div class="row hide-for-print">
+                    <div class="medium-9 columns">
+                        {% include '_components/sharethis' %}
+                    </div>
+                </div>
+                {{ entry.body }}
+                {% if entry.contentBlock is defined and entry.contentBlock is not empty %}
+                    {% include '_matrix/contentBlock/index'
+                        with {'matrix': entry.contentBlock,
+                                'openingStructure': '<div class="row"><div class="column medium-9 medium-centered">',
+                                'closingStructure': '</div></div>',
+                                'altText': entry.heading is defined and entry.heading is not empty ? entry.heading : entry.title
+                        }
+                    %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="column medium-9 medium-centered">
+                {% if entry.cqActiveEngagement is defined and entry.cqActiveEngagement is not empty %}
+                    <div class="active-engagement">
+                        {{ entry.cqActiveEngagement | raw }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

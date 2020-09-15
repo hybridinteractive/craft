@@ -15,8 +15,5 @@
  * This application config is applied only for *only* console requests
  */
 
-
-use craft\helpers\App;
-
 return [
 ];

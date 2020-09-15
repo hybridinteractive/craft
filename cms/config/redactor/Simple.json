@@ -1,10 +1,10 @@
 {
     "buttons": [
-        "bold",
-        "italic",
-        "sup",
-        "sub",
-        "link"
+      "bold",
+      "italic",
+      "sup",
+      "sub",
+      "link"
     ],
     "plugins": ["counter"],
     "pastePlainText": true,
@@ -13,4 +13,5 @@
     "spellcheck": true,
     "structure": true,
     "toolbarFixed": true
-}
+  }
+  
