@@ -31,7 +31,14 @@ The project is called `REPLACEME` the container will be somewhere along the line
 
 **N.B.:** Without authorization & credentials (which are private), the `./docker_pull_db.sh` will not work. It's provided here for instructional purposes, keep in mind that this pull will only work on your local dev machine!
 
-The CP login credentials are initially set as follows:
+## Login information
+
+To be able to login into the admin panel you'll need to have access to the right credentials which can be found here: UPDATE-BASECAMP-LINK-HERE
+
+```
+Login: hi@hybridinteractive.io
+Password: letmein
+```
 
 ## Useful Docker Aliases
 
@@ -87,22 +94,13 @@ or
 npm-update
 ```
 
-## Login information
-
-To be able to login into the admin panel you'll need to have access to the right credentials which can be found here: UPDATE-BASECAMP-LINK-HERE
-
-```
-Login: hi@hybridinteractive.io
-Password: letmein
-```
-
 ## Running Craft CLI commands
 
 Since we are using docker to run our project, we need to execute the craft CLI commands prepended with the docker command `docker-compose exec php`, eg: `docker-compose exec php ./craft project-config/sync`.
 
 ## Deploying
 
-This project uses buddy.works to deploy to our sandbox and staging environments, this is an automated process, once buddy detects changes in the `sandbox` branch it will automatically deploy to our sandbox environment, when there are changes detected in the `production` branch it will automatically deploy to the production server.
+This project uses buddy.works to deploy to our sandbox and production environments, this is an automated process, once buddy detects changes in the `sandbox` branch it will automatically deploy to our sandbox environment, when there are changes detected in the `production` branch it will automatically deploy to the production server.
 
 Keep in mind that these deploys are atomic, they'll build inside of a releases folder and will be symlinked to current, which is being served to the end-user, this to ensure as little downtime as possible when releasing major changes.
 
