@@ -4,15 +4,9 @@
  *
  * Let clients choose from a predefined set of colours.
  *
-<<<<<<< HEAD
  * @link      https://hybridinteractive.io
  *
  * @copyright Copyright (c) 2020 Hybrid Interactive
-=======
- * @link      https://percipio.london
- *
- * @copyright Copyright (c) 2020 Percipio Global Ltd.
->>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72
  */
 
 /**

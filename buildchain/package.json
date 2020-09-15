@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
     "name": "fido",
     "version": "1.0.0",
     "description": "Fido",
@@ -8,16 +7,6 @@
         "Fido"
     ],
     "homepage": "http://fido.hybridinteractive.io/",
-=======
-    "name": "AF",
-    "version": "1.0.0",
-    "description": "Access Fund",
-    "keywords": [
-        "",
-        "Access Fund"
-    ],
-    "homepage": "https://accessfund.org/",
->>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72
     "bugs": {
         "email": "",
         "url": ""

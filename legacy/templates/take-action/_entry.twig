@@ -1,9 +1,0 @@
-{% extends '_layouts/site' %}
-
-{% set headerImageUrl = (entry.headerImage.one is defined and entry.headerImage.one is not empty) ? entry.headerImage.one.url : '' %}
-
-{% set partial = craft.app.request.segment(1) ~ '/partials/' ~ entry.type.handle %}
-
-{% block content %}
-    {% include partial %}
-{% endblock %}

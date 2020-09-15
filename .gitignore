@@ -2,7 +2,6 @@
 #
 # Example .gitignore file for Craft 3 CMS projects
 #
-<<<<<<< HEAD
 # @author    Hybrid Interactive
 # @copyright Copyright (c) 2020 Hybrid Interactive
 # @link      https://hybridinteractive.io/
@@ -11,44 +10,21 @@
 # @license   MIT
 
 # This file should be placed in your Craft 3 CMS project root directory
-=======
-# @author    nystudio107
-# @copyright Copyright (c) 2017 nystudio107
-# @link      https://nystudio107.com/
-# @package   nystudio107/craft
-# @since     1.0.0
-# @license   MIT
-
-# This file should be renamed to '.gitignore' and placed in your
-# Craft 3 CMS project root directory
->>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72
 
 # CRAFT ENVIRONMENT
 .env*
 
 # COMPOSER
 */vendor/*
-<<<<<<< HEAD
 vendor/*
-=======
-/vendor/
->>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72
 
 # CRAFT STORAGE
 */storage/*
 !*/storage/.gitkeep
-<<<<<<< HEAD
-=======
-storage/
->>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72
 
 # ASSETS
 /cms/web/assets/*
 /cms/web/cpresources/*
-<<<<<<< HEAD
-=======
-/cms/web/dist/*
->>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72
 
 # BUILD FILES
 node_modules
@@ -76,10 +52,4 @@ npm-debug.log
 !.vscode/extensions.json
 config.codekit3
 prepros-6.config
-<<<<<<< HEAD
 .vscode/
-=======
-/development
-*.sql
-!/scripts/seed_db.sql
->>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72

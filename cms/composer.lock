@@ -4807,13 +4807,8 @@
             ],
             "authors": [
                 {
-<<<<<<< HEAD
                     "name": "Hybrid Interactive",
                     "homepage": "https://hybridinteractive.io"
-=======
-                    "name": "Percipio Global",
-                    "homepage": "https://percipio.london"
->>>>>>> 42cadec7485014caa5b6b3c18b2dffba83423f72
                 }
             ],
             "description": "Let clients choose from a predefined set of colours.",

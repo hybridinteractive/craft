@@ -1,8 +1,0 @@
-{
-  "buttons": ["bold","italic"],
-  "toolbarFixed": true,
-  "linkNewTab": true,
-  "paragraphize": false,
-  "replaceDivs": false,
-  "linebreaks": true
-}

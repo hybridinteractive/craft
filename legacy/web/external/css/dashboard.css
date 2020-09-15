@@ -1,8 +1,0 @@
-/*
-    This file is used to override some Craft Dashboard Styling
- */
-
-/* overrides the first column inside of Sprout SEO's Redirect Table */
-body.ltr table thead th[data-attribute="oldUrl"] {
-    min-width: 200px;
-}

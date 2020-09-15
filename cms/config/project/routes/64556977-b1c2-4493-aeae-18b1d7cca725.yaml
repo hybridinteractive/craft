@@ -1,9 +1,0 @@
-siteUid: null
-sortOrder: 1
-template: rss/index.rss
-uriParts:
-  - rss/
-  -
-    - '*'
-    - '[^\/]+'
-uriPattern: 'rss/<any:[^\/]+>'
