@@ -16,6 +16,7 @@
 
 # COMPOSER
 */vendor/*
+vendor/*
 
 # CRAFT STORAGE
 */storage/*
@@ -51,3 +52,4 @@ npm-debug.log
 !.vscode/extensions.json
 config.codekit3
 prepros-6.config
+.vscode/
