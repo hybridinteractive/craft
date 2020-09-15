@@ -1,4 +1,4 @@
-dateModified: 1600115212
+dateModified: 1600128473
 email:
   fromEmail: $SYSTEM_EMAIL_ADDRESS
   fromName: $SYSTEM_NAME
@@ -26,7 +26,7 @@ plugins:
     enabled: true
     schemaVersion: 1.0.0
   calendar:
-    edition: lite
+    edition: pro
     enabled: true
     schemaVersion: 3.1.0
   cloudflare:
@@ -58,7 +58,6 @@ plugins:
   cookie-consent:
     edition: standard
     enabled: false
-    licenseKey: 4PPN015PMNZ4M18YSN25YV6L
     schemaVersion: 1.4.2
   eager-beaver:
     edition: standard
@@ -77,6 +76,10 @@ plugins:
   feed-me:
     enabled: true
     schemaVersion: 2.1.2
+  formie:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.9
   freeform:
     edition: pro
     enabled: true
@@ -135,7 +138,6 @@ plugins:
   image-optimize:
     edition: standard
     enabled: true
-    licenseKey: YEFWRKOJXDX5C68NIA6L4FTH
     schemaVersion: 1.0.0
     settings:
       allowUpScaledImageVariants: false
@@ -191,7 +193,6 @@ plugins:
   navigation:
     edition: standard
     enabled: true
-    licenseKey: PVHI0NTMAW8M32YQ0I5FCBXW
     schemaVersion: 1.0.19
     settings:
       bypassProjectConfig: false
@@ -239,7 +240,6 @@ plugins:
   seomatic:
     edition: standard
     enabled: true
-    licenseKey: FC0GXV5GNUE8PFZ1X6744DJV
     schemaVersion: 3.0.9
     settings:
       addHrefLang: true
