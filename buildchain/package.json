@@ -1,12 +1,12 @@
 {
-    "name": "AF",
+    "name": "fido",
     "version": "1.0.0",
-    "description": "Access Fund",
+    "description": "Fido",
     "keywords": [
         "",
-        "Access Fund"
+        "Fido"
     ],
-    "homepage": "https://accessfund.org/",
+    "homepage": "http://fido.hybridinteractive.io/",
     "bugs": {
         "email": "",
         "url": ""
