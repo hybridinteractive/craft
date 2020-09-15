@@ -2,13 +2,13 @@
 trigger_mode: "ON_EVERY_PUSH"
 ref_name: "master"
 ref_type: "BRANCH"
-target_site_url: "https://sandbox.aspenrecreation.com/"
+target_site_url: "https://sandbox.aspenrecreation.com"
 fetch_all_refs: true
 trigger_condition: "ALWAYS"
 actions:
 - action: "Execute: webpack build"
   type: "BUILD"
-  working_directory: "/buddy/access-fund"
+  working_directory: "/buddy/aspen"
   docker_image_name: "nystudio107/webpack-dev-base"
   docker_image_tag: "latest"
   execute_commands:
@@ -16,12 +16,12 @@ actions:
   - "npm ci"
   - "npm run build"
   volume_mappings:
-  - "/:/buddy/access-fund"
+  - "/:/buddy/aspen"
   trigger_condition: "ALWAYS"
   shell: "BASH"
 - action: "Execute: composer install"
   type: "BUILD"
-  working_directory: "/buddy/access-fund"
+  working_directory: "/buddy/aspen"
   docker_image_name: "nystudio107/php-dev-base"
   docker_image_tag: "latest"
   execute_commands:
@@ -34,7 +34,7 @@ actions:
   - "# php ext pdo_mysql"
   - "docker-php-ext-install pdo_pgsql pgsql"
   volume_mappings:
-  - "/:/buddy/access-fund"
+  - "/:/buddy/aspen"
   trigger_condition: "ALWAYS"
   shell: "BASH"
 - action: "Rsync files to production"
