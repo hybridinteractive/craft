@@ -6,8 +6,8 @@ require('dotenv').config();
 // Webpack settings exports
 // noinspection WebpackConfigHighlighting
 module.exports = {
-    name: "accessfund",
-    copyright: "Access Fund",
+    name: "Example Project",
+    copyright: "Example Company, Inc.",
     paths: {
         src: {
             base: "../src/",
@@ -23,16 +23,17 @@ module.exports = {
         templates: "../cms/templates/"
     },
     urls: {
-        live: "https://sandbox.accessfund.org",
-        local: "http://localhost:8000/",
-        critical: "https://sandbox.accessfund.org/",
+        live: "https://example.com/",
+        local: "http://example.test/",
+        critical: "http://example.test/",
         publicPath: () => process.env.PUBLIC_PATH || "/dist/",
     },
     vars: {
         cssName: "styles"
     },
     entries: {
-        "app": "app.js",
+        "app": "app.ts",
+        "lazysizes-wrapper": "utils/lazysizes-wrapper.ts",
     },
     babelLoaderConfig: {
         exclude: [
@@ -94,6 +95,7 @@ module.exports = {
         paths: [
             "../cms/templates/**/*.{twig,html}",
             "../src/vue/**/*.{vue,html}",
+            "./node_modules/vuetable-2/src/components/**/*.{vue,html}",
         ],
         whitelist: [
             "../src/css/components/**/*.{css}"
@@ -118,6 +120,11 @@ module.exports = {
             symlink: "../favicon.ico"
         }
     ],
+    typescriptLoaderConfig: {
+        exclude: [
+            /(node_modules)/
+        ],
+    },
     webappConfig: {
         logo: "../src/img/favicon-src.png",
         prefix: "img/favicons/"
