@@ -6,15 +6,15 @@
 {% endblock headLinks %}
 
 {% block content %}
-
-    {%- include '_organisms/entry-types/page--content' ignore missing with { 
-        entry: entry 
-    } -%}
-
+    <section>
+        <h1>content</h1>        
+    </section>
 {% endblock %}
 
 {% block subcontent %}
-    
+    <section>
+        <h2>subcontent</h2>
+    </section>
 {% endblock %}
 
 {# -- Any JavaScript that should be included before </body> -- #}

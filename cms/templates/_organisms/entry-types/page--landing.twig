@@ -1,9 +1,13 @@
-{%- minify -%}
-    {%- include '_organisms/builders/hero--builder' with { 
-        content: entry, 
-    } -%}
+{%- include '_organisms/builders/hero--builder' with { 
+    content: entry, 
+} -%}
 
-    {%- include '_organisms/builders/page--builder' with { 
+{% if entry.lastUpdated %}
+    {%- include '_molecules/meta/meta--edited' with { 
         content: entry, 
     } -%}
-{%- endminify -%}
+{% endif %}
+
+{%- include '_organisms/builders/page--builder' with { 
+    content: entry, 
+} -%}

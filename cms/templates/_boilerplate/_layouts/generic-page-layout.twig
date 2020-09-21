@@ -34,18 +34,14 @@
 
 {# -- Page body -- #}
 {% block bodyHtml %}
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{- alias("@gtm") -}}"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <div id="page-container" class="overflow-hidden leading-normal font-primary">
-        <div id="content-container">
+    <div id="page-container" class="overflow-hidden leading-tight">
+        <div id="content-container" class="bg-repeat header-background">
 
             {# -- Info header, including _navbar.twig -- #}
             {% include "_organisms/sections/header.twig" %}
 
             <main>
-                <div class="">
+                <div class="container mx-auto pb-8">
                     {# -- Primary content block -- #}
                     {% block content %}
                     {% endblock %}

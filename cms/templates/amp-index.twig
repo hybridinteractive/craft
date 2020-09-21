@@ -1,4 +1,4 @@
-{% extends "_layouts/amp-generic-page-layout.twig" %}
+{% extends "_boilerplate/_layouts/amp-generic-page-layout.twig" %}
 
 {% if entry is not defined %}
     {% set entry = craft.entries({
@@ -15,15 +15,15 @@
 {% endblock headCss %}
 
 {% block content %}
-    {# <section>
+    <section>
         <h1>content</h1>
-    </section> #}
+    </section>
 {% endblock %}
 
 {% block subcontent %}
-    {# <section>
+    <section>
         <h2>subcontent</h2>
-    </section> #}
+    </section>
 {% endblock %}
 
 {# -- Any JavaScript that should be included before </body> -- #}

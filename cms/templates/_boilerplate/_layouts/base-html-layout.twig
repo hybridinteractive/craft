@@ -76,47 +76,10 @@
     {{ craft.twigpack.includeJsModule("app.js", true) }}
     {{ craft.twigpack.includeJsModule("styles.js", true) }}
 
+    {# -- Inline JS #}
+    {% include "_boilerplate/_partials/body-js.twig" %}
+
     {# -- Any JavaScript that should be included before </body> -- #}
     {% block bodyJs %}
-
-        {% if entry.contentBuilder is iterable %}
-            {%- for block in entry.contentBuilder -%}
-                {%- switch block.type -%}
-                    {%- case "contentForm" -%}
-
-                        {%- if block.form is iterable -%}
-                            <div class="hidden" id="form-src">
-                            {%- include '_organisms/forms/form--content.twig' ignore missing with {
-                                        content: block,
-                                    } -%}
-                            </div>
-                            {%- js -%}
-                                document.addEventListener('DOMContentLoaded', function() {
-                                    setTimeout(
-                                        function() {
-                                            function setTarget(el, formTarget)
-                                            {
-                                                formTarget.appendChild(el);
-                                            }
-                                                var l = document.getElementById('form-src').childNodes.length,
-                                                    src = document.getElementById('form-src'),
-                                                    target = document.getElementById('form-target');
-                                            for (var i = l; i >= 0; i--)
-                                            {
-                                                setTarget(src.childNodes[0], target);
-                                            }
-                                        }, 
-                                    655);
-                                }, false);
-                            {%- endjs -%}
-                        {%- endif -%}
-
-                {%- endswitch -%}
-                
-            {%- endfor -%}
-        {% endif %}
-
-        {% hook 'before-body-end' %}
-    
     {% endblock bodyJs %}
 {% endblock bodyContent %}

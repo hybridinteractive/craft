@@ -18,55 +18,6 @@
 {% set baseUrl = alias('@web') ~ '/' %}
 {% set gaTrackingId = getenv('GA_TRACKING_ID') %}
 
-{%- set placeholder = craft.globalSets()
-    .handle('placeholders')
-    .with(['articlePlaceholder', 'photoCoverPlaceholder', 'profilePhotoPlaceholder', 'sliderPlaceholder', 'teaserPlaceholder', 'heroPlaceholder'])
-    .one()
--%}
-
-{%- set branding = craft.globalSets()
-    .handle('organization')
-    .with(['logo', 'icon'])
-    .one()
--%}
-
-{%- set colour = 'default' -%}
-{%- if entry.heroBuilder -%}
-    {%- set colour = clone(entry.heroBuilder).type('heroMain').one().colorPalette.color[0].class ?? clone(entry.heroBuilder).type('heroContent').one().colorPalette.color[0].class ?? null -%}
-{%- else -%}
-    {%- set colour = entry.colorPalette.color[0].class ?? null -%}
-
-{%- endif -%}
-{%- switch colour -%}
-    {% case "primary" %}
-
-        {% set buttonColour = "secondary" %}
-        {% set textColour = "white" %}
-    
-    {% case "secondary" %}
-
-        {% set buttonColour = "primary" %}
-        {% set textColour = "white" %}
-
-    {% case "tertiary" %}
-
-        {% set buttonColour = "secondary" %}
-        {% set textColour = "white" %}
-
-    {% case "quaternary" %}
-
-        {% set buttonColour = "secondary" %}
-        {% set textColour = "white" %}
-
-    {% case "default" %}
-
-        {% set buttonColour = "secondary" %}
-        {% set textClass = "black" %}
-        {% set colour = "grey" %}
-
-    {% default %}
-{%- endswitch -%}
-
 {# -- Twig output from the render; this must be in a block -- #}
 {% block htmlPage %}
 {% endblock %}

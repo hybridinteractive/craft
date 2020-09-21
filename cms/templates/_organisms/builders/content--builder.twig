@@ -1,21 +1,24 @@
 {% do craft.eagerBeaver.eagerLoadElements(entry, [
-    'contentBuilder',
+    'highlightCards:cards',
+    'sectionHeader:buttons',
+    'singleImage:image',
+    'slide:image',
+    'resources:target',
+    'faqList:questions',
+    'faqList:questions.faqCategory',
+    'author:profilePhoto',
     ]) 
 %}
 
+<div class="container max-w-screen-xl mx-auto">
+    
     {%- minify -%}
-        {%- for block in content.contentBuilder -%}
+        {%- for block in content.contentBuilder.all() -%}
             {%- switch block.type -%}
-            
+                
                 {%- case "article" -%}
                     
                     {%- include '_molecules/content/content--article' ignore missing with {
-                        content: block,
-                    } -%}
-
-                {%- case "footnotes" -%}
-                    
-                    {%- include '_molecules/content/content--footnotes' ignore missing with {
                         content: block,
                     } -%}
                 
@@ -44,7 +47,7 @@
                         content: block,
                     } -%}
 
-                {%- case "galleryImages" -%}
+                {%- case "galleryImage" -%}
                 
                     {%- include '_molecules/images/image--gallery' ignore missing with {
                         content: block,
@@ -54,7 +57,6 @@
             
                     {%- include '_organisms/cards/cards--highlight' ignore missing with {
                         content: block,
-                        type: 'content',
                     } -%}
 
                 {%- case "resourceList" -%}
@@ -68,14 +70,10 @@
                     {%- include '_organisms/lists/list--faq.twig' ignore missing with {
                         content: block,
                     } -%}
-
-                {%- case "contentForm" -%}
-        
-                    {%- include '_organisms/forms/form--container.twig' ignore missing with {
-                        content: block,
-                    } -%}
-
+                
             {%- endswitch -%}
                 
         {%- endfor -%}
     {%- endminify -%}
+
+</div>

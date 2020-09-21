@@ -4,23 +4,20 @@
     .offset(1)
     .all() -%}
 
-{%- include '_organisms/heroes/hero--main' with { 
-    content: entry, 
+{%- include '_organisms/heroes/hero--main' with {
+    content: entry,
 } -%}
 
 {% if entry.lastUpdated %}
-    {%- include '_molecules/meta/meta--edited' with { 
-        content: entry, 
+    {%- include '_molecules/meta/meta--edited' with {
+        content: entry,
     } -%}
 {% endif %}
 
-
-{%- minify -%}
-    <div class="container max-w-screen-hd p-8 mx-auto">
-        {%- include '_organisms/cards/cards--highlight' ignore missing with {
-            content: news,
-            type: 'news',
-            hasFeatured: true,
-        } -%}
-    </div>
-{%- endminify -%}
+<div class="container max-w-screen-hd p-8 mx-auto mt-16">
+    {%- include '_organisms/cards/cards--highlight' ignore missing with {
+        content: news,
+        type: 'news',
+        hasFeatured: true,
+    } -%}
+</div>

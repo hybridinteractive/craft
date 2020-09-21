@@ -1,7 +1,0 @@
-{% import '_macros/atoms' as atom %}
-
-{%- minify -%}
-    <section class="article mx-auto text-sm text-gray-600 border-t {{ colour != 'default' ? 'border-' ~ colour ~ '-500' : 'border-grey-100' }} tracking-wide leading-relaxed p-8 mb-8 px-8 md:px-0">
-        {{- atom.text(content.footnotes) -}}
-    </section>
-{%- endminify -%}
