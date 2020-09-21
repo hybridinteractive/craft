@@ -1,0 +1,35 @@
+{% set entry = craft.entries.section('eNewsSignup').one() %}
+
+{% set default = {
+    'heading': entry.heading,
+    'subtext': entry.body,
+    'redirect': craft.app.request.absoluteUrl,
+    'leadSource': 'E-News',
+    'buttonText': 'Sign Up'
+} %}
+
+{% if heading is not defined %}
+    {% set heading = default.heading %}
+{% else %}
+    {% set heading = 'Stay Informed' %}
+{% endif %}
+
+{% if subtext is not defined %}
+    {% set subtext = default.subtext %}
+{% else %}
+    {% set subtext = 'Get the latest in national climbing advocacy news, delivered to your inbox once a month.' %}
+{% endif %}
+
+{% if redirect is not defined %}
+    {% set redirect = default.redirect %}
+{% endif %}
+
+{% if leadSource is not defined %}
+    {% set leadSource = default.leadSource %}
+{% endif %}
+
+{% if buttonText is not defined %}
+    {% set buttonText = default.buttonText %}
+{% endif %}
+
+{{ entry.body }}

@@ -1,0 +1,17 @@
+{%- minify -%}
+<section class="container max-w-hd mx-auto md:px-4 pt-10 md:pt-12 sm:pb-8">
+
+    <div class="flex flex-wrap">
+
+        {%- for cta in content.cta.all() -%}
+            
+            {%- include '_molecules/cta/cta--block' ignore missing with {
+                content: cta,
+            } -%}
+
+        {%- endfor -%}
+
+    </div>
+
+</section>
+{%- endminify -%}

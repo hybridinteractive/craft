@@ -1,0 +1,34 @@
+{% extends "_boilerplate/_layouts/generic-page-layout.twig" %}
+
+{% block headLinks %}
+    {{ parent() }}
+    <link rel="amphtml" href="{{ siteUrl('/amp') }}">
+{% endblock headLinks %}
+
+{% block content %}
+
+    {%- include '_organisms/entry-types/page--landing' ignore missing with { 
+        entry: entry 
+    } -%}
+
+    <div class="container max-w-screen-hd py-8 md:p-8 mx-auto">
+
+        {%- set news = craft.entries.section('news').with(['teaserImage', 'newsCategory']).limit(3).all() -%}
+
+        {%- include '_organisms/cards/cards--highlight' ignore missing with {
+            content: news,
+            hasFeatured: true,
+        } -%}
+        
+    </div>
+
+{% endblock %}
+
+{% block subcontent %}
+    
+{% endblock %}
+
+{# -- Any JavaScript that should be included before </body> -- #}
+{% block bodyJs %}
+    {{ parent() }}
+{% endblock bodyJs %}

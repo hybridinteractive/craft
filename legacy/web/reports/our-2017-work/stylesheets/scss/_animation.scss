@@ -1,0 +1,38 @@
+@mixin transition($time) {
+    -webkit-transition: all $time ease-in-out;
+    -moz-transition:    all $time ease-in-out;
+    -o-transition:      all $time ease-in-out;
+    transition:         all $time ease-in-out;
+}
+
+@mixin radius($radius) {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin rotate3d($x, $y, $z, $angle) {
+    -webkit-transform: rotate3d($x, $y, $z, $angle);
+    transform:         rotate3d($x, $y, $z, $angle);
+}
+
+@mixin scale3d($x, $y, $z) {
+    -webkit-transform: scale3d($x, $y, $z);
+    transform:         scale3d($x, $y, $z);
+}
+
+@mixin translate3d($x, $y, $z) {
+    -webkit-transform: translate3d($x, $y, $z);
+    transform:         translate3d($x, $y, $z);
+}
+
+@mixin skew($x, $y) {
+    -ms-transform: skew($x,$y); /* IE 9 */
+    -webkit-transform: skew($x,$y); /* Chrome, Safari, Opera */
+    transform: skew($x,$y);
+}
+
+@mixin transform($all) {
+    -ms-transform: $all !important; /* IE 9 */
+    -webkit-transform: $all !important; /* Chrome, Safari, Opera */
+    transform: $all !important;
+}

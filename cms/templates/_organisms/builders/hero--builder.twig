@@ -1,0 +1,34 @@
+{% do craft.eagerBeaver.eagerLoadElements(entry, [
+    'heroBuilder',
+    ]) 
+%}
+    
+{%- minify -%}
+
+    {%- for block in content.heroBuilder -%}
+            
+        {%- switch block.type -%}
+            
+            {%- case 'heroContent' -%}
+                
+                {%- include '_organisms/heroes/hero--landing' ignore missing with {
+                    content: block,
+                } -%}
+
+            {%- case "heroMain" -%}
+
+                {%- include '_organisms/heroes/hero--main' ignore missing with {
+                    content: block,
+                } -%}
+
+            {%- case "heroSlider" -%}
+
+                {%- include '_organisms/heroes/hero--slider' ignore missing with {
+                    content: block,
+                } -%}
+
+        {%- endswitch -%}
+            
+    {%- endfor -%}
+    
+{%- endminify -%}

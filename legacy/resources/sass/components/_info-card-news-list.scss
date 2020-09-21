@@ -1,0 +1,9 @@
+.columns .news-list-card {
+    @extend .list-card;
+}
+.entries-list {
+    margin-left: none;
+    li {
+        list-style: none;
+    }
+}

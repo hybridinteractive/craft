@@ -1,0 +1,98 @@
+{% extends '_layouts/site' %}
+
+{# Expects "entry", "title"(optional), and "subtitle"(optional) #}
+
+{% if cssModifier is not defined %}
+    {% set cssModifier = '' %}
+{% elseif cssModifier|slice(0, 1) != ' ' %}
+    {% set cssModifier = ' ' ~ cssModifier %}
+{% endif %}
+
+{% set single = craft.entries.section('joinOrGive').one %}
+{% set headerImage = (entry.headerImage.one is defined and entry.headerImage.one is not empty) ? entry.headerImage.one : single.headerImage.one %}
+
+{% set yourGiftEntries = craft.entries.section('yourGiftEntries').limit(3) %}
+
+{% block content %}
+
+    {% include '_components/header-image' with {'entry': entry} %}
+
+    <section class="join-give-member-benefits">
+      <div class="row">
+        <div class="columns">
+          <div class="column large-8 large-centered text-center">
+            <h2 class="title">{{ entry.body|striptags|raw }}</h2>
+          </div>
+        </div>
+      </div>
+
+      {% if entry.joinOrGiveContentBlocks is defined and entry.joinOrGiveContentBlocks is not empty %}
+      <div class="row">
+        <div class="member-benefit-container column">
+          {% for block in entry.joinOrGiveContentBlocks.all() %}
+            <div class="member-benefit">
+              <div class="image-container">
+                {% if block.image is defined and block.image is not empty %}
+                  <img src="{{ block.image.one.url }}">
+                {% else %}
+                  <img src="/images/member-benefit-img.jpg">
+                {% endif %}
+              </div>
+              {{ block.body }}
+              <div class="benefit-text">
+                <a href="{{ block.buttonUrl }}" class="button">{{ block.buttonText }}</a>
+                <a href="{{ block.benefitsLinkUrl }}" class="text-link">{{ block.benefitsLinkText }}</a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </section>
+
+    <section class="page-section join-give-your-gift bg-smoke">
+      <div class="row">
+        <div class="columns">
+          <div class="column large-8 large-centered text-center">
+            <h2 class="title">{{ entry.heading}}</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="join-give-icons">
+        <div class="icon-column">
+          {% for yourGiftEntry in yourGiftEntries.all() %}
+            <div class="icon">
+              {% if yourGiftEntry.image is defined and yourGiftEntry.image is not empty %}
+                <img src="{{ yourGiftEntry.image.one.url }}">
+              {% endif %}
+              {{ yourGiftEntry.body }}
+              <a href="{{ yourGiftEntry.urlOverride }}">Explore &raquo;</a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section more-ways-to-give">
+      <div class="row">
+        <div class="columns">
+          <div class="column large-8 large-centered text-center">
+            <h2 class="title">{{ entry.moreWaysToGiveHeadline }}</h2>
+            {{ entry.moreWaysToGiveSubtext }}
+            <a href="{{ entry.moreWaysToGiveLink }}" class="button">{{ entry.moreWaysToGiveButtonText }}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% if entry.contentBlock is defined and entry.contentBlock is not empty %}
+        {% include '_matrix/contentBlock/index'
+            with {'matrix': entry.contentBlock,
+                    'openingStructure': '<div class="join-give-content-block">',
+                    'closingStructure': '</div>',
+                    'altText': entry.heading is defined and entry.heading is not empty ? entry.heading : entry.title
+            }
+        %}
+    {% endif %}
+{% endblock %}

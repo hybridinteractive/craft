@@ -1,0 +1,43 @@
+field: e691301b-7484-40be-a3d4-c3bc590de959
+fieldLayouts:
+  083a08b4-c833-4b37-8a9f-4ecfa12f4e34:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 35981b2e-d04e-4366-939a-c0673263711a
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  35981b2e-d04e-4366-939a-c0673263711a:
+    contentColumnType: string
+    fieldGroup: null
+    handle: questions
+    instructions: 'Use the field to select and add Frequently Asked Questions, multiple items can be added.'
+    name: Questions
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      limit: ''
+      localizeRelations: false
+      selectionLabel: 'Add a FAQ entry'
+      showSiteMenu: true
+      source: null
+      sources:
+        - 'section:77caab49-fa61-44b4-af86-3fa99cf8bace'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+handle: faqList
+name: 'FAQ List'
+sortOrder: 4

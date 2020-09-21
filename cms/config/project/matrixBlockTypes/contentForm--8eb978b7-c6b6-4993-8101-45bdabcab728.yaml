@@ -1,0 +1,31 @@
+field: e691301b-7484-40be-a3d4-c3bc590de959
+fieldLayouts:
+  0fa1d0b4-0304-48fe-81e2-5aae0a53e165:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 1a45804e-4148-4e4d-828e-5ccbc1f6298d
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  1a45804e-4148-4e4d-828e-5ccbc1f6298d:
+    contentColumnType: integer
+    fieldGroup: null
+    handle: form
+    instructions: 'Select a form from the dropdown below to include it on your page'
+    name: form
+    searchable: false
+    translationKeyFormat: null
+    translationMethod: none
+    type: Solspace\Freeform\FieldTypes\FormFieldType
+handle: contentForm
+name: Form
+sortOrder: 8

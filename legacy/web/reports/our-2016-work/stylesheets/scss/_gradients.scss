@@ -1,0 +1,66 @@
+@mixin black-gradient($fromColor:"rgba(0,0,0,0)", $toColor:"rgba(0,0,0,0.65)", $height:"100%", $width:"100%", $position:"relative") {
+  position: #{$position};
+    &:before {
+        @include transition(0.3s);
+        display:block;
+        content: " ";
+        position:absolute;
+        bottom:0;
+        left:0;
+        height:#{$height};
+        width: #{$width};
+        z-index:0;
+
+        // background-color:                                                                                             #{$toColor}; /* Fallback Color */
+        background-image:           -webkit-gradient(linear, left top, left bottom, from(#{$fromColor}),           to(#{$toColor})); /* Saf4+, Chrome */
+        background-image:                                   -webkit-linear-gradient(top, #{$fromColor},               #{$toColor}); /* Chrome 10+, Saf5.1+, iOS 5+ */
+        background-image:                                      -moz-linear-gradient(top, #{$fromColor},               #{$toColor}); /* FF3.6 */
+        background-image:                                       -ms-linear-gradient(top, #{$fromColor},               #{$toColor}); /* IE10 */
+        background-image:                                        -o-linear-gradient(top, #{$fromColor},               #{$toColor}); /* Opera 11.10+ */
+        background-image:                                           linear-gradient(top, #{$fromColor},               #{$toColor});
+        filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
+    }
+}
+
+@mixin bg-gradient($fromColor:"rgba(255,255,255,0)", $toColor:"rgba(255,255,255,1)") {
+        background-color:                                                                                             #{$toColor}; /* Fallback Color */
+        background-image:           -webkit-gradient(linear, left top, left bottom, from(#{$fromColor}),           to(#{$toColor})); /* Saf4+, Chrome */
+        background-image:                                   -webkit-linear-gradient(top, #{$fromColor},               #{$toColor}); /* Chrome 10+, Saf5.1+, iOS 5+ */
+        background-image:                                      -moz-linear-gradient(top, #{$fromColor},               #{$toColor}); /* FF3.6 */
+        background-image:                                       -ms-linear-gradient(top, #{$fromColor},               #{$toColor}); /* IE10 */
+        background-image:                                        -o-linear-gradient(top, #{$fromColor},               #{$toColor}); /* Opera 11.10+ */
+        background-image:                                           linear-gradient(top, #{$fromColor},               #{$toColor});
+        filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
+}
+
+
+@mixin bg-gradient-horizontal($fromColor:"rgba(255,255,255,0)", $toColor:"rgba(255,255,255,1)") {
+        background-color:                                                                                             #{$toColor}; /* Fallback Color */
+        background-image:             -webkit-gradient(linear, left top, right top, from(#{$fromColor}),           to(#{$toColor})); /* Saf4+, Chrome */
+        background-image:                                  -webkit-linear-gradient(left, #{$fromColor},               #{$toColor}); /* Chrome 10+, Saf5.1+, iOS 5+ */
+        background-image:                                     -moz-linear-gradient(left, #{$fromColor},               #{$toColor}); /* FF3.6 */
+        background-image:                                      -ms-linear-gradient(left, #{$fromColor},               #{$toColor}); /* IE10 */
+        background-image:                                       -o-linear-gradient(left, #{$fromColor},               #{$toColor}); /* Opera 11.10+ */
+        background-image:                                          linear-gradient(left, #{$fromColor},               #{$toColor});
+        filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
+}
+
+@mixin bg-gradient-horizontal-tight($fromColor:"rgba(255,255,255,0)", $toColor:"rgba(255,255,255,1)") {
+        background-color:                                                                                             #{$fromColor}; /* Fallback Color */
+        background: -webkit-gradient(linear, left top, right top, color-stop(0%, #{$fromColor}), color-stop(50%, #{$fromColor}), color-stop(51%,#{$toColor}), color-stop(100%,#{$toColor})); /* Chrome,Safari4+ */
+        background-image:                                  -webkit-linear-gradient(left, #{$fromColor} 0%, #{$fromColor} 50%, #{$toColor} 51%, #{$toColor} 100%); /* Chrome 10+, Saf5.1+, iOS 5+ */
+        background-image:                                     -moz-linear-gradient(left, #{$fromColor} 0%, #{$fromColor} 50%, #{$toColor} 51%, #{$toColor} 100%); /* FF3.6 */
+        background-image:                                      -ms-linear-gradient(left, #{$fromColor} 0%, #{$fromColor} 50%, #{$toColor} 51%, #{$toColor} 100%); /* IE10 */
+        background-image:                                       -o-linear-gradient(left, #{$fromColor} 0%, #{$fromColor} 50%, #{$toColor} 51%, #{$toColor} 100%); /* Opera 11.10+ */
+        background-image:                                          linear-gradient(left, #{$fromColor} 0%, #{$fromColor} 50%, #{$toColor} 51%, #{$toColor} 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
+}
+
+
+
+
+
+
+
+
+

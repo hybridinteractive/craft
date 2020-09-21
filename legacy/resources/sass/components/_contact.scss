@@ -1,0 +1,16 @@
+.contact-header {
+    @extend .form-header;
+}
+
+.contact-content {
+    p {
+        line-height: 1.5em;
+        font-size: rem-calc(18);
+    }
+}
+
+@media print {
+    .contact-content {
+        width: 100% !important;
+    }
+}

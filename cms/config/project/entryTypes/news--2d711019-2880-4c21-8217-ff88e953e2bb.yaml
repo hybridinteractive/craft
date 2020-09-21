@@ -1,0 +1,122 @@
+fieldLayouts:
+  2e28fd6c-9aa9-4a1c-85a5-ab8b30fb59d3:
+    tabs:
+      -
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            autofocus: false
+            class: null
+            disabled: false
+            id: null
+            instructions: ''
+            label: 'News Title'
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            required: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\EntryTitleField
+            warning: null
+            width: 100
+          -
+            style: tip
+            tip: 'The news image uploaded here is not your teaser / social image. Upload that in the Metadata tab.'
+            type: craft\fieldlayoutelements\Tip
+          -
+            fieldUid: 7649cbd8-197b-41dd-aa8c-4f9cee4370e9
+            instructions: 'Upload you article header image here.'
+            label: 'News Image'
+            required: '1'
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: feef0f76-4551-40c2-87f8-c90f34605b3e
+            instructions: 'A short introductory paragraph in an article that summaries the  article.'
+            label: ''
+            required: ''
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: e691301b-7484-40be-a3d4-c3bc590de959
+            instructions: null
+            label: null
+            required: '0'
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: 0827c9dd-2ea2-4e98-b743-3161e028a304
+            instructions: ''
+            label: 'News Categories'
+            required: ''
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Categories
+        sortOrder: 2
+      -
+        elements:
+          -
+            heading: 'SEO Metadata'
+            type: craft\fieldlayoutelements\Heading
+          -
+            style: tip
+            tip: 'By selecting a teaser image, you also ensure that this post is accompanied by an image when shared on social media sites'
+            type: craft\fieldlayoutelements\Tip
+          -
+            fieldUid: 1c23eb9d-03fe-46ea-9bee-ff46e8bd15a3
+            instructions: ''
+            label: 'Meta Image'
+            required: ''
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 6a3feb81-50ce-467a-8aca-b5d4cc12aed0
+            instructions: 'Used both in Google search results and when this page is shared on social media sites.'
+            label: 'Meta Description'
+            required: ''
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 4d8b86c9-a2e1-4fb4-a836-76d1fecad043
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Metadata
+        sortOrder: 3
+handle: news
+hasTitleField: true
+name: News
+section: 9de367ab-77b8-47bb-bbc3-63e79a202c3e
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

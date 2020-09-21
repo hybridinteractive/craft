@@ -1,0 +1,7 @@
+{% extends '_layouts/site' %}
+
+{% set partial = craft.app.request.segment(1) ~ '/partials/' ~ entry.type.handle %}
+
+{% block content %}
+    {% include partial %}
+{% endblock %}

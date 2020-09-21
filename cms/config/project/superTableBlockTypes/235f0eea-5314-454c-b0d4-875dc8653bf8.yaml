@@ -1,0 +1,182 @@
+field: 4285cde2-58a1-4cde-aba3-ccdced328ee2
+fieldLayouts:
+  8f709fd8-761f-41fb-80d6-2e01237696d9:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 4697a491-b07d-46f9-87d8-c6cd9fb804a9
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  4697a491-b07d-46f9-87d8-c6cd9fb804a9:
+    contentColumnType: string
+    fieldGroup: null
+    handle: target
+    instructions: ''
+    name: Target
+    searchable: false
+    settings:
+      allowCustomText: true
+      allowTarget: false
+      autoNoReferrer: false
+      defaultLinkName: entry
+      defaultText: ''
+      enableAllLinkTypes: false
+      enableAriaLabel: false
+      enableElementCache: false
+      enableTitle: false
+      typeSettings:
+        __assoc__:
+          -
+            - asset
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - false
+                -
+                  - allowCustomQuery
+                  - false
+                -
+                  - allowCrossSiteLink
+                  - false
+                -
+                  - sources
+                  - '*'
+          -
+            - category
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - false
+                -
+                  - allowCustomQuery
+                  - false
+                -
+                  - allowCrossSiteLink
+                  - false
+                -
+                  - sources
+                  - '*'
+          -
+            - entry
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - true
+                -
+                  - allowCustomQuery
+                  - false
+                -
+                  - allowCrossSiteLink
+                  - false
+                -
+                  - sources
+                  - '*'
+          -
+            - site
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - false
+                -
+                  - sites
+                  - '*'
+          -
+            - user
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - false
+                -
+                  - allowCustomQuery
+                  - false
+                -
+                  - allowCrossSiteLink
+                  - false
+                -
+                  - sources
+                  - '*'
+          -
+            - custom
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - false
+                -
+                  - allowAliases
+                  - false
+                -
+                  - disableValidation
+                  - false
+          -
+            - email
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - true
+                -
+                  - allowAliases
+                  - false
+                -
+                  - disableValidation
+                  - false
+          -
+            - tel
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - false
+                -
+                  - allowAliases
+                  - false
+                -
+                  - disableValidation
+                  - false
+          -
+            - url
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - false
+                -
+                  - allowAliases
+                  - false
+                -
+                  - disableValidation
+                  - false
+          -
+            - solspaceCalendar-event
+            -
+              __assoc__:
+                -
+                  - enabled
+                  - false
+                -
+                  - allowCustomQuery
+                  - false
+                -
+                  - allowCrossSiteLink
+                  - false
+                -
+                  - sources
+                  - '*'
+    translationKeyFormat: null
+    translationMethod: none
+    type: lenz\linkfield\fields\LinkField

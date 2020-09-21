@@ -1,0 +1,112 @@
+field: 3603960e-5907-4970-921d-18a3c1c86c7e
+fieldLayouts:
+  1a752062-a3fb-459c-acb9-a1e4c17d48bc:
+    tabs:
+      -
+        fields:
+          49fc2634-bf3b-4e3e-a1bc-9eeb199fac80:
+            required: '1'
+            sortOrder: '2'
+          4d23d076-4a7c-4ad8-969e-ca980aef3815:
+            required: '1'
+            sortOrder: '1'
+        name: Content
+        sortOrder: '1'
+fields:
+  49fc2634-bf3b-4e3e-a1bc-9eeb199fac80:
+    contentColumnType: string
+    fieldGroup: null
+    handle: socialMediaUrl
+    instructions: ''
+    name: 'Social Media URL'
+    searchable: '0'
+    settings:
+      allowCustomText: false
+      allowTarget: false
+      autoNoReferrer: false
+      defaultLinkName: site
+      defaultText: ''
+      enableAllLinkTypes: false
+      enableAriaLabel: false
+      enableElementCache: false
+      enableTitle: false
+      typeSettings:
+        asset:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        category:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        custom:
+          allowAliases: false
+          disableValidation: false
+          enabled: false
+        email:
+          allowAliases: false
+          disableValidation: false
+          enabled: false
+        entry:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        site:
+          enabled: false
+          sites: '*'
+        tel:
+          allowAliases: false
+          disableValidation: false
+          enabled: false
+        url:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        user:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+    translationKeyFormat: null
+    translationMethod: none
+    type: lenz\linkfield\fields\LinkField
+  4d23d076-4a7c-4ad8-969e-ca980aef3815:
+    contentColumnType: string
+    fieldGroup: null
+    handle: socialMediaType
+    instructions: ''
+    name: 'Social Media Type'
+    searchable: '0'
+    settings:
+      optgroups: true
+      options:
+        -
+          default: ''
+          label: Twitter
+          value: twitter
+        -
+          default: ''
+          label: Facebook
+          value: facebook
+        -
+          default: ''
+          label: Instagram
+          value: instagram
+        -
+          default: ''
+          label: YouTube
+          value: youtube
+        -
+          default: ''
+          label: Vimeo
+          value: vimeo
+        -
+          default: ''
+          label: GitHub
+          value: github
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown

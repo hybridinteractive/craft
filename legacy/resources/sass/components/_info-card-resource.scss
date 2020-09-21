@@ -1,0 +1,58 @@
+.resource-card {
+    background: rgba(255,255,255,0.9);
+    padding-bottom: 0 !important;
+    .resource-head {
+        padding: rem-calc(22);
+        .title {
+            font-size: rem-calc(26);
+            text-transform: initial;
+            font-weight: 500;
+            color: $primary-color;
+        }
+    }
+
+    .resource-body {
+        padding: rem-calc(22);
+        .summary {
+            font-size: rem-calc(20);
+            line-height: rem-calc(40);
+        }
+    }
+}
+
+#resource-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    .resource-card {
+        background-clip: content-box;
+        margin-bottom: rem-calc(20);
+    }
+}
+
+@media print {
+    .resource-card {
+        page-break-inside: avoid;
+        float: none;
+        vertical-align: top;
+        position: initial !important;
+        display: inline-block;
+        padding: 0 !important;
+        width: 31% !important;
+        height: auto !important;
+        border: solid 1px $base;
+        margin: 0 1%;
+        .resource-head {
+            padding: rem-calc(14);
+            .title {
+                font-size: rem-calc(20);
+            }
+        }
+        .resource-body {
+            padding: rem-calc(14);
+            .summary {
+                line-height: 1.4em;
+            }
+        }
+    }
+}

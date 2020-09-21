@@ -1,0 +1,79 @@
+{%- import '_macros/atoms' as atom -%}
+{%- set news = content.type == 'news' ? true : false -%}
+
+<section class="w-full">
+    <div class="grid grid-cols-4 grid-rows-2 min-h-128">
+
+        <div class="col-span-4 h-128">
+            {{- atom.hero_image(content.image[0] ?? placeholder.heroPlaceholder[0], content.image[0].title ?? content.heading) -}}
+        </div>
+
+        <div class="col-span-1 flex items-center justify-start p-8 {{ news ? 'pl-24' : '' }} max-h-96">
+            {%- if news -%}
+                <div>
+                    <div class="text-xs leading-tight text-black-100 tracking-wider mb-8">
+                        <address rel="author" class="text-2xl font-semibold not-italic mb-1">{{- content.author -}}</address>
+                        <time datetime="{{ entry.postDate|date('c') }}" class="text-xs font-semibold uppercase tracking-wide leading-normal">{{- atom.formatDate(content.postDate) -}}</time>
+                    </div>
+                    <div>
+                        <span class="uppercase bg-white-90 px-4 py-2 rounded-full text-black-100 text-xs tracking-wide font-semibold">
+                            {{- content.newsCategory[0].title ?? 'No Category' -}}
+                        </span>
+                    </div>
+                    <!-- social share icons -->
+                    <div class="flex flex-no-wrap mt-8">
+                        <a href="https://twitter.com/share?text={{- content.title -}}&url={{- content.url -}}&hashtags=#ntp" title="Share this page on Twitter" data-tag-category="social" data-tag-action="print" data-tag-label="{{- content.url -}}">
+                            <span class="icon --lg --circle p-4 text-white-100 bg-secondary-500 hover:bg-secondary-400 transition-colors ease-in-out duration-150 mr-4">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                        </a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{- content.url -}}" title="Share this page on Facebook" data-tag-category="social" data-tag-action="print" data-tag-label="{{- content.url -}}">
+                            <span class="icon --lg --circle p-4 text-white-100 bg-secondary-500 hover:bg-secondary-400 transition-colors ease-in-out duration-150 mr-4">
+                                <i class="fab fa-facebook-f"></i>
+                            </span>
+                        </a>
+                        <a href="mailto:?subject={{ organization.organizationName }}: {{- content.title -}}&body={{- content.url -}}" title="Email this page" data-tag-category="social" data-tag-action="print" data-tag-label="{{- content.url -}}">
+                            <span class="icon --lg --circle p-4 text-white-100 bg-secondary-500 hover:bg-secondary-400 transition-colors ease-in-out duration-150 mr-4">
+                                <i class="fal fa-envelope"></i>
+                            </span>
+                        </a>
+                        <div @click="printPage()" title="Print this page" data-tag-category="social" data-tag-action="print" data-tag-label="{{- content.url -}}">
+                            <span class="icon --lg --circle p-4 cursor-pointer text-white-100 bg-secondary-500 hover:bg-secondary-400 transition-colors ease-in-out duration-150">
+                                <i class="fal fa-print"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            {%- else -%}
+                <div class="h-full w-full flex items-center justify-center">
+                    {%- switch craft.app.request.segments | last -%}
+
+                        {%- case "ntp-tuition-partners" -%}
+
+                            {% set icon = include('_svg/icons/icon-equals.svg') %}
+                            
+
+                        {%- case "ntp-academic-mentors" -%}
+
+                            {% set icon = include('_svg/icons/icon-plus.svg') %}
+
+                    {%- endswitch -%}
+
+                    {{- svg(icon, class='max-w-48 h-full') -}}
+                </div>
+                <!-- tuition or mentor logo ( based on hacky slug for now ) -->
+            {%- endif -%}
+        </div>
+
+        <div class="col-span-3 px-16 py-8 max-h-96 {{ colour != 'default' ? 'bg-' ~ colour ~ '-500' : 'bg-black-100' -}}">
+            <h1 class="sr-only">{{- news ? atom.text(content.title) : atom.text(content.heading) -}}</h1>
+            <h2 class="text-5xl font-semibold text-white-100 tracking-wide">{{- news ? atom.text(content.title) : atom.text(content.heading) -}}</h2>
+            {%- if not news -%}
+                <h3 class="text-2xl font-semibold text-white-100 mt-8 tracking-wide">
+                    {{- atom.text(content.description) -}}
+                </h3>
+            {%- endif -%}
+        </div>
+
+    </div>
+</section>

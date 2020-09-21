@@ -1,0 +1,168 @@
+field: 8f760830-6b64-449f-98d0-c8139dda7403
+fieldLayouts:
+  150b0240-bebe-4c86-a333-230cbb7d3e6b:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: a4c9b1f4-36b3-4b88-aca7-1856c0230681
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 42afeaa4-67d4-4e74-905c-58f2cd3695d3
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 10c9242e-46f9-4036-81ff-268c6163ba05
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 37f1254d-30d5-4edf-a079-00f62f328818
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 06e77875-34b1-47ea-ac8e-827336aafcbe
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  06e77875-34b1-47ea-ac8e-827336aafcbe:
+    contentColumnType: text
+    fieldGroup: null
+    handle: colourPalette
+    instructions: ''
+    name: 'Colour Palette'
+    searchable: false
+    settings:
+      palette: headers
+      useConfigFile: '1'
+    translationKeyFormat: null
+    translationMethod: none
+    type: percipioglobal\colourswatches\fields\ColourSwatches
+  10c9242e-46f9-4036-81ff-268c6163ba05:
+    contentColumnType: string
+    fieldGroup: null
+    handle: buttons
+    instructions: ''
+    name: Buttons
+    searchable: false
+    settings:
+      columns:
+        __assoc__:
+          -
+            - 958abbc8-973b-46a7-8dcd-dc1c74854de5
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_14_buttons}}'
+      fieldLayout: row
+      maxRows: ''
+      minRows: ''
+      placeholderKey: null
+      propagationMethod: all
+      selectionLabel: ''
+      staticField: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
+  37f1254d-30d5-4edf-a079-00f62f328818:
+    contentColumnType: string
+    fieldGroup: null
+    handle: position
+    instructions: ''
+    name: Position
+    searchable: false
+    settings:
+      default: ''
+      options:
+        __assoc__:
+          -
+            - left
+            - ''
+          -
+            - center
+            - '1'
+          -
+            - right
+            - ''
+          -
+            - full
+            - '1'
+          -
+            - drop-left
+            - ''
+          -
+            - drop-right
+            - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: rias\positionfieldtype\fields\Position
+  42afeaa4-67d4-4e74-905c-58f2cd3695d3:
+    contentColumnType: string(640)
+    fieldGroup: null
+    handle: description
+    instructions: 'A short introductory paragraph in an article that summaries the page / article.'
+    name: Standfirst
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: 160
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  a4c9b1f4-36b3-4b88-aca7-1856c0230681:
+    contentColumnType: string(192)
+    fieldGroup: null
+    handle: header
+    instructions: 'Enter a section heading from an article or a page, a page can contain multiple sections, this is preferably 1-5 words.'
+    name: Heading
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: 48
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: sectionHeader
+name: 'Section Header'
+sortOrder: 1

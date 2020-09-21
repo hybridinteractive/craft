@@ -1,0 +1,32 @@
+{% extends '_layouts/site' %}
+
+{% set single = craft.entries.section('pages').one %}
+{% set headerImage = (entry.headerImage.one is defined and entry.headerImage.one is not empty) ? entry.headerImage.one : single.headerImage.one %}
+
+{% block content %}
+    {% include '_components/header-image' with {'entry': entry} %}
+    <section class="page-section">
+        <div class="row">
+            <div class="column medium-9 medium-centered">
+                {% if entry.heading is not empty %}
+                    <h2 class="title">{{ entry.heading }}</h2>
+                {% endif %}
+                <div class="row hide-for-print">
+                    <div class="medium-9 columns">
+                        {% include '_components/sharethis' %}
+                    </div>
+                </div>
+                {{ entry. body}}
+                {% if entry.contentBlock is defined and entry.contentBlock is not empty %}
+                    {% include '_matrix/contentBlock/index'
+                        with {'matrix': entry.contentBlock,
+                                'openingStructure': '<div class="row"><div class="column medium-9 medium-centered">',
+                                'closingStructure': '</div></div>',
+                                'altText': entry.heading is defined and entry.heading is not empty ? entry.heading : entry.title
+                        }
+                    %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

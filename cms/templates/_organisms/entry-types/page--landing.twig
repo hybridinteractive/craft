@@ -1,0 +1,9 @@
+{%- minify -%}
+    {%- include '_organisms/builders/hero--builder' with { 
+        content: entry, 
+    } -%}
+
+    {%- include '_organisms/builders/page--builder' with { 
+        content: entry, 
+    } -%}
+{%- endminify -%}

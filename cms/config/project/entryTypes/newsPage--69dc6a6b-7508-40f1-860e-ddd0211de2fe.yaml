@@ -1,0 +1,78 @@
+fieldLayouts:
+  f8952f41-ac4f-4251-b5d8-369fda8fc97e:
+    tabs:
+      -
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            autofocus: false
+            class: null
+            disabled: false
+            id: null
+            instructions: ''
+            label: 'News Landing Title'
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            required: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\EntryTitleField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+      -
+        elements:
+          -
+            heading: 'SEO Metadata'
+            type: craft\fieldlayoutelements\Heading
+          -
+            style: tip
+            tip: 'By selecting a teaser image, you also ensure that this landing page is accompanied by an image when shared on social media sites'
+            type: craft\fieldlayoutelements\Tip
+          -
+            fieldUid: 1c23eb9d-03fe-46ea-9bee-ff46e8bd15a3
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 6a3feb81-50ce-467a-8aca-b5d4cc12aed0
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 4d8b86c9-a2e1-4fb4-a836-76d1fecad043
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Metadata
+        sortOrder: 2
+handle: newsPage
+hasTitleField: true
+name: 'News Landing'
+section: ef841ba4-7bcd-4ef5-9c12-96377bf7fba2
+sortOrder: 5
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

@@ -1,0 +1,44 @@
+field: 8f760830-6b64-449f-98d0-c8139dda7403
+fieldLayouts:
+  b5650812-48c1-4a37-a1e3-f3c9bb7f7c88:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 7dfaf59c-b2a4-4b18-8d4a-54422a63e5fb
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  7dfaf59c-b2a4-4b18-8d4a-54422a63e5fb:
+    contentColumnType: text
+    fieldGroup: null
+    handle: footnotes
+    instructions: 'Enter one more paragraphs to create any article footnotes.'
+    name: 'Footnote Content'
+    searchable: false
+    settings:
+      availableTransforms: '*'
+      availableVolumes: ''
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Simple.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\redactor\Field
+handle: footnotes
+name: 'Article Footnotes'
+sortOrder: 3

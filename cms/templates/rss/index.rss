@@ -1,0 +1,39 @@
+{%- spaceless -%}
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>{{ organization.organizationName }}</title>
+<link>{{ siteUrl }}</link>
+<atom:link href="{{- craft.app.request.absoluteUrl -}}" rel="self" type="application/rss+xml" />
+<description>{{- organization.organizationInfo -}}</description>
+<language>en-gb</language>
+<pubDate>{{ now | rss }}</pubDate>
+<lastBuildDate>{{ now | rss }}</lastBuildDate>
+{% set entries = craft.entries()
+    .section('news')
+    .limit(12)
+    .orderBy('postDate desc')
+    .all()
+%}
+{%- for entry in entries -%}
+<item>
+    <title>{{ entry.title }}</title>
+    <link>{{ entry.url }}</link>
+    <pubDate>{{ entry.postDate | rss }}</pubDate>
+    <author>{{ entry.author }}</author>
+    <guid>{{ entry.url }}</guid>
+    <description><![CDATA[
+    {% if entry.contentBuilder is iterable %}
+        {%- for block in entry.contentBuilder
+                .type('article')
+                .all() -%}
+                {{ block.article }}
+        {%- endfor -%}
+    {% endif %}
+    ]]>
+    </description>
+</item>
+{%- endfor -%}
+</channel>
+</rss>
+{%- endspaceless -%}

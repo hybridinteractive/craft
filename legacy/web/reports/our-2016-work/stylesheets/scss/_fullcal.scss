@@ -1,0 +1,143 @@
+
+#calendar {
+    .fc-toolbar { // Title and Controls
+        position: relative; // Allows 'relatively absolute' positioning of children
+        .fc-center {
+            .fc-prev-button, .fc-next-button {
+                background: transparent;
+                border: none;
+                font-size: rem-calc(42);
+                padding: rem-calc(6 0 0);
+                height: auto;
+                line-height: 1em;
+                margin:0;
+                color: $charcoal;
+                font-weight: 200;
+            }
+            h2 {
+                margin: rem-calc(0 20);
+                text-transform: initial;
+                font-weight: 300;
+                color: $charcoal;
+                word-spacing: 500px;
+                width: 13vw;
+                font-size: $h4-font-size;
+                &::first-line {
+                    font-size: $h3-font-size;
+                }
+            }
+        }
+        .fc-right {
+            position: absolute; // The aforementioned 'relatively absolute' positioning
+            bottom: 0;
+            right: 0;
+            .fc-button {
+                border:0;
+                box-shadow:none;
+                background-color: transparent;
+                background-image:none;
+                border-radius:0;
+                &.fc-corner-right {
+                    height: 28px;
+                    width: 36px;
+                    padding: 0;
+                    background-size:contain;
+                    background-position:center;
+                    background-repeat:no-repeat;
+                    -webkit-filter: grayscale(0);
+                    filter: grayscale(0);
+                    &.fc-state-active {
+                        -webkit-filter: grayscale(1);
+                        filter: grayscale(1);
+                    }
+                    &.fc-agendaDay-button {
+                        background-image: url('/images/day.png');
+                    }
+                    &.fc-agendaWeek-button {
+                        background-image: url('/images/week.png');
+                    }
+                    &.fc-month-button {
+                        background-image: url('/images/month.png');
+                    }
+                }
+            }
+        }
+    }
+    .fc-view-container { // Calendar
+        
+            table {
+                border:0;
+                thead { // Calendar Header Row
+                    background: $primary-color;
+                    .fc-widget-header {
+                        border:0;
+                        table {
+                            margin: 0;
+                            th.fc-day-header {
+                                border:none;
+                                color: #FFF;
+                                text-transform: uppercase;
+                                font-weight: 400;
+                                padding: rem-calc(10 0);
+                            }
+                            &:after { // Space between Header and Day Rows
+                                display:block;
+                                content:"";
+                                height:rem-calc(35);
+                                width:100%;
+                                background: #FFF;
+                            }
+                        }
+                    }
+                }
+                tbody {
+                    a.fc-event {
+                        background: $primary-color;
+                        font-weight:300;
+                        padding: rem-calc(3);
+                        border-radius: 0;
+                        border: solid 1px $iron;
+                        margin: 0 0 rem-calc(3) 0;
+                    }
+                    .fc-week {
+                        
+                        td.fc-day {
+                            border: solid 1px $iron;
+                            &.fc-state-highlight { // Today highlight
+                                background: transparent;
+                                border: solid 4px #f07d57;
+                                display: block;
+                                height: 100%;
+                            }
+                        }
+                        .fc-content-skeleton { // Header rows
+                            table {
+                                background: transparent !important;
+                                td {border:0;}
+                                thead {
+                                    background:transparent;
+                                    tr {
+                                        td {
+                                            border:0;
+                                        }
+                                    }
+                                }
+                                tbody {
+                                    tr {
+                                        background: transparent;
+                                    }
+                                }
+                                .fc-day-number { // Day Number
+                                    text-align: left;
+                                    font-size: $h4-font-size;
+                                    font-weight:200;
+                                    padding: rem-calc(13);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        
+    }
+}

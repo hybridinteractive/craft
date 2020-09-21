@@ -1,0 +1,43 @@
+field: 8f760830-6b64-449f-98d0-c8139dda7403
+fieldLayouts:
+  82e96caa-6aa2-432a-8c1b-97b8ee448212:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 25306b5c-ac65-4b7d-885c-45490e071588
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  25306b5c-ac65-4b7d-885c-45490e071588:
+    contentColumnType: string
+    fieldGroup: null
+    handle: questions
+    instructions: 'Select the FAQ Entries that you want to show'
+    name: FAQs
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      limit: '50'
+      localizeRelations: false
+      selectionLabel: 'Add a FAQ Entry'
+      showSiteMenu: true
+      source: null
+      sources:
+        - 'section:77caab49-fa61-44b4-af86-3fa99cf8bace'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+handle: faqList
+name: 'FAQ List'
+sortOrder: 4

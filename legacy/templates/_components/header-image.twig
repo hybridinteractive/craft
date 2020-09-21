@@ -1,0 +1,52 @@
+{# Expects "entry", "title"(optional), and "subtitle"(optional) #}
+
+{% if cssModifier is not defined %}
+    {% set cssModifier = '' %}
+{% elseif cssModifier|slice(0, 1) != ' ' %}
+    {% set cssModifier = ' ' ~ cssModifier %}
+{% endif %}
+
+<div class="slick-hero{{ cssModifier|raw }}" data-equalizer>
+    {% set headerImageUrl = 'https://placehold.it/1000x600' %}
+    {% if headerImage is not defined %}
+        {% if entry.headerImage.one is defined and entry.headerImage.one.url is defined and entry.headerImage.one.url is not empty %}
+            {% set headerImage = entry.headerImage.one %}
+            {% set headerImageUrl = entry.headerImage.one.url %}
+        {% endif %}
+    {% else %}
+        {% set headerImageUrl = headerImage.url %}
+    {% endif %}
+
+    {% if title is not defined %}
+        {% set title = entry.title %}
+    {% endif %}
+
+    {% if useHeading is defined and useHeading == true %}
+        {% if entry.heading is defined %}
+            {% set title = entry.heading %}
+        {% endif %}
+    {% endif %}
+
+    {% set subtitle = '' %}
+    {% if subtitle is not defined and entry.subtitle is defined %}
+        {% set subtitle = entry.subtitle %}
+    {% endif %}
+
+    {% set transformedImage = craft.imager.transformImage(headerImage, { width: 1600, jpegQuality: 90 }) %}
+    <div class="bg lazy" data-type="img-bg" data-src="{{ transformedImage.url }}" data-equalizer-watch="slide">
+        {%- if not entry.hideContent -%}
+            <div class="row text-center copy">
+                <h1 class="title">{{ title }}</h1>
+                {% if subtitle is not empty %}
+                    <p class="subtitle">{{ subtitle }}</p>
+                {% endif %}
+            </div>
+        {%- endif -%}
+        {% if headerImage is defined and headerImage.photoCredit is defined and headerImage.photoCredit is not empty %}
+            <span class="photo-credit -no-tab">
+                <img src="/images/camera.png" class="credit-icon" alt="Credit">
+                <small class="credit text-right"><strong>Photo Courtesy of:</strong><br/>{{ headerImage.photoCredit }}</small>
+            </span>
+        {% endif %}
+    </div>
+</div>

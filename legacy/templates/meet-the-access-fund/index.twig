@@ -1,0 +1,24 @@
+{% extends '_layouts/site' %}
+
+{% set topLevelChildren = craft.entries.section('meetTheAccessFundEntries').level(1).all() %}
+
+{% set headerImageUrl = (entry.headerImage.one is defined and entry.headerImage.one is not empty) ? entry.headerImage.one.url : '' %}
+
+{% block content %}
+    {% cache %}
+        {% include '_components/header-image' with {'entry': entry} %}
+
+        {% include '_components/breadcrumb' %}
+
+        {% for child in topLevelChildren %}
+            <section class="page-section">
+                <div class="row">
+                    <div class="column">
+                        <h2 class="title text-center">{{ child.title }}</h2>
+                    </div>
+                </div>
+                {% include '_components/slider' with { slide: child } %}
+            </section>
+        {% endfor %}
+    {% endcache %}
+{% endblock %}
