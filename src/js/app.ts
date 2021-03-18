@@ -1,66 +1,60 @@
-// import our css
-import '../css/app.pcss';
-
-import { createStore } from './stores/store.js';
-import { createLoadingState } from './utils/wait.js';
-
-// importing and setting up Font Awesome
-import { dom, library } from '@fortawesome/fontawesome-svg-core';
-import {
-    faFilePdf as farFilePdf,
-    faFileExcel as farFileExcel,
-    faFileWord as farFileWord,
-    faFilePowerpoint as farFilePowerPoint,
-    faFileArchive as farFileArchive,
-} from '@fortawesome/free-regular-svg-icons';
-
-import {
-    faCloudDownloadAlt as fasCloudDownloadAlt,
-    faExternalLinkAlt as fasExternalLinkAlt,
-} from '@fortawesome/free-solid-svg-icons';
-
-// load font-awesome libraries
-library.add(farFilePdf, farFileExcel, farFileWord, farFilePowerPoint, farFileArchive, fasCloudDownloadAlt, fasExternalLinkAlt);
-
-// convert i tags to SVG
-dom.watch({
-    autoReplaceSvgRoot: document,
-    observeMutationsRoot: document.body
-});
-
+import { createStore } from '@/js/stores/store.js';
 // App main
-const main = async () => {
+const site = async () => {
     // Async load the vue module
-    const { createApp, defineAsyncComponent } = await import(/* webpackChunkName: "vue" */ 'vue');
+    const [ Vue, Lazysizes ] = await Promise.all([
+        import(/* webpackChunkName: "vue" */ 'vue'),
+        import(/* webpackChunkName: "lazysizes" */ 'lazysizes'),
+    ]).then(arr => arr.map(({ default: defaults }) => defaults));
 
-    const store = await createStore(Vue.default);
-    const wait = await createLoadingState(Vue.default);
+    const store = await createStore(Vue);
 
-    // Create our vue instance
-    const app = createApp({
-        el: "#page-container",
+    const vm = new Vue({
+
+        el: '#page-container',
         store,
-        wait,
-        data: () => ({
-
-        }),
         components: {
-
+            'notification--cookie': () => import(/* webpackChunkName: "notification--cookie" */ '@/vue/molecules/notifications/notification--cookie.vue'),
         },
+
+        data: () => ({}),
+
         methods: {
 
-        }
-    });
+            // Pre-render pages when the user mouses over a link
+            // Usage: <a href="" @mouseover="prerenderLink">
+            prerenderLink: function (e : Event) {
+                const head = document.getElementsByTagName("head")[0];
+                const refs = head.childNodes;
+                const ref = refs[refs.length - 1];
 
-    // Mount the app
-    const root = app.mount("#page-container");
+                const elements = head.getElementsByTagName("link");
+                Array.prototype.forEach.call(elements, function (el, i) {
+                    if (("rel" in el) && (el.rel === "prerender")) {
+                        el.parentNode.removeChild(el);
+                    }
+                });
 
-    return root;
+                if (ref.parentNode && e.currentTarget) {
+                    const target : HTMLAnchorElement = <HTMLAnchorElement>e.currentTarget;
+                    const prerenderTag = document.createElement("link");
+                    prerenderTag.rel = "prerender";
+                    prerenderTag.href = target.href;
+                    ref.parentNode.insertBefore(prerenderTag, ref);
+                }
+            },
+
+            printPage() {
+                window.print();
+            }
+
+        },
+
+    })
 };
 
 // Execute async function
-main().then( (root) => {
-});
+site().then( (value) => {});
 
 // Accept HMR as per: https://webpack.js.org/api/hot-module-replacement#accept
 if (module.hot) {

@@ -1,22 +1,64 @@
-{% import '_macros/atoms' as atom %}
+{%- import '_macros/atoms' as render -%}
+
+{%- set utilities = utilities ??? '' -%}
 
 {%- minify -%}
-    <section class="section--header w-full relative mt-16 mb-16 lg:mb-32 {{ content.options.hasDash ? 'dash-holder' : '' -}}">
-        <h5 class="text-xs font-bold uppercase tracking-wide leading-normal  mb-4">
-            {% if content.options.hasDash %}
-            <hr class="dash">
-            {% endif %}
-            {{- atom.title(content.title) -}}
-        </h5>
-        {% if content.subtitle | length %}
-        <h2 class="font-medium max-w-md leading-loose max-w-md">
-            {{- atom.title(content.subtitle) -}}
-        </h2>
-        {% endif %}
-        {% if content.button is defined %}
-            {% if content.button.target is not null %}
-            {{- atom.button( { url: content.button.target }, content.button.title, content.button.style, content.button.icon) -}}
-            {% endif %}
-        {% endif %}
-    </section>
+
+    <div class="mt-20 mb-10 w-full">
+
+        <div class="container mx-auto max-w-screen-lg {{ utilities -}}">
+
+            <div class="leading-none">
+
+                <h2 class="font-primary text-5xl font-bold mb-4">
+                    {{- render.atom('text', 'title', {
+                            content: content.heading
+                        })
+                    -}}
+                </h2>
+
+                {%- if content.description -%}
+                    <div class="prose prose-lg mb-4">
+                        {{- render.atom('text', 'content', {
+                            content: content.description
+                        }) -}}
+                    </div>
+                {%- endif -%}
+
+                {%- if content.buttons|length > 0 -%}
+
+                    <div class="mb-4">
+                        {%- for button in content.buttons -%}
+
+                            {# set style for atom button #}
+                            {%- set buttonStyle = 'primary' -%}
+                            {%- if button.style == 'secondaryGhost' or button.style == 'secondary' -%}
+                                {%- set buttonStyle = 'secondary' -%}
+                            {%- endif -%}
+
+                            {{- render.atom('button', buttonStyle, {
+                                url: button.target.getUrl(),
+                                text: button.target.getText(),
+                                target: button.target.getTarget(),
+                                inverted: button.style == 'primaryGhost' or button.style == 'secondaryGhost',
+                                gaCategory: 'header-section-cta',
+                                gaAction: 'click',
+                                gaLabel: button.target.getUrl(),
+                                utilities: 'mr-2'
+                            }) -}}
+
+                        {%- endfor -%}
+                    </div>
+
+                {%- else -%}
+
+                    <hr class="h-1 w-32 mt-8 bg-blue-500">
+
+                {%- endif -%}
+            </div>
+
+        </div>
+
+    </div>
+
 {%- endminify -%}
